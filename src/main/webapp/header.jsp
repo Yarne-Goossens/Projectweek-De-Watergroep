@@ -16,7 +16,9 @@
                 <li class="nav-item" ${param.actual eq 'Verstuur Email' ? "id = actual":""}>
                     <a class="nav-link" href="Controller?command=SendEmailform">Verstuur Email</a></li>
                 <li class="nav-item" ${param.actual eq 'ShowPDF' ? "id = actual":""}>
-                    <a class="nav-link" href="Controller?command=CreatePDF"></a></li>
+                    <a class="nav-link" href="Controller?command=CreatePDF">Create PDF</a></li>
+                <li class="nav-item" ${param.actual eq 'SignalLeak' ? "id = actual":""}>
+                    <a class="nav-link" href="Controller?command=LeakSubmissionForm">Lek Melden</a></li>
             </ul>
         </div>
     </nav>
