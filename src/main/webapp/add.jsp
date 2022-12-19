@@ -3,12 +3,9 @@
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Voeg een huisdier toe</title>
-    <link rel="stylesheet" type="text/css" href="style/style.css"/>
-</head>
+<jsp:include page="head.jsp">
+    <jsp:param name="title" value="Voeg een huisdier toe"/>
+</jsp:include>
 <body>
 <div id="container">
     <jsp:include page="header.jsp">
