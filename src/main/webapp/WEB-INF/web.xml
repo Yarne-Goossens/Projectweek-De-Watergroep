@@ -9,7 +9,7 @@
     </context-param>
     <context-param>
         <param-name>schema</param-name>
-        <param-value>demo_tiebe</param-value>
+        <param-value>"2Danhé"</param-value>
     </context-param>
     <welcome-file-list>
         <welcome-file>Controller</welcome-file>
