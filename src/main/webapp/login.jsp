@@ -4,7 +4,7 @@
     <jsp:param name="title" value="Login user"/>
 </jsp:include>
 <body class=" bg-dark">
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column ">
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <jsp:include page="header.jsp">
         <jsp:param name="actual" value="Home"/>
     </jsp:include>
