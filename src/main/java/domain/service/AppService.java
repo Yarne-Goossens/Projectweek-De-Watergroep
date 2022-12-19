@@ -9,7 +9,7 @@ public class AppService {
 
     // currentAnimalService
     private AnimalService animals = new AnimalServiceDBSQL();
-    private EmailService emailService = new MailService();
+
     public void addAnimal(Animal animal) {
         animals.addAnimal(animal);
     }
@@ -22,17 +22,15 @@ public class AppService {
         return animals.getAllAnimals();
     }
 
-<<<<<<< HEAD
+
+    // emailService
+    private EmailService emailService = new MailService();
     public void sendEmail(Email email){
         emailService.sendEmail(email);
     }
-=======
 
     // userService
     private UserService users = new UserServiceInMemory();
 
-
-
->>>>>>> c68e839da430899194110bb59a962062be9fee4e
 
 }
