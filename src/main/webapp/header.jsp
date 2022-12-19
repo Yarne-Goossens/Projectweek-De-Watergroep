@@ -12,7 +12,7 @@
                             <li class="nav-item"  ${param.actual eq 'voegToe'?"id = actual":""}>
                                 <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=AddForm">Voeg Toe</a></li>
                             <li class="nav-item" ${param.actual eq 'Overzicht'?"id = actual":""}>
-                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=Overview">Overzicht</a></li>
+                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=Overview">Overzicht Lekken</a></li>
                             <li class="nav-item" ${param.actual eq 'Verstuur Email' ? "id = actual":""}>
                                 <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=SendEmailform">Verstuur Email</a></li>
                             <li class="nav-item" ${param.actual eq 'ShowPDF' ? "id = actual":""}>
