@@ -8,10 +8,6 @@ public class Overview extends RequestHandler {
 
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
-        request.setAttribute("last" , session.getAttribute("lastAddedAnimal"));
-        request.setAttribute("animals", service.getAllAnimals());
-        return "overview.jsp";
-
+        return "overviewLeaks.jsp";
     }
 }
