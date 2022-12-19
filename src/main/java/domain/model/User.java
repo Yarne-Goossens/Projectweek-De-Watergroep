@@ -1,5 +1,8 @@
 package domain.model;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class User {
 
     private int id;
@@ -19,14 +22,30 @@ public class User {
     }
 
     private void setName(String name){
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("Geen naam gegeven");
+        }
         this.name=name;
     }
 
     private void setEmail(String email){
+        if (email.isEmpty()) {
+            throw new IllegalArgumentException("Geen email gegeven");
+        }
+        String USERID_PATTERN =
+                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern p = Pattern.compile(USERID_PATTERN);
+        Matcher m = p.matcher(email);
+        if (!m.matches()) {
+            throw new IllegalArgumentException("Email is niet correct");
+        }
         this.email=email;
     }
 
     private void setPassword(String password){
+        if (password.isEmpty())
+            throw new IllegalArgumentException("Geen paswoord gegeven");
         this.password=password;
     }
 

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <jsp:include page="head.jsp">
@@ -19,6 +20,9 @@
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log in</p>
+                                <c:forEach var="e" items="${errors}">
+                                    <p class="alert">${e}</p>
+                                </c:forEach>
                                 <form class="mx-1 mx-md-4" action="Controller" method="post">
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <div class="form-outline flex-fill mb-0">
@@ -48,7 +52,7 @@
                                 </form>
                             </div>
                             <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                <img src="img/watergroep_logo_small.png" class="img-fluid" alt="Sample image">
+                                <img src="img/watergroep_logo_small.png" class="img-fluid" alt="watergroep logo">
                             </div>
                         </div>
                     </div>
