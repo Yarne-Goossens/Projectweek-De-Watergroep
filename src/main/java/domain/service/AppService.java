@@ -1,6 +1,7 @@
 package domain.service;
 
 import domain.model.Animal;
+import domain.model.User;
 
 import java.util.ArrayList;
 
@@ -25,7 +26,15 @@ public class AppService {
     // userService
     private UserService users = new UserServiceInMemory();
 
+    public void addUser(User user) {
+        users.addUser(user);
+    }
 
+    public User findUserWithEmail(String email){
+        return users.findUserWithEmail(email);
+    }
 
-
+    public ArrayList<User> getAllUsers() {
+        return users.getAllUsers();
+    }
 }
