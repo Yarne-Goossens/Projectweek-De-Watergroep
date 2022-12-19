@@ -19,7 +19,7 @@
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log in</p>
-                                <form class="mx-1 mx-md-4">
+                                <form class="mx-1 mx-md-4" action="Controller" method="post">
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <div class="form-outline flex-fill mb-0">
                                             <label class="form-label" for="email">Email Adres</label>
@@ -38,9 +38,10 @@
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="keepLoggedIn" name="checkbox">
                                             <label class="form-check-label" for="keepLoggedIn">Hou mij
-                                                ingelogged</label>
+                                                ingelogd</label>
                                         </div>
                                     </div>
+                                    <input type="hidden" name="command" value="LogIn">
                                     <div class="form-outline flex-fill mb-0">
                                         <button type="submit" class="btn btn-primary btn-lg">Log in</button>
                                     </div>

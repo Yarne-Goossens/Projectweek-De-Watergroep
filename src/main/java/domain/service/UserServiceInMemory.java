@@ -4,12 +4,12 @@ import domain.model.User;
 
 import java.util.ArrayList;
 
-public class UserServiceInMemory implements UserService{
+public class UserServiceInMemory implements UserService {
 
-    private int id=0;
+    private int id = 0;
     private ArrayList<User> users = new ArrayList<>();
 
-    public UserServiceInMemory(){
+    public UserServiceInMemory() {
         this.addUser(new User(id, "Jan-Willem", "jw@wg.be", "pwd"));
         this.addUser(new User(id, "Yannick", "yv@wg.be", "psw"));
     }
@@ -22,8 +22,8 @@ public class UserServiceInMemory implements UserService{
 
     @Override
     public User findUserWithEmail(String name) {
-        for(User u : users){
-            if(u.getName().equals(name)){
+        for (User u : users) {
+            if (u.getName().equals(name)) {
                 return u;
             }
         }

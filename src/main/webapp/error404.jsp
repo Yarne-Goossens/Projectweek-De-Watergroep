@@ -4,7 +4,7 @@
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Foutje"/>
 </jsp:include>
-<body>
+<body class="bg-dark">
 <div id="container">
     <jsp:include page="header.jsp">
         <jsp:param name="actual" value="Er liep iets fout"/>
