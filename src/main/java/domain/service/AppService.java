@@ -5,6 +5,8 @@ import domain.model.Animal;
 import java.util.ArrayList;
 
 public class AppService {
+
+    // currentAnimalService
     private AnimalService animals = new AnimalServiceDBSQL();
 
     public void addAnimal(Animal animal) {
@@ -18,5 +20,12 @@ public class AppService {
     public ArrayList<Animal> getAllAnimals() {
         return animals.getAllAnimals();
     }
+
+
+    // userService
+    private UserService users = new UserServiceInMemory();
+
+
+
 
 }
