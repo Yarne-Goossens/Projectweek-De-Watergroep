@@ -14,6 +14,6 @@ create table "2Danhé".leak (
 );
 
 
-grant all privileges on schema "2Danhé" to hakkaton_02;
-grant all privileges on ALL TABLES IN SCHEMA "2Danhé" to hakkaton_02;
-grant all privileges on ALL SEQUENCES IN SCHEMA "2Danhé" to hakkaton_02;
+grant all privileges on schema "2Danhé" to hakkaton_02, local_r0854458, local_r0887519, local_r0663460, local_r0887747, local_r0867396, local_r0867998, local_r0867998, local_r0887053, local_s0212115, local_r0808540;
+grant all privileges on ALL TABLES IN SCHEMA "2Danhé" to hakkaton_02, local_r0854458, local_r0887519, local_r0663460, local_r0887747, local_r0867396, local_r0867998, local_r0867998, local_r0887053, local_s0212115, local_r0808540;
+grant all privileges on ALL SEQUENCES IN SCHEMA "2Danhé" to hakkaton_02, local_r0854458, local_r0887519, local_r0663460, local_r0887747, local_r0867396, local_r0867998, local_r0867998, local_r0887053, local_s0212115, local_r0808540;
