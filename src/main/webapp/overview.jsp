@@ -3,12 +3,9 @@
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bekijk alle dieren</title>
-    <link rel="stylesheet" type="text/css" href="style/style.css">
-</head>
+<jsp:include page="head.jsp">
+    <jsp:param name="title" value="Bekijk alle dieren"/>
+</jsp:include>
 <body>
 <div id="container">
     <jsp:include page="header.jsp">
@@ -19,17 +16,19 @@
             <c:when test="${not empty animals}">
                 <h2>Bekijk alle dieren</h2>
 
-                <table>
+                <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>Naam</th>
-                        <th>Soort</th>
-                        <th>Voedsel</th>
+                        <th scope="col">#</th>
+                        <th scope="col">Naam</th>
+                        <th scope="col">Soort</th>
+                        <th scope="col">Voedsel</th>
                     </thead>
                     <tbody>
                         <c:if test="$not empty animals"></c:if>
                     <c:forEach var="animal" items="${animals}">
                         <tr>
+                            <th scope="row">${animal.id}</th>
                             <td>${animal.name}
                             </td>
                             <td>${animal.type}
