@@ -57,6 +57,23 @@ nav ul li a:hover, nav ul li#actual a {
 	color: rgb(138, 47, 10);
 }
 
+
+.alert {
+	padding: 5px;
+	margin-bottom: 20px;
+	border : 1px solid transparent;
+	border-radius: 15px;
+}
+.alert-danger{
+	color: #a94442;
+	border-color: #ebccd1;
+	background-color: #f2dede;
+}
+
+.succes {
+	color: green;
+}
+
 footer {
 	background-color: rgb(138, 47, 10);
 	color: rgb(242, 158, 6);
