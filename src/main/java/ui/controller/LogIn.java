@@ -1,5 +1,7 @@
 package ui.controller;
 
+import domain.model.Employee;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,8 +12,9 @@ public class LogIn extends RequestHandler {
         String password = request.getParameter("password");
 
         try {
-            if (service.findUserWithEmail(email).isCorrectPassword(password)) {
-                request.getSession().setAttribute("user", service.findUserWithEmail(email));
+            Employee employee = service.findEmployeeWithEmail(email);
+            if (employee.isCorrectPassword(password)) {
+                request.getSession().setAttribute("user", employee);
                 return "index.jsp";
             }
         } catch (Exception e) {

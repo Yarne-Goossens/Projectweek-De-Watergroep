@@ -34,7 +34,7 @@ public class EmployeeServiceDBSQL implements EmployeeService {
 
     @Override
     public Employee findEmployeeWithEmail(String email) {
-        String query = String.format("select * from %s.user where email=?", schema);
+        String query = String.format("select * from %s.employee where email=?", schema);
         try {
             PreparedStatement statement = getConnection().prepareStatement(query);
             statement.setString(1, email);
@@ -42,8 +42,8 @@ public class EmployeeServiceDBSQL implements EmployeeService {
             while (result.next()){
                 String nameString = result.getString("name");
                 String mailString = result.getString("email");
-                String password = result.getString("password");
-                return new Employee(nameString, mailString);
+                String passwordString = result.getString("password");
+                return new Employee(nameString, mailString, passwordString);
             }
         } catch (SQLException e) {
             throw new DbException(e.getMessage());

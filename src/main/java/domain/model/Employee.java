@@ -15,9 +15,10 @@ public class Employee {
     private String email;
     private String password;
 
-    public Employee(String name, String email){
+    public Employee(String name, String email, String password){
         this.setName(name);
         this.setEmail(email);
+        this.setPassword(password);
     }
 
     public Employee(int id, String name, String email, String password){
@@ -60,6 +61,9 @@ public class Employee {
     }
 
     public boolean isCorrectPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        System.out.println(this.password);
+        System.out.println(password);
+        System.out.println(hashPassword(password));
         return this.password.equals(hashPassword(password));
     }
 

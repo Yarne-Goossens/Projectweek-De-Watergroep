@@ -26,15 +26,15 @@ public class AppService {
     // userService
     private EmployeeService employees = new EmployeeServiceDBSQL();
 
-    public void addUser(Employee employee) {
+    public void addEmployee(Employee employee) {
         employees.addEmployee(employee);
     }
 
-    public Employee findUserWithEmail(String email){
+    public Employee findEmployeeWithEmail(String email){
         return employees.findEmployeeWithEmail(email);
     }
 
-    public ArrayList<Employee> getAllUsers() {
+    public ArrayList<Employee> getAllEmployees() {
         return employees.getAllEmployees();
     }
 }
