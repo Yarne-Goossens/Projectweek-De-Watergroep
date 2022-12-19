@@ -71,7 +71,10 @@ nav ul li a:hover, nav ul li#actual a {
 }
 
 .succes {
-	color: green;
+	background-color: lightgreen;
+	color: #000;
+	padding: 10px 0;
+	font-size: 25px;
 }
 
 footer {
