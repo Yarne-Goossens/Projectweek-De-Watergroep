@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header>
-    <h1>Mijn huisdieren</h1>
+    <h1>Watergroep</h1>
     <nav class="navbar navbar-expand-sm navbar-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -16,7 +16,9 @@
                 <li class="nav-item" ${param.actual eq 'Verstuur Email' ? "id = actual":""}>
                     <a class="nav-link" href="Controller?command=SendEmailform">Verstuur Email</a></li>
                 <li class="nav-item" ${param.actual eq 'ShowPDF' ? "id = actual":""}>
-                    <a class="nav-link" href="Controller?command=CreatePDF"></a></li>
+                    <a class="nav-link" href="Controller?command=CreatePDF">CreatePDF</a></li>
+                <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
+                    <a class="nav-link" href="Controller?command=LogInPage">Login</a></li>
             </ul>
         </div>
     </nav>
