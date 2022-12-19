@@ -15,7 +15,7 @@ public class LogIn extends RequestHandler {
                 return "index.jsp";
             }
         } catch (Exception e) {
-            request.setAttribute("errors", "Email of paswoord is niet correct");
+            request.setAttribute("errors", "E-mail of paswoord is niet correct");
         }
         return "login.jsp";
     }

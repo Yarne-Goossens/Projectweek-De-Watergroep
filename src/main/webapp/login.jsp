@@ -26,9 +26,9 @@
                                 <form class="mx-1 mx-md-4" action="Controller" method="post">
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <div class="form-outline flex-fill mb-0">
-                                            <label class="form-label" for="email">Email Adres</label>
+                                            <label class="form-label" for="email">E-mailadres</label>
                                             <input type="email" id="email" class="form-control" name="email"
-                                                   placeholder="Vul je email in"/>
+                                                   placeholder="Vul je e-mail in"/>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-row align-items-center mb-4">
