@@ -21,9 +21,9 @@ public class UserServiceInMemory implements UserService {
     }
 
     @Override
-    public User findUserWithEmail(String name) {
-        for (User u : users) {
-            if (u.getName().equals(name)) {
+    public User findUserWithEmail(String email) {
+        for(User u : users){
+            if(u.getEmail().equals(email)){
                 return u;
             }
         }

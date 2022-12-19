@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -23,6 +24,14 @@
                 <div class="col-sm-4">
                     <h3>Wie zijn wij</h3>
                     <p>Lorem ipsum dolor..</p>
+                    <c:choose>
+                        <c:when test="${not empty user}">
+                            <p>Welkom ${user.name}<p>
+                        </c:when>
+                        <c:otherwise>
+
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="col-sm-4">
                     <h3>Mail info over dieren</h3>
