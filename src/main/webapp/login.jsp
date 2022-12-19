@@ -4,18 +4,10 @@
     <jsp:param name="title" value="Login user"/>
 </jsp:include>
 <body class=" bg-dark">
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column ">
-    <header class="masthead mb-auto text-center text-white">
-        <div class="inner">
-            <h3 class="masthead-brand">Bootstrap Spike</h3>
-            <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link active" href="Controller?command=OverviewBootstrap">HomeBootstrap</a>
-                <a class="nav-link" href="Controller?command=RegisterUser">Register</a>
-                <a class="nav-link" href="Controller?command=Login">Login</a>
-                <a class="nav-link" href="Controller?command=Home">Home</a>
-            </nav>
-        </div>
-    </header>
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <jsp:include page="header.jsp">
+        <jsp:param name="actual" value="Home"/>
+    </jsp:include>
 </div>
 <section class="vh-100">
     <div class="container h-100">
