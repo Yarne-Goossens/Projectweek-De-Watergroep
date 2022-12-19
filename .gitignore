@@ -2,6 +2,8 @@
 
 .idea/
 
+util/Secret.java
+
 target/
 
 out/
