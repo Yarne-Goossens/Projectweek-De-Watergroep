@@ -64,12 +64,6 @@
             </div>
         </section>
     </main>
-
-    <footer class="mastfoot mt-auto">
-        <div class="inner">
-            <p>Devy Leskens, Jelle Michiels, Sander Doggen</a>.</p>
-        </div>
-    </footer>
 </div>
 
 
