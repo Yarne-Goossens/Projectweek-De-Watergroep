@@ -44,7 +44,7 @@
     <main role="main" class="inner cover">
         <h1 class="cover-heading">Overview page.</h1>
         <p class="lead">Here you can place elements to create a nice overview page.<br>
-            As an example we have a table of all created user accounts.</p>
+            As an example we have a table of all created employee accounts.</p>
 
         <section class="intro">
             <div class="bg-image h-100">

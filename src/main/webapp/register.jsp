@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="headbootstrap.jsp">
-    <jsp:param name="title" value="Register user"/>
+    <jsp:param name="title" value="Register employee"/>
 </jsp:include>
 <body class=" bg-dark ">
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column ">

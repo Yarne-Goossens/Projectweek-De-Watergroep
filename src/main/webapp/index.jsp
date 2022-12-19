@@ -25,8 +25,8 @@
                     <h3>Wie zijn wij</h3>
                     <p>Lorem ipsum dolor..</p>
                     <c:choose>
-                        <c:when test="${not empty user}">
-                            <p>Welkom ${user.name}<p>
+                        <c:when test="${not empty employee}">
+                            <p>Welkom ${employee.name}<p>
                         </c:when>
                         <c:otherwise>
 

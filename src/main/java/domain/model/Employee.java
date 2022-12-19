@@ -1,16 +1,26 @@
 package domain.model;
 
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class User {
+public class Employee {
 
     private int id;
     private String name;
     private String email;
     private String password;
 
-    public User(int id, String name, String email, String password){
+    public Employee(String name, String email){
+        this.setName(name);
+        this.setEmail(email);
+    }
+
+    public Employee(int id, String name, String email, String password){
         this.setId(id);
         this.setName(name);
         this.setEmail(email);
@@ -49,8 +59,8 @@ public class User {
         this.password=password;
     }
 
-    public boolean isCorrectPassword(String password){
-        return this.password.equals(password);
+    public boolean isCorrectPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        return this.password.equals(hashPassword(password));
     }
 
     public String getName(){
@@ -58,4 +68,24 @@ public class User {
     }
 
     public String getEmail(){return this.email;}
+
+    public String getPassword() throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        return hashPassword(this.password);
+    }
+
+    public String hashPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        //create MessageDigest
+        MessageDigest crypt = MessageDigest.getInstance("SHA-512");
+        //reset
+        crypt.reset();
+        byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
+        crypt.update(passwordBytes);
+        //digest
+        byte[] digest = crypt.digest();
+        //convert to String
+        BigInteger digestAsBigInteger = new BigInteger(1, digest);
+        //return hashed password
+        return digestAsBigInteger.toString(16);
+    }
+
 }
