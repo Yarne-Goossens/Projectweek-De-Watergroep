@@ -140,6 +140,10 @@ public class LeakReport {
         this.comment = comment;
     }
 
+<<<<<<< HEAD
     //Setters with Request processing
 
 }
+=======
+}
+>>>>>>> fe2ded391c8a161fa0a14482f1fc74b566d732df
