@@ -63,7 +63,7 @@ public class LeakReportServiceDBSQL implements LeakReportService{
                 String city = resultSet.getString("city");
                 int postal = Integer.parseInt(resultSet.getString("postal"));
                 String street = resultSet.getString("street");
-                int houseNr = Integer.parseInt(resultSet.getString("house_number"));
+                String houseNr = resultSet.getString("house_number");
                 String comment = resultSet.getString("comment");
                 LeakReport leakReport = new LeakReport(id,postal,houseNr,firstName,lastName,email,city,street);
                 leakReport.setComment(comment);

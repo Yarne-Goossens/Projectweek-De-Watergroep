@@ -7,10 +7,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LeakReport {
-    private int id,postalCode,houseNumber;
-    private String firstName,lastName,email,city,street,comment;
+    private int id,postalCode;
+    private String firstName,lastName,email,city,street,comment,houseNumber;
 
-    public LeakReport(int id, int postalCode, int houseNumber, String firstName, String lastName, String email, String city, String street) {
+    public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street) {
         this.id = id;
         this.postalCode = postalCode;
         this.houseNumber = houseNumber;
@@ -47,7 +47,7 @@ public class LeakReport {
         return postalCode;
     }
 
-    public int getHouseNumber() {
+    public String getHouseNumber() {
         return houseNumber;
     }
 
@@ -86,10 +86,13 @@ public class LeakReport {
         this.postalCode = postalCode;
     }
 
-    public void setHouseNumber(int houseNumber) {
-        if(houseNumber<=0){
+    public void setHouseNumber(String houseNumber) {
+        if (houseNumber.isBlank()) {
             throw new IllegalArgumentException("Vul een juist huisnummer in.");
         }
+//        if(Integer.parseInt(houseNumber)<=0){
+//            throw new IllegalArgumentException("Vul een juist huisnummer in.");
+//        }
         this.houseNumber = houseNumber;
     }
 
