@@ -10,7 +10,7 @@
         <jsp:param name="actual" value="SignalLeak"/>
     </jsp:include>
     <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="card text-black mb-5 mt-5 w-70" style="border-radius: 25px; width: 80%;">
+        <div class="card text-black mb-5 mt-5 w-70" style="border-radius: 25px; width: 50%;">
             <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Lek melden</p>
             <c:if test="${not empty errors}">
                 <div id="error" class="alert alert-danger">
