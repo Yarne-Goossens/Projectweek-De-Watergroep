@@ -14,7 +14,9 @@
                             <li class="nav-item"  ${param.actual eq 'voegToe'?"id = actual":""}>
                                 <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=LeakSubmissionForm">Lek Melden</a></li>
                             <li class="nav-item" ${param.actual eq 'Overzicht'?"id = actual":""}>
-                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=Overview">Overzicht Lekken</a></li>
+                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=OverviewLeaks">Overzicht Lekken</a></li>
+                            <li class="nav-item" ${param.actual eq 'Overzicht'?"id = actual":""}>
+                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=OverviewServiceAssignments">Overzicht Service Opdrachten</a></li>
 <%--                            <li class="nav-item" ${param.actual eq 'Verstuur Email' ? "id = actual":""}>--%>
 <%--                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=SendEmailform">Verstuur Email</a></li>--%>
 <%--                            <li class="nav-item" ${param.actual eq 'ShowPDF' ? "id = actual":""}>--%>
