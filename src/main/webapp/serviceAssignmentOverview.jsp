@@ -25,6 +25,13 @@
                                     <div class="card-body p-0">
                                         <div class="table-responsive table-scroll"
                                              style="position: relative; height: 500px">
+                                            <c:if test="${errors.size()!=0}">
+                                                <ul>
+                                                <c:forEach var="error" items="${errors}">
+                                                    <li>${error}</li>
+                                                </c:forEach>
+                                                </ul>
+                                            </c:if>
                                             <c:choose>
                                                 <c:when test="${serviceAssignments.size()!=0}">
                                                     <table class="table table-dark mb-0">
@@ -39,7 +46,9 @@
                                                             <tr data-toggle="collapse" data-target="#collapse${service.id}" class="accordion-toggle">
                                                                 <c:choose>
                                                                     <c:when test="${service.technician==null}">
-                                                                        <td class="text-left"><button type="button" class="btn btn-primary">SO Opnemen</button></td>
+                                                                        <td class="text-left">
+                                                                            <button type="button" class="btn btn-primary" onclick="location.href='Controller?command=ClaimServiceAssignment&claimId=${service.id}'" >SO Opnemen</button>
+                                                                        </td>
                                                                     </c:when>
                                                                     <c:otherwise>
                                                                         <td class="text-left">${service.technician}</td>
