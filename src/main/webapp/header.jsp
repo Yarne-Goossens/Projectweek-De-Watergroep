@@ -4,14 +4,17 @@
         <div class="container">
             <a href="Controller?command=Home"><img class="mt-2 mb-2" src="/img/watergroep_logo_small.png"
                                                    alt="De WaterGroep" width="120" height="100"></a>
+
             <nav class="navbar-light navbar-expand-md">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+
                     <div id="navbarSupportedContent" class="collapse navbar-collapse">
+
                         <ul class="navbar-nav">
                             <li class="nav-item" ${param.actual eq 'Home'?"id = actual":""}>
                                 <a class="nav-link pt-5" style="font-size: 20px" id="goHome"
@@ -32,7 +35,7 @@
                             <%--                            <li class="nav-item" ${param.actual eq 'Verstuur Email' ? "id = actual":""}>--%>
                             <%--                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=SendEmailform">Verstuur Email</a></li>--%>
                             <%--                            <li class="nav-item" ${param.actual eq 'ShowPDF' ? "id = actual":""}>--%>
-                            <%--                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=CreatePDF">PDF maken</a></li>--%>
+                            <%--                               a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=CreatePDF">PDF maken</a></li>--%>
                         </ul>
                     </div>
                 </div>
