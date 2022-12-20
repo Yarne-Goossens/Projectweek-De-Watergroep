@@ -1,6 +1,7 @@
 package domain.service;
 
 import domain.model.Employee;
+import domain.model.EmployeeType;
 
 import java.util.ArrayList;
 
@@ -10,8 +11,8 @@ public class EmployeeServiceInMemory implements EmployeeService {
     private ArrayList<Employee> employees = new ArrayList<>();
 
     public EmployeeServiceInMemory() {
-        this.addEmployee(new Employee(id, "Jan-Willem", "jw@wg.be", "pwd"));
-        this.addEmployee(new Employee(id, "Yannick", "yv@wg.be", "psw"));
+        this.addEmployee(new Employee(id, "Jan-Willem", "jw@wg.be", "pwd", EmployeeType.valueOf("KCC")));
+        this.addEmployee(new Employee(id, "Yannick", "yv@wg.be", "psw", EmployeeType.valueOf("TECHNICIAN")));
     }
 
     @Override
