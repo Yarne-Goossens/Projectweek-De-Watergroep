@@ -44,7 +44,7 @@ public class LeakReportServiceDBSQL implements LeakReportService{
     }
 
     @Override
-    public Animal findLeakId(int id) {
+    public LeakReport findLeakId(int id) {
         return null;
     }
 
