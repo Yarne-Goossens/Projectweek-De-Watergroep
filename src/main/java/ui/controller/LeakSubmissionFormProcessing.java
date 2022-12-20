@@ -5,6 +5,7 @@ import domain.model.LeakReport;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class LeakSubmissionFormProcessing extends RequestHandler {
@@ -22,16 +23,16 @@ public class LeakSubmissionFormProcessing extends RequestHandler {
         setHouseNumberRequest(newLeak,request,errors);
         setCommentaryRequest(newLeak,request,errors);
 
-
-
         if (errors.size() == 0) {
             try {
                 service.addLeakReport(newLeak);
                 HttpSession session = request.getSession();
                 session.setAttribute("lastAddedLeak", newLeak);
+
+                response.sendRedirect("Controller?command=Overview");
                 return "Controller?command=Overview";
             }
-            catch (IllegalArgumentException exc) {
+            catch (IllegalArgumentException | IOException exc) {
                 request.setAttribute("error", exc.getMessage());
                 return "Controller?command=LeakSubmissionForm";
             }
