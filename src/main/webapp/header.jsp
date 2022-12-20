@@ -16,7 +16,9 @@
                             <li class="nav-item" ${param.actual eq 'Verstuur Email' ? "id = actual":""}>
                                 <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=SendEmailform">Verstuur Email</a></li>
                             <li class="nav-item" ${param.actual eq 'ShowPDF' ? "id = actual":""}>
-                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=CreatePDF"></a></li>
+                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=CreatePDF">PDF maken</a></li>
+                            <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
+                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=LogInPage">Login</a></li>
                         </ul>
                     </div>
                 </div>

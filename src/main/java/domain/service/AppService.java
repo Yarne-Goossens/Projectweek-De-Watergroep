@@ -1,6 +1,7 @@
 package domain.service;
 
 import domain.model.Animal;
+import domain.model.Employee;
 import domain.model.Email;
 
 import java.util.ArrayList;
@@ -30,7 +31,17 @@ public class AppService {
     }
 
     // userService
-    private UserService users = new UserServiceInMemory();
+    private EmployeeService employees = new EmployeeServiceDBSQL();
 
+    public void addEmployee(Employee employee) {
+        employees.addEmployee(employee);
+    }
 
+    public Employee findEmployeeWithEmail(String email){
+        return employees.findEmployeeWithEmail(email);
+    }
+
+    public ArrayList<Employee> getAllEmployees() {
+        return employees.getAllEmployees();
+    }
 }
