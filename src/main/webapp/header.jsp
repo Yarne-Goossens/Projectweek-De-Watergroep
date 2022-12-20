@@ -6,11 +6,13 @@
                                                    alt="De WaterGroep" width="120" height="100"></a>
 
             <nav class="navbar-light navbar-expand-md">
+                <div class="float-right">
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                </div>
                 <div class="container-fluid">
 
                     <div id="navbarSupportedContent" class="collapse navbar-collapse">
