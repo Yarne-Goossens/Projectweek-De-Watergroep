@@ -10,11 +10,10 @@ public class LogIn extends RequestHandler {
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
         try {
             Employee employee = service.findEmployeeWithEmail(email);
             if (employee.isCorrectPassword(password)) {
-                request.getSession().setAttribute("user", employee);
+                request.getSession().setAttribute("employee", employee);
                 return "index.jsp";
             }
         } catch (Exception e) {
