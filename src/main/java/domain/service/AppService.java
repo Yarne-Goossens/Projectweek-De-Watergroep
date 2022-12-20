@@ -12,6 +12,7 @@ public class AppService {
     private LeakReportService leakReport = new LeakReportServiceDBSQL();
     private EmailService emailService = new MailService();
     private AnimalService animals = new AnimalServiceDBSQL();
+    private EmployeeService employees = new EmployeeServiceDBSQL();
 
     public void addLeakReport(LeakReport leak) {
         leakReport.addLeakReport(leak);
@@ -31,7 +32,7 @@ public class AppService {
         animals.addAnimal(animal);
     }
 
-    public LeakService leakService = new LeakServiceDBQL();
+
 
     public Animal findAnimalWithName(String naam) {
         return animals.findAnimalWithName(naam);
@@ -46,8 +47,6 @@ public class AppService {
 
 
     // userService
-    private EmployeeService employees = new EmployeeServiceDBSQL();
-
     public void addEmployee(Employee employee) {
         employees.addEmployee(employee);
     }
@@ -58,8 +57,8 @@ public class AppService {
 
 
     //Leak
-    public void updateLeak(Leak leak) {
-        leakService.update(leak);
+    public void updateLeak(LeakReport leak) {
+       leakReport.updateLeak(leak);
     }
 
     public ArrayList<Employee> getAllEmployees() {
@@ -68,7 +67,7 @@ public class AppService {
 
 
     public ArrayList<Animal> getAllAnimals() {
-        return animals.getAllAnimals()
+        return animals.getAllAnimals();
     }
 
 }

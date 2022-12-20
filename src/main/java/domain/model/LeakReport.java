@@ -6,10 +6,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LeakReport {
-    private int id,postalCode,houseNumber;
-    private String firstName,lastName,email,city,street,comment;
+    private int id,postalCode;
+    private String firstName,lastName,email,city,street,comment, houseNumber;
 
-    public LeakReport(int id, int postalCode, int houseNumber, String firstName, String lastName, String email, String city, String street) {
+    public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street) {
         this.id = id;
         this.postalCode = postalCode;
         this.houseNumber = houseNumber;
@@ -46,7 +46,7 @@ public class LeakReport {
         return postalCode;
     }
 
-    public int getHouseNumber() {
+    public String getHouseNumber() {
         return houseNumber;
     }
 
@@ -83,10 +83,11 @@ public class LeakReport {
             throw new IllegalArgumentException("Postcode is niet geldig");
         }
         this.postalCode = postalCode;
+
     }
 
-    public void setHouseNumber(int houseNumber) {
-        if(houseNumber<=0){
+    public void setHouseNumber(String houseNumber) {
+        if(houseNumber.isBlank()){
             throw new IllegalArgumentException("Vul een juist huisnummer in.");
         }
         this.houseNumber = houseNumber;
@@ -141,111 +142,4 @@ public class LeakReport {
 
     //Setters with Request processing
 
-    public void setFirstNameRequest(LeakReport leakReport, HttpServletRequest request, ArrayList<String> errors) {
-        String name = request.getParameter("naam");
-        try {
-            leakReport.setFirstName(name);
-            request.setAttribute("firstNamePreviousValue", name);
-        }
-        catch (IllegalArgumentException exc) {
-            errors.add(exc.getMessage());
-        }
-    }
-
-    public void setLastNameRequest(LeakReport leakReport, HttpServletRequest request, ArrayList<String> errors) {
-        String type = request.getParameter("voornaam");
-        try {
-            leakReport.setLastName(type);
-            request.setAttribute("lastNamePreviousValue", type);
-        }
-        catch (IllegalArgumentException exc) {
-            errors.add(exc.getMessage());
-        }
-    }
-    public void setEmailRequest(LeakReport leakReport, HttpServletRequest request, ArrayList<String> errors) {
-        String type = request.getParameter("email");
-        try {
-            leakReport.setEmail(type);
-            request.setAttribute("emailPreviousValue", type);
-        }
-        catch (IllegalArgumentException exc) {
-            errors.add(exc.getMessage());
-        }
-    }
-
-    public void setCityRequest(LeakReport leakReport, HttpServletRequest request, ArrayList<String> errors) {
-        String type = request.getParameter("Plaats");
-        try {
-            leakReport.setCity(type);
-            request.setAttribute("cityPreviousValue", type);
-        }
-        catch (IllegalArgumentException exc) {
-            errors.add(exc.getMessage());
-        }
-    }
-
-    public void setPostalRequest(LeakReport leakReport, HttpServletRequest request, ArrayList<String> errors) {
-
-        String regex = "^[0-9]";
-
-        String stringPostcode =request.getParameter("Postcode");
-        try {
-
-            if(stringPostcode.isEmpty()){
-                throw new IllegalArgumentException("Vul een postcode in.");
-            }
-            if(! stringPostcode.matches(regex)){
-                throw new IllegalArgumentException("Vul een juiste postcode in.");
-            }
-
-            int postcode= Integer.parseInt(stringPostcode);
-            leakReport.setPostalCode(postcode);
-            request.setAttribute("postalPreviousValue", postcode);
-        }
-        catch (IllegalArgumentException exc) {
-            errors.add(exc.getMessage());
-        }
-    }
-
-    public void setStreetRequest(LeakReport leakReport, HttpServletRequest request, ArrayList<String> errors) {
-        String type = request.getParameter("Straat");
-        try {
-            leakReport.setStreet(type);
-            request.setAttribute("streetPreviousValue", type);
-        }
-        catch (IllegalArgumentException exc) {
-            errors.add(exc.getMessage());
-        }
-    }
-
-    public void setHouseNumberRequest(LeakReport leakReport, HttpServletRequest request, ArrayList<String> errors) {
-
-        String stringPostcode =request.getParameter("HuisNummer");
-        String regex = "^[0-9]";
-        try {
-            if(stringPostcode.isEmpty()){
-                throw new IllegalArgumentException("Vul een huisnummer in.");
-            }
-            if(! stringPostcode.matches(regex)){
-                throw new IllegalArgumentException("Vul een juist huisnummer in.");
-            }
-            int houseNumber= Integer.parseInt(stringPostcode);
-            leakReport.setHouseNumber(houseNumber);
-            request.setAttribute("houseNumberPreviousValue", houseNumber);
-        }
-        catch (IllegalArgumentException exc) {
-            errors.add(exc.getMessage());
-        }
-    }
-
-    public void setCommentaryRequest(LeakReport leakReport, HttpServletRequest request, ArrayList<String> errors) {
-        String type = request.getParameter("Commentaar");
-        try {
-            leakReport.setComment(type);
-            request.setAttribute("commentaryPreviousValue", type);
-        }
-        catch (IllegalArgumentException exc) {
-            errors.add(exc.getMessage());
-        }
-    }
 }

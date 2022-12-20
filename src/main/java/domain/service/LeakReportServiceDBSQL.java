@@ -63,7 +63,7 @@ public class LeakReportServiceDBSQL implements LeakReportService{
                 String city = resultSet.getString("city");
                 int postal = Integer.parseInt(resultSet.getString("postal"));
                 String street = resultSet.getString("street");
-                int houseNr = Integer.parseInt(resultSet.getString("house_number"));
+                String  houseNr = resultSet.getString("house_number");
                 String comment = resultSet.getString("comment");
                 LeakReport leakReport = new LeakReport(id,postal,houseNr,firstName,lastName,email,city,street);
                 leakReport.setComment(comment);
@@ -74,6 +74,30 @@ public class LeakReportServiceDBSQL implements LeakReportService{
         }
         return leakReports;
     }
+
+
+    @Override
+    public void updateLeak(LeakReport leak) {
+        String query = String.format("UPDATE %s.leak SET first_name = ? , last_name = ? , email= ? , city = ? , postal =? , street = ? , house_number = ? , comment =? where id = ?", schema);
+        try{
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
+            preparedStatement.setString(1, leak.getFirstName());
+            preparedStatement.setString(2, leak.getLastName());
+            preparedStatement.setString(3, leak.getEmail());
+            preparedStatement.setString(4,leak.getCity());
+            preparedStatement.setInt(5,leak.getPostalCode());
+            preparedStatement.setString(6,leak.getStreet());
+            preparedStatement.setString(7,leak.getHouseNumber());
+            preparedStatement.setString(7,leak.getComment());
+
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+    }
+
 
     private Connection getConnection() {
         return this.connection;
