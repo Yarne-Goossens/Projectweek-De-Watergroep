@@ -1,3 +1,6 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +15,6 @@
         <jsp:param name="actual" value="Home"/>
     </jsp:include>
     <main role="main" class="inner cover">
-
         <section class="intro">
             <div class="bg-image h-100">
                 <div class="mask d-flex align-items-center h-100">
@@ -23,37 +25,29 @@
                                     <div class="card-body p-0">
                                         <div class="table-responsive table-scroll"
                                              style="position: relative; height: 500px">
+                                            <c:choose>
+                                            <c:when test="${leaks.size()!=0}">
                                             <table class="table table-dark mb-0">
                                                 <thead style="background-color: #393939;">
                                                 <tr class="text-uppercase">
                                                     <th class="text-left" scope="col">ID</th>
                                                     <th class="text-left" scope="col">Location</th>
-                                                    <th class="text-left" scope="col">Priority</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                <c:forEach var="leak" items="${leaks}">
                                                 <tr>
-                                                    <td class="text-left">1</td>
-                                                    <td class="text-left">leuvenStraat 24 3000 Leuven</td>
-                                                    <td class="text-left">High</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">2</td>
-                                                    <td class="text-left">MechelBaan 97 2800 Mechelen</td>
-                                                    <td class="text-left">Low</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">3</td>
-                                                    <td class="text-left">BrusselBrug 43 1000 Brussel</td>
-                                                    <td class="text-left">Medium</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">4</td>
-                                                    <td class="text-left">OostWeg 364 8400 Oostende</td>
-                                                    <td class="text-left">High</td>
+                                                    <td class="text-left">${leak.id}</td>
+                                                    <td class="text-left">${leak.street} ${leak.houseNumber}, ${leak.postalCode} ${leak.city}</td>
                                                 </tr>
                                                 </tbody>
+                                                </c:forEach>
                                             </table>
+                                            </c:when>
+                                                <c:otherwise>
+                                                    <p>There are no leaks reported!</p>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </div>
                                     </div>
                                 </div>
