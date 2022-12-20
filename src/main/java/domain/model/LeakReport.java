@@ -108,7 +108,7 @@ public class LeakReport {
 
     public void setEmail(String email) {
         if (email.isEmpty()) {
-            throw new IllegalArgumentException("No email given");
+            throw new IllegalArgumentException("Vul een email in.");
         }
         String USERID_PATTERN =
                 "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
