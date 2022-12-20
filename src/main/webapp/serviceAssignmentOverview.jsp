@@ -30,7 +30,7 @@
                                                     <table class="table table-dark mb-0">
                                                         <thead style="background-color: #393939;">
                                                         <tr class="text-uppercase">
-                                                            <th class="text-left" scope="col">Technieker/Claim</th>
+                                                            <th class="text-left" scope="col">Technieker/Opnemen</th>
                                                             <th class="text-left" scope="col">Locatie</th>
                                                         </tr>
                                                         </thead>
@@ -39,7 +39,7 @@
                                                             <tr data-toggle="collapse" data-target="#collapse${service.id}" class="accordion-toggle">
                                                                 <c:choose>
                                                                     <c:when test="${service.technician==null}">
-                                                                        <td class="text-left"><button type="button" class="btn btn-primary">Claim Assignment</button></td>
+                                                                        <td class="text-left"><button type="button" class="btn btn-primary">SO Opnemen</button></td>
                                                                     </c:when>
                                                                     <c:otherwise>
                                                                         <td class="text-left">${service.technician}</td>
