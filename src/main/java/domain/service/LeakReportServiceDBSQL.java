@@ -21,23 +21,24 @@ public class LeakReportServiceDBSQL implements LeakReportService{
 
     @Override
     public void addLeakReport(LeakReport leak) {
-        String query = String.format("insert into %s.animal " +
-                "(id,first_name,last_name,email,city,postal,street,house_number,comment) values (?,?,?,?,?,?,?,?,?)", schema);
+        String query = String.format("insert into %s.leak " +
+                "(first_name,last_name,email,city,postal,street,house_number,comment) values (?,?,?,?,?,?,?,?)", schema);
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(query);
-            preparedStatement.setInt(1, leak.getId());
-            preparedStatement.setString(2, leak.getFirstName());
-            preparedStatement.setString(3, leak.getLastName());
-            preparedStatement.setString(4, leak.getEmail());
-            preparedStatement.setString(5, leak.getCity());
-            preparedStatement.setInt(6, leak.getPostalCode());
-            preparedStatement.setString(7, leak.getStreet());
-            preparedStatement.setInt(8, leak.getHouseNumber());
-            preparedStatement.setString(9, leak.getComment());
-
+            preparedStatement.setString(1, leak.getFirstName());
+            preparedStatement.setString(2, leak.getLastName());
+            preparedStatement.setString(3, leak.getEmail());
+            preparedStatement.setString(4, leak.getCity());
+            preparedStatement.setString(5, String.valueOf(leak.getPostalCode()));
+            preparedStatement.setString(6, leak.getStreet());
+            preparedStatement.setString(7, String.valueOf(leak.getHouseNumber()));
+            preparedStatement.setString(8, leak.getComment());
 
             preparedStatement.execute();
         } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+        catch (IllegalArgumentException e){
             throw new DbException(e.getMessage());
         }
     }
