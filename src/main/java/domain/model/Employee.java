@@ -61,9 +61,6 @@ public class Employee {
     }
 
     public boolean isCorrectPassword(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        System.out.println(this.password);
-        System.out.println(password);
-        System.out.println(hashPassword(password));
         return this.password.equals(hashPassword(password));
     }
 

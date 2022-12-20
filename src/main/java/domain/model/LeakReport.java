@@ -109,7 +109,7 @@ public class LeakReport {
 
     public void setEmail(String email) {
         if (email.isEmpty()) {
-            throw new IllegalArgumentException("No email given");
+            throw new IllegalArgumentException("Vul een email in.");
         }
         String USERID_PATTERN =
                 "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -187,7 +187,7 @@ public class LeakReport {
 
     public void setPostalRequest(LeakReport leakReport, HttpServletRequest request, ArrayList<String> errors) {
 
-        String regex = "^[0-9]";
+        String regex = "^[0-9]+";
 
         String stringPostcode =request.getParameter("Postcode");
         try {
@@ -222,7 +222,7 @@ public class LeakReport {
     public void setHouseNumberRequest(LeakReport leakReport, HttpServletRequest request, ArrayList<String> errors) {
 
         String stringPostcode =request.getParameter("HuisNummer");
-        String regex = "^[0-9]";
+        String regex = "^[0-9]+";
         try {
             if(stringPostcode.isEmpty()){
                 throw new IllegalArgumentException("Vul een huisnummer in.");
