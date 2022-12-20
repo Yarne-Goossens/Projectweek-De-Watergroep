@@ -1,8 +1,5 @@
 package domain.model;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,6 +18,10 @@ public class LeakReport {
         this.street = street;
     }
 
+    public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street, String comment){
+        this(id,postalCode, houseNumber, firstName, lastName,email,city,street);
+        this.comment = comment;
+    }
     public LeakReport() {
     }
 
@@ -84,10 +85,11 @@ public class LeakReport {
             throw new IllegalArgumentException("Postcode is niet geldig");
         }
         this.postalCode = postalCode;
+
     }
 
     public void setHouseNumber(String houseNumber) {
-        if (houseNumber.isBlank()) {
+        if(houseNumber.isBlank()){
             throw new IllegalArgumentException("Vul een juist huisnummer in.");
         }
 //        if(Integer.parseInt(houseNumber)<=0){
@@ -142,5 +144,7 @@ public class LeakReport {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    //Setters with Request processing
 
 }
