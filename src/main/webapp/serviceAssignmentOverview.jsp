@@ -42,7 +42,7 @@
                                                                 <td class="text-left">hoog</td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="12" class="hiddenRow">
+                                                                <td colspan="12" class="p-0 text-left bg-secondary">
                                                                     <div id="collapse1" class="accordian-body collapse">
                                                                         <ul>
                                                                             <li>Hello</li>
@@ -56,10 +56,9 @@
                                                                 <td class="text-left">hoog</td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="12" class="hiddenRow">
+                                                                <td colspan="12" class="p-0 text-left">
                                                                     <div id="collapse2" class="accordian-body collapse">
                                                                         <ul>
-                                                                            class=text-left
                                                                             <li>Hello</li>
                                                                             <li>Fren</li>
                                                                         </ul>
