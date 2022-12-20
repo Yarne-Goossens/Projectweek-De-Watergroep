@@ -17,6 +17,9 @@ public class Leak {
         this.postal = postal;
     }
 
+    public int getId() {
+        return id;
+    }
 
     public Leak(){
 
