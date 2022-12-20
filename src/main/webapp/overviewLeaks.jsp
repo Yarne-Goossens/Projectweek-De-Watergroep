@@ -40,8 +40,8 @@
                                                     <td class="text-left">${leak.id}</td>
                                                     <td class="text-left">${leak.street} ${leak.houseNumber}, ${leak.postalCode} ${leak.city}</td>
                                                 </tr>
-                                                </tbody>
                                                 </c:forEach>
+                                                </tbody>
                                             </table>
                                             </c:when>
                                                 <c:otherwise>

@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
 
@@ -47,7 +48,7 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
     @Override
     public ArrayList<ServiceAssignment> getAllServiceAssignments() {
         ArrayList<ServiceAssignment> serviceAssignments = new ArrayList<>();
-        String sql = String.format("SELECT * FROM %s.leak", schema);
+        String sql = String.format("SELECT * FROM %s.service_assignment", schema);
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -58,11 +59,16 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
                 String street = resultSet.getString("street");
                 String houseNumber = resultSet.getString("house_number");
                 String technician = resultSet.getString("technician");
-                AssignmentType type = AssignmentType.valueOf(resultSet.getString("type"));
-                String startDate = resultSet.getString("start_date");
-                String endDate = resultSet.getString("end_date");
+                AssignmentType type = AssignmentType.valueOf(resultSet.getString("type").toUpperCase());
+                LocalDate startDate = resultSet.getDate("start_date").toLocalDate();
+                LocalDate endDate;
+                try {
+                    endDate = resultSet.getDate("end_date").toLocalDate();
+                } catch (NullPointerException e) {
+                    endDate = null;
+                }
                 String comment = resultSet.getString("comment");
-                ServiceAssignment serviceAssignment = new ServiceAssignment(id,city, postal, street, houseNumber, type, LocalDate.parse(startDate), LocalDate.parse(endDate), comment);
+                ServiceAssignment serviceAssignment = new ServiceAssignment(id, city, postal, street, houseNumber, type, startDate, endDate, comment, technician);
                 serviceAssignments.add(serviceAssignment);
             }
         } catch (SQLException e) {

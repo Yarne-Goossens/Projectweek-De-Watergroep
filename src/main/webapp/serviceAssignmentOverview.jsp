@@ -26,45 +26,45 @@
                                         <div class="table-responsive table-scroll"
                                              style="position: relative; height: 500px">
                                             <c:choose>
-                                                <c:when test="${true}">
+                                                <c:when test="${serviceAssignments.size()!=0}">
                                                     <table class="table table-dark mb-0">
                                                         <thead style="background-color: #393939;">
                                                         <tr class="text-uppercase">
                                                             <th class="text-left" scope="col">Technieker/Claim</th>
                                                             <th class="text-left" scope="col">Locatie</th>
-                                                            <th class="text-left" scope="col">Prioriteit</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr data-toggle="collapse" data-target="#collapse1" class="accordion-toggle">
-                                                                <td class="text-left">Arno</td>
-                                                                <td class="text-left">straat</td>
-                                                                <td class="text-left">hoog</td>
+                                                        <c:forEach var="service" items="${serviceAssignments}">
+                                                            <tr data-toggle="collapse" data-target="#collapse${service.id}" class="accordion-toggle">
+                                                                <c:choose>
+                                                                    <c:when test="${service.technician==null}">
+                                                                        <td class="text-left"><button type="button" class="btn btn-primary">Claim Assignment</button></td>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <td class="text-left">${service.technician}</td>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                                <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="12" class="p-0 text-left bg-secondary">
-                                                                    <div id="collapse1" class="accordian-body collapse">
+                                                                    <div id="collapse${service.id}" class="accordian-body collapse">
                                                                         <ul>
-                                                                            <li>Hello</li>
+                                                                            <li>Id: ${service.id}</li>
+                                                                            <li>Start datum: ${service.startDate}</li>
+                                                                            <c:if test="${service.endDate!=null}">
+                                                                                <li>Eind datum: ${service.endDate}</li>
+                                                                            </c:if>
+                                                                            <li>Type: ${service.type}</li>
+                                                                            <c:if test="${service.comment!=null}">
+                                                                                <li>Opmerkingen: ${service.comment}</li>
+                                                                            </c:if>
                                                                         </ul>
                                                                     </div>
                                                                 </td>
                                                             </tr>
-                                                            <tr data-toggle="collapse" data-target="#collapse2" class="accordion-toggle">
-                                                                <td class="text-left">Ferre</td>
-                                                                <td class="text-left">straat</td>
-                                                                <td class="text-left">hoog</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="12" class="p-0 text-left">
-                                                                    <div id="collapse2" class="accordian-body collapse">
-                                                                        <ul>
-                                                                            <li>Hello</li>
-                                                                            <li>Fren</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
+                                                        </c:forEach>
                                                         </tbody>
                                                     </table>
                                                 </c:when>
