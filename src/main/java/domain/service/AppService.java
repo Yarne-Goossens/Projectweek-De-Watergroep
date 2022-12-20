@@ -1,9 +1,6 @@
 package domain.service;
 
-import domain.model.Animal;
-import domain.model.LeakReport;
-import domain.model.Employee;
-import domain.model.Email;
+import domain.model.*;
 
 import java.util.ArrayList;
 
@@ -45,7 +42,7 @@ public class AppService {
         emailService.sendEmail(email);
     }
 
-    // userService
+    // employeeService
     private EmployeeService employees = new EmployeeServiceDBSQL();
 
     public void addEmployee(Employee employee) {
@@ -58,5 +55,21 @@ public class AppService {
 
     public ArrayList<Employee> getAllEmployees() {
         return employees.getAllEmployees();
+    }
+
+    // ServiceAssignmentService
+
+    private ServiceAssignmentService serviceAssignmentService = new ServiceAssignmentServiceDBSQL();
+
+    public void addServiceAssignment(ServiceAssignment serviceAssignment){
+        serviceAssignmentService.addServiceAssignment(serviceAssignment);
+    }
+
+    public ServiceAssignment findServiceAssignmentWith() {
+        return serviceAssignmentService.findServiceAssignmentBy();
+    }
+
+    public ArrayList<ServiceAssignment> getAllServiceAssignments(){
+        return serviceAssignmentService.getAllServiceAssignments();
     }
 }

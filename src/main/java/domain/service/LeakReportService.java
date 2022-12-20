@@ -9,7 +9,7 @@ public interface LeakReportService {
 
     void addLeakReport(LeakReport leak);
 
-    Animal findLeakId(int id);
+    LeakReport findLeakId(int id);
 
     ArrayList<LeakReport> getAllLeakReports();
 

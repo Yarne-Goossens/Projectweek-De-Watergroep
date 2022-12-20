@@ -1,6 +1,7 @@
 package unit.login;
 
 import domain.model.Employee;
+import domain.model.EmployeeType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +17,7 @@ public class EmployeeTest {
 
     @Before
     public void setDave(){
-        dave = new Employee("Dave", "dave@wg.be", "pwd");
+        dave = new Employee("Dave", "dave@wg.be", "pwd", EmployeeType.valueOf("KCC"));
     }
 
     @Test
@@ -26,7 +27,8 @@ public class EmployeeTest {
 
     @Test
     public void test_if_email_is_correct(){
-        Employee jos = new Employee("Jos", "jan-willem.curinckx@gmail.com", "pwd");
+        Employee jos = new Employee("Jos", "jan-willem.curinckx@gmail.com", "pwd", EmployeeType.valueOf("TECHNICIAN"));
         System.out.println(jos.getEmail());
+        System.out.println(jos.getType().getStringValue());
     }
 }
