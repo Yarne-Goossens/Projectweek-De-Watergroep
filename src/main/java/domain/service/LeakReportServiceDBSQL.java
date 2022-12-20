@@ -49,7 +49,7 @@ public class LeakReportServiceDBSQL implements LeakReportService {
     @Override
     public ArrayList<LeakReport> getAllLeakReports() {
         ArrayList<LeakReport> leakReports = new ArrayList<>();
-        String sql = String.format("SELECT * FROM %s.leak", schema);
+        String sql = String.format("SELECT * FROM %s.leak order by id", schema);
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
