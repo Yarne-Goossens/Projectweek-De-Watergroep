@@ -2,6 +2,7 @@ package domain.service;
 
 import domain.model.Animal;
 import domain.model.Employee;
+import domain.model.Email;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,12 @@ public class AppService {
         return animals.getAllAnimals();
     }
 
+
+    // emailService
+    private EmailService emailService = new MailService();
+    public void sendEmail(Email email){
+        emailService.sendEmail(email);
+    }
 
     // userService
     private EmployeeService employees = new EmployeeServiceDBSQL();
