@@ -50,7 +50,7 @@ public class LeakReportServiceDBSQL implements LeakReportService{
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            while (resultSet.next()){
                 int id = resultSet.getInt("id");
                 String firstName = resultSet.getString("first_name");
                 String lastName = resultSet.getString("last_name");
@@ -83,6 +83,7 @@ public class LeakReportServiceDBSQL implements LeakReportService{
             preparedStatement.setString(5,leak.getComment());
             preparedStatement.setInt(6,leak.getId());
             preparedStatement.executeUpdate();
+            System.out.println(leak);
 
         } catch (SQLException e) {
             throw new DbException(e.getMessage());

@@ -10,7 +10,8 @@ public class LeakMeldingInfoEditConfirmation extends RequestHandler{
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         ArrayList<String> errors = new ArrayList<>();
-        LeakReport leak = new LeakReport();
+        int id = Integer.parseInt(request.getParameter("id"));
+        LeakReport leak = service.getLeakFromId(id);
 
 
         setCityRequest(leak,request,errors);

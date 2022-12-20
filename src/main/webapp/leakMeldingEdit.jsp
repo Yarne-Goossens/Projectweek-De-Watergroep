@@ -30,49 +30,66 @@
         <form name="formulier" method="POST" action="Controller?command=LeakMeldingInfoEditConfirmation">
             <p>
                 <label for="firstname">Voornaam</label>
+            </p>
+            <p>
                 <input id="firstname" value="${editedLeak.firstName}" disabled type="text">
             </p>
-
-            <p >
+            <p>
                 <label for="lastname">Achternaam</label>
+            </p>
+            <p >
                 <input id="lastname" value="${editedLeak.lastName}" disabled type="text">
             </p>
 
             <p >
                 <label for="email">Email</label>
+            </p>
+            <p>
                 <input id="email"  value="${editedLeak.email}" disabled type="text">
             </p>
 
-
-           <p>
+            <p>
                 <label for="city">Stad</label>
+
+            </p>
+           <p>
                 <input id="city" name="city" value="${editedLeak.city}" type="text">
             </p>
 
             <p>
                 <label for="postalCode">Post code</label>
-
+            </p>
+            <p>
                 <input id="postalCode" name="postalCode" value="${editedLeak.postalCode}" type="text">
             </p>
 
             <p>
                 <label for="street">Straat</label>
+                </p>
+            <p>
                 <input id="street" name="street" value="${editedLeak.street}" type="text">
             </p>
 
             <p>
                 <label for="houseNumber">Huis nummer</label>
-                <input id="houseNumber" name="houseNumber" value="${editedLeak.houseNumber}" type="text">
             </p>
+            <p>
+
+            <input id="houseNumber" name="houseNumber" value="${editedLeak.houseNumber}" type="text">
+            </p>
+
+            <input  name="id" value="${editedLeak.id}" type="hidden">
 
             <p>
                 <label for="comment">Comment</label>
+            <p>
+            </p>
                 <textarea id="comment" name="comment"> ${editedLeak.comment}</textarea>
             </p>
 
-        <div class="form-outline flex-fill mb-0">
-            <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
-        </div>
+            <p>
+                <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
+            </p>
     </form>
 </main>
 </body>
