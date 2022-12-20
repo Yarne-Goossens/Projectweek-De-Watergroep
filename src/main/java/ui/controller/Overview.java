@@ -8,6 +8,7 @@ public class Overview extends RequestHandler {
 
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+        request.setAttribute("leaks",service.getAllLeaks());
         return "overviewLeaks.jsp";
     }
 }

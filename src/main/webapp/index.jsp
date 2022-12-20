@@ -11,38 +11,6 @@
         <jsp:param name="actual" value="Home"/>
     </jsp:include>
     <main>
-        <h2>Mijn liefste huisdieren</h2>
-        <p>Maak kennis met mijn allerallerallerliefste huisdieren. Hoe heten ze, hoeveel
-            eten ze, ... Ik noteer het hier allemaal.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
-            culpa esse. Delectus nemo similique reiciendis provident quas sunt
-            fuga numquam neque quibusdam eum libero eius sit nam asperiores sequi
-            voluptatum!
-        </p>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <h3>Wie zijn wij</h3>
-                    <p>Lorem ipsum dolor..</p>
-                    <c:choose>
-                        <c:when test="${not empty employee}">
-                            <p>Welkom ${employee.name}<p>
-                        </c:when>
-                        <c:otherwise>
-
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-                <div class="col-sm-4">
-                    <h3>Mail info over dieren</h3>
-                    <p>Lorem ipsum dolor..</p>
-                </div>
-                <div class="col-sm-4">
-                    <h3>Download de PDF</h3>
-                    <p>Lorem ipsum dolor..</p>
-                </div>
-            </div>
-        </div>
 
     </main>
     <jsp:include page="footer.jsp"/>
