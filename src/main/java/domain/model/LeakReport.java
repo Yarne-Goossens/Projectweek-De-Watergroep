@@ -1,16 +1,13 @@
 package domain.model;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LeakReport {
-    private int id,postalCode,houseNumber;
-    private String firstName,lastName,email,city,street,comment;
+    private int id,postalCode;
+    private String firstName,lastName,email,city,street,comment, houseNumber;
 
-    public LeakReport(int id, int postalCode, int houseNumber, String firstName, String lastName, String email, String city, String street) {
+    public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street) {
         this.id = id;
         this.postalCode = postalCode;
         this.houseNumber = houseNumber;
@@ -19,8 +16,13 @@ public class LeakReport {
         this.email = email;
         this.city = city;
         this.street = street;
+
     }
 
+    public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street, String comment){
+        this(id,postalCode, houseNumber, firstName, lastName,email,city,street);
+        this.comment = comment;
+    }
     public LeakReport() {
     }
 
@@ -47,7 +49,7 @@ public class LeakReport {
         return postalCode;
     }
 
-    public int getHouseNumber() {
+    public String getHouseNumber() {
         return houseNumber;
     }
 
@@ -84,10 +86,11 @@ public class LeakReport {
             throw new IllegalArgumentException("Postcode is niet geldig");
         }
         this.postalCode = postalCode;
+
     }
 
-    public void setHouseNumber(int houseNumber) {
-        if(houseNumber<=0){
+    public void setHouseNumber(String houseNumber) {
+        if(houseNumber.isBlank()){
             throw new IllegalArgumentException("Vul een juist huisnummer in.");
         }
         this.houseNumber = houseNumber;
@@ -139,5 +142,7 @@ public class LeakReport {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    //Setters with Request processing
 
 }

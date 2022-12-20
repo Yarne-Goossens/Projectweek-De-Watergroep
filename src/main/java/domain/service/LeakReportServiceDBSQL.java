@@ -38,14 +38,11 @@ public class LeakReportServiceDBSQL implements LeakReportService{
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
-        catch (IllegalArgumentException e){
-            throw new DbException(e.getMessage());
-        }
-    }
 
     @Override
     public LeakReport findLeakId(int id) {
         return null;
+
     }
 
     @Override
@@ -55,7 +52,7 @@ public class LeakReportServiceDBSQL implements LeakReportService{
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
+            while (resultSet.next()){
                 int id = resultSet.getInt("id");
                 String firstName = resultSet.getString("first_name");
                 String lastName = resultSet.getString("last_name");
@@ -63,7 +60,7 @@ public class LeakReportServiceDBSQL implements LeakReportService{
                 String city = resultSet.getString("city");
                 int postal = Integer.parseInt(resultSet.getString("postal"));
                 String street = resultSet.getString("street");
-                int houseNr = Integer.parseInt(resultSet.getString("house_number"));
+                String  houseNr = resultSet.getString("house_number");
                 String comment = resultSet.getString("comment");
                 LeakReport leakReport = new LeakReport(id,postal,houseNr,firstName,lastName,email,city,street);
                 leakReport.setComment(comment);
@@ -74,6 +71,57 @@ public class LeakReportServiceDBSQL implements LeakReportService{
         }
         return leakReports;
     }
+
+
+    @Override
+    public void updateLeak(LeakReport leak) {
+        String query = String.format("UPDATE %s.leak SET city = ? , postal = ? , street = ? , house_number = ? , comment =? where id = ?", schema);
+        try{
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
+            preparedStatement.setString(1,leak.getCity());
+            preparedStatement.setInt(2,leak.getPostalCode());
+            preparedStatement.setString(3,leak.getStreet());
+            preparedStatement.setString(4,leak.getHouseNumber());
+            preparedStatement.setString(5,leak.getComment());
+            preparedStatement.setInt(6,leak.getId());
+            preparedStatement.executeUpdate();
+            System.out.println(leak);
+
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+    }
+
+    @Override
+    public LeakReport getLeakFromId(int idleak) {
+            String sql = String.format("SELECT * from %s.leak WHERE id = ?;", schema);
+            try {
+                PreparedStatement statement = getConnection().prepareStatement(sql);
+                statement.setInt(1, idleak);
+                ResultSet result = statement.executeQuery();
+                if(result.next()){
+
+                    int id = result.getInt("id");
+                    String firstname = result.getString("first_name");
+                    String lastname = result.getString("last_name");
+                    String email = result.getString("email");
+                    String comment = result.getString("comment");
+                    String housenumber = result.getString("house_number");
+                    String city = result.getString("city");
+                    String street = result.getString("street");
+                    int postal = result.getInt("postal");
+
+
+                    return new LeakReport(id,postal,housenumber,firstname,lastname,email,city,street,comment);
+                }
+            } catch (SQLException e) {
+                throw new DbException(e.getMessage());
+            }
+
+        return null;
+
+    }
+
 
     private Connection getConnection() {
         return this.connection;
