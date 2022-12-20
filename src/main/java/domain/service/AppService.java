@@ -2,6 +2,7 @@ package domain.service;
 
 import domain.model.Animal;
 import domain.model.Email;
+import domain.model.Leak;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,7 @@ public class AppService {
     public void addAnimal(Animal animal) {
         animals.addAnimal(animal);
     }
+    public LeakService leakService = new LeakServiceDBQL();
 
     public Animal findAnimalWithName(String naam) {
         return animals.findAnimalWithName(naam);
@@ -22,17 +24,23 @@ public class AppService {
         return animals.getAllAnimals();
     }
 
-<<<<<<< HEAD
+
     public void sendEmail(Email email){
         emailService.sendEmail(email);
     }
-=======
+
 
     // userService
     private UserService users = new UserServiceInMemory();
 
 
 
->>>>>>> c68e839da430899194110bb59a962062be9fee4e
+    //Leak
+    public void updateLeak(Leak leak){
+        leakService.update(leak);
+    }
+
+
+
 
 }
