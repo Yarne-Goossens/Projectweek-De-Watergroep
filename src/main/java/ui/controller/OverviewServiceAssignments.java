@@ -1,5 +1,7 @@
 package ui.controller;
 
+import domain.model.Employee;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

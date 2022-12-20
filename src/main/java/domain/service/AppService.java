@@ -65,8 +65,11 @@ public class AppService {
         serviceAssignmentService.addServiceAssignment(serviceAssignment);
     }
 
-    public ServiceAssignment findServiceAssignmentWith() {
-        return serviceAssignmentService.findServiceAssignmentBy();
+    public ServiceAssignment findServiceAssignmentWithId(int id) {
+        return serviceAssignmentService.findServiceAssignmentById(id);
+    }
+    public void updateServiceAssignment(ServiceAssignment serviceAssignment) {
+        serviceAssignmentService.updateServiceAssignment(serviceAssignment);
     }
 
     public ArrayList<ServiceAssignment> getAllServiceAssignments(){
