@@ -20,7 +20,7 @@
                             <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
                                 <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=LogInPage">Login</a></li>
                             <li class="nav-item" ${param.actual eq 'SignalLeak' ? "id = actual":""}>
-                                <a class="nav-link" href="Controller?command=LeakSubmissionForm">Lek Melden</a></li>
+                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=LeakSubmissionForm">Lek Melden</a></li>
                         </ul>
                     </div>
                 </div>
