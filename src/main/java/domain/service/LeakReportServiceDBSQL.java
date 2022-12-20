@@ -39,9 +39,11 @@ public class LeakReportServiceDBSQL implements LeakReportService{
             throw new DbException(e.getMessage());
         }
 
+    @Override
+    public LeakReport findLeakId(int id) {
+        return null;
+
     }
-
-
 
     @Override
     public ArrayList<LeakReport> getAllLeakReports() {
