@@ -19,8 +19,8 @@ public class AppService {
         return animals.findAnimalWithName(naam);
     }
 
-    public ArrayList<Animal> getAllLeaks() {
-        return animals.getAllAnimals();
+    public ArrayList<LeakReport> getAllLeaks() {
+        return leakReport.getAllLeakReports();
     }
 
     // currentAnimalService

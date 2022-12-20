@@ -49,33 +49,30 @@ public class LeakReportServiceDBSQL implements LeakReportService{
 
     @Override
     public ArrayList<LeakReport> getAllLeakReports() {
-        return null;
-    }
-
-    //@Override
-    /*public ArrayList<LeakReport> getAllLeakReports() {
-        ArrayList<LeakReport> leaks = new ArrayList<>();
-        String sql = String.format("SELECT * from %s.leak", schema);
+        ArrayList<LeakReport> leakReports = new ArrayList<>();
+        String sql = String.format("SELECT * FROM %s.leak", schema);
         try {
-            PreparedStatement statement = getConnection().prepareStatement(sql);
-            ResultSet result = statement.executeQuery();
-            while (result.next()) {
-                int id = result.getInt("id");
-                String name = result.getString("name");
-                String type = result.getString("type");
-                int food = result.getInt("food");
-                int id = result.getInt("id");
-                String name = result.getString("name");
-                String type = result.getString("type");
-                int food = result.getInt("food");
-                int food = result.getInt("food");
-                leaks.add(new LeakReport(id, name, type, food));
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String firstName = resultSet.getString("first_name");
+                String lastName = resultSet.getString("last_name");
+                String email = resultSet.getString("email");
+                String city = resultSet.getString("city");
+                int postal = Integer.parseInt(resultSet.getString("postal"));
+                String street = resultSet.getString("street");
+                int houseNr = Integer.parseInt(resultSet.getString("house_number"));
+                String comment = resultSet.getString("comment");
+                LeakReport leakReport = new LeakReport(id,postal,houseNr,firstName,lastName,email,city,street);
+                leakReport.setComment(comment);
+                leakReports.add(leakReport);
             }
         } catch (SQLException e) {
-            throw new DbException(e.getMessage());
+            throw new RuntimeException(e);
         }
-        return animals;
-    }*/
+        return leakReports;
+    }
 
     private Connection getConnection() {
         return this.connection;

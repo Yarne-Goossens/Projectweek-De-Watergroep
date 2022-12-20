@@ -10,7 +10,7 @@
                             <li class="nav-item" ${param.actual eq 'Home'?"id = actual":""}>
                                 <a class="nav-link pt-5" style="font-size: 20px" id="goHome" href="Controller?command=Home">Home</a></li>
                             <li class="nav-item"  ${param.actual eq 'voegToe'?"id = actual":""}>
-                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=AddForm">Voeg Toe</a></li>
+                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=LeakSubmissionForm">Lek Melden</a></li>
                             <li class="nav-item" ${param.actual eq 'Overzicht'?"id = actual":""}>
                                 <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=Overview">Overzicht Lekken</a></li>
                             <li class="nav-item" ${param.actual eq 'Verstuur Email' ? "id = actual":""}>
@@ -19,8 +19,6 @@
                                 <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=CreatePDF">PDF maken</a></li>
                             <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
                                 <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=LogInPage">Login</a></li>
-                            <li class="nav-item" ${param.actual eq 'SignalLeak' ? "id = actual":""}>
-                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=LeakSubmissionForm">Lek Melden</a></li>
                         </ul>
                     </div>
                 </div>
