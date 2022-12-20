@@ -1,6 +1,7 @@
 package domain.service;
 
 import domain.model.Employee;
+import domain.model.EmployeeType;
 import util.DbConnectionService;
 
 import java.io.UnsupportedEncodingException;
@@ -43,7 +44,8 @@ public class EmployeeServiceDBSQL implements EmployeeService {
                 String nameString = result.getString("name");
                 String mailString = result.getString("email");
                 String passwordString = result.getString("password");
-                return new Employee(nameString, mailString, passwordString);
+                EmployeeType type = EmployeeType.valueOf(result.getString("type"));
+                return new Employee(nameString, mailString, passwordString, type);
             }
         } catch (SQLException e) {
             throw new DbException(e.getMessage());

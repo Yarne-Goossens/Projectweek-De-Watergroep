@@ -14,18 +14,21 @@ public class Employee {
     private String name;
     private String email;
     private String password;
+    private EmployeeType type;
 
-    public Employee(String name, String email, String password){
+    public Employee(String name, String email, String password, EmployeeType type){
         this.setName(name);
         this.setEmail(email);
         this.setPassword(password);
+        this.setType(type);
     }
 
-    public Employee(int id, String name, String email, String password){
+    public Employee(int id, String name, String email, String password, EmployeeType type){
         this.setId(id);
         this.setName(name);
         this.setEmail(email);
         this.setPassword(password);
+        this.setType(type);
     }
 
     private void setId(int id){
@@ -87,6 +90,14 @@ public class Employee {
         BigInteger digestAsBigInteger = new BigInteger(1, digest);
         //return hashed password
         return digestAsBigInteger.toString(16);
+    }
+
+    private void setType(EmployeeType type){
+        this.type=type;
+    }
+
+    public EmployeeType getType(){
+        return this.type;
     }
 
 }

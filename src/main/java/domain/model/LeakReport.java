@@ -1,7 +1,10 @@
 package domain.model;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class LeakReport {
     private int id,postalCode,houseNumber;
@@ -19,6 +22,21 @@ public class LeakReport {
     }
 
     public LeakReport() {
+    }
+
+    @Override
+    public String toString() {
+        return "LeakReport{" +
+                "id=" + id +
+                ", postalCode=" + postalCode +
+                ", houseNumber=" + houseNumber +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", comment='" + comment + '\'' +
+                '}';
     }
 
     public int getId() {
@@ -62,30 +80,59 @@ public class LeakReport {
     }
 
     public void setPostalCode(int postalCode) {
+        if(String.valueOf(postalCode).length()!=4){
+            throw new IllegalArgumentException("Postcode is niet geldig");
+        }
         this.postalCode = postalCode;
     }
 
     public void setHouseNumber(int houseNumber) {
+        if(houseNumber<=0){
+            throw new IllegalArgumentException("Vul een juist huisnummer in.");
+        }
         this.houseNumber = houseNumber;
     }
 
     public void setFirstName(String firstName) {
+        if(firstName.isEmpty()){
+            throw new IllegalArgumentException("Vul een voornaam in.");
+        }
         this.firstName = firstName;
     }
 
     public void setLastName(String lastName) {
+        if(lastName.isEmpty()){
+            throw new IllegalArgumentException("Vul een achternaam in.");
+        }
         this.lastName = lastName;
     }
 
     public void setEmail(String email) {
+        if (email.isEmpty()) {
+            throw new IllegalArgumentException("Vul een email in.");
+        }
+        String USERID_PATTERN =
+                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern p = Pattern.compile(USERID_PATTERN);
+        Matcher m = p.matcher(email);
+        if (!m.matches()) {
+            throw new IllegalArgumentException("Geef een geldige email in.");
+        }
         this.email = email;
     }
 
     public void setCity(String city) {
+        if(city.isEmpty()){
+            throw new IllegalArgumentException("Vul een juiste plaats in.");
+        }
         this.city = city;
     }
 
     public void setStreet(String street) {
+        if(street.isEmpty()){
+            throw new IllegalArgumentException("Vul een juiste straat in.");
+        }
         this.street = street;
     }
 
@@ -93,49 +140,4 @@ public class LeakReport {
         this.comment = comment;
     }
 
-    //Setters with Request processing
-
-    private void setName(Animal animal, HttpServletRequest request, ArrayList<String> errors) {
-        String name = request.getParameter("name");
-        try {
-            animal.setName(name);
-            request.setAttribute("nameClass", "has-success");
-            request.setAttribute("namePreviousValue", name);
-        }
-        catch (IllegalArgumentException exc) {
-            errors.add(exc.getMessage());
-            request.setAttribute("nameClass", "has-error");
-        }
-    }
-
-    private void setType(Animal animal, HttpServletRequest request, ArrayList<String> errors) {
-        String type = request.getParameter("type");
-        try {
-            animal.setType(type);
-            request.setAttribute("typeClass", "has-success");
-            request.setAttribute("typePreviousValue", type);
-        }
-        catch (IllegalArgumentException exc) {
-            errors.add(exc.getMessage());
-            request.setAttribute("typeClass", "has-error");
-        }
-    }
-
-    private void setFood(Animal animal, HttpServletRequest request, ArrayList<String> errors) {
-        int food;
-        if(request.getParameter("food").isBlank()) {
-            food = -1;
-        } else {
-            food = Integer.parseInt(request.getParameter("food"));
-        }
-        try {
-            animal.setFood(food);
-            request.setAttribute("foodClass", "has-success");
-            request.setAttribute("foodPreviousValue", food);
-        }
-        catch (IllegalArgumentException exc) {
-            errors.add(exc.getMessage());
-            request.setAttribute("foodClass", "has-error");
-        }
-    }
 }

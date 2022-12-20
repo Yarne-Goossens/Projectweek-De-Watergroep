@@ -5,7 +5,7 @@
 <html lang="en">
 
 <jsp:include page="head.jsp">
-    <jsp:param name="title" value="Home"/>
+    <jsp:param name="title" value="Overview Leaks"/>
 </jsp:include>
 
 <body class="text-center bg-dark text-white">
@@ -31,7 +31,7 @@
                                                 <thead style="background-color: #393939;">
                                                 <tr class="text-uppercase">
                                                     <th class="text-left" scope="col">ID</th>
-                                                    <th class="text-left" scope="col">Location</th>
+                                                    <th class="text-left" scope="col">Locatie</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -40,12 +40,12 @@
                                                     <td class="text-left">${leak.id}</td>
                                                     <td class="text-left">${leak.street} ${leak.houseNumber}, ${leak.postalCode} ${leak.city}</td>
                                                 </tr>
-                                                </tbody>
                                                 </c:forEach>
+                                                </tbody>
                                             </table>
                                             </c:when>
                                                 <c:otherwise>
-                                                    <p>There are no leaks reported!</p>
+                                                    <p>Er zijn geen lekken geraporteerd!</p>
                                                 </c:otherwise>
                                             </c:choose>
                                         </div>
