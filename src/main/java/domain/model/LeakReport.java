@@ -1,7 +1,5 @@
 package domain.model;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,8 +16,13 @@ public class LeakReport {
         this.email = email;
         this.city = city;
         this.street = street;
+
     }
 
+    public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street, String comment){
+        this(id,postalCode, houseNumber, firstName, lastName,email,city,street);
+        this.comment = comment;
+    }
     public LeakReport() {
     }
 
@@ -140,10 +143,6 @@ public class LeakReport {
         this.comment = comment;
     }
 
-<<<<<<< HEAD
     //Setters with Request processing
 
 }
-=======
-}
->>>>>>> fe2ded391c8a161fa0a14482f1fc74b566d732df

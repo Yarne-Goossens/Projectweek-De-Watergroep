@@ -4,7 +4,6 @@ import domain.model.LeakReport;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 public class LeakMeldingInfoEditConfirmation extends RequestHandler{
@@ -38,7 +37,7 @@ public class LeakMeldingInfoEditConfirmation extends RequestHandler{
     }
 
     private void setCityRequest(LeakReport leak, HttpServletRequest request, ArrayList<String> errors) {
-        String city = request.getParameter("plaats");
+        String city = request.getParameter("city");
         try {
             leak.setCity(city);
             request.setAttribute("cityPreviousValue", city);
@@ -49,7 +48,7 @@ public class LeakMeldingInfoEditConfirmation extends RequestHandler{
     }
 
     private void setHouseNumberRequest(LeakReport leak, HttpServletRequest request, ArrayList<String> errors) {
-        String huisNummer = request.getParameter("huisNummer");
+        String huisNummer = request.getParameter("houseNumber");
         try {
             leak.setHouseNumber(huisNummer);
             request.setAttribute("houseNumberPreviousValue", huisNummer);
@@ -60,7 +59,7 @@ public class LeakMeldingInfoEditConfirmation extends RequestHandler{
     }
 
     private void setCommentaryRequest(LeakReport leak, HttpServletRequest request, ArrayList<String> errors) {
-        String comment = request.getParameter("commentaar");
+        String comment = request.getParameter("comment");
         try {
             leak.setComment(comment);
             request.setAttribute("commentaryPreviousValue", comment);
@@ -72,9 +71,8 @@ public class LeakMeldingInfoEditConfirmation extends RequestHandler{
     }
 
     private void setPostalRequest(LeakReport leak, HttpServletRequest request, ArrayList<String> errors) {
-        String regex = "^[0-9]";
 
-        String stringPostcode =request.getParameter("postcode");
+        String stringPostcode =request.getParameter("postalCode");
         try {
             int postcode= Integer.parseInt(stringPostcode);
             leak.setPostalCode(postcode);
@@ -86,7 +84,7 @@ public class LeakMeldingInfoEditConfirmation extends RequestHandler{
     }
 
     private void setStreetRequest(LeakReport leak, HttpServletRequest request, ArrayList<String> errors) {
-        String street = request.getParameter("straat");
+        String street = request.getParameter("street");
         try {
             leak.setStreet(street);
             request.setAttribute("streetPreviousValue", street);

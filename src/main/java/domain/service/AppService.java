@@ -70,6 +70,10 @@ public class AppService {
         return animals.getAllAnimals();
     }
 
+    public LeakReport getLeakFromId(int id){
+       return leakReport.getLeakFromId(id);
+    }
+
 }
 
 
