@@ -1,7 +1,7 @@
 name: Pull request test
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [opened, reopened, synchronize]
 jobs:
     testflow:
       uses: Projectweek-2022-2023/workflows/.github/workflows/flow-test.yml@main
