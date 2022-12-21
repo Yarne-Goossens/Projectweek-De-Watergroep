@@ -25,7 +25,7 @@ public class LeakMeldingInfoEditConfirmation extends RequestHandler{
         if (errors.size() == 0) {
             try {
                 service.updateLeak(leak);
-                response.sendRedirect("Controller?command=Overview");
+                response.sendRedirect("Controller?command=OverviewLeaks");
                 return "Controller?command=OverviewLeaks";
             }
             catch (IllegalArgumentException | IOException exc) {
