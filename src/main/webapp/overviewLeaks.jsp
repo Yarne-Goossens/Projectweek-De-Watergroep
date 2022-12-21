@@ -13,54 +13,44 @@
     <jsp:param name="actual" value="Home"/>
 </jsp:include>
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
-
     <main role="main" class="inner cover">
-        <c:if test="${not empty errors}">
-            <div class="alert alert-danger">
-                <ul>
-                    <c:forEach items="${errors}" var="error">
-                        <li>${error}</li>
-                    </c:forEach>
-                </ul>
-            </div>
-        </c:if>
-            <main role="main" class="inner cover">
         <section class="intro">
             <div class="bg-image h-100">
                 <div class="mask d-flex align-items-center h-100">
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-8">
-                                <div>
-                                    <div class="card-body p-0">
-                                        <div class="table-responsive table-scroll"
-                                             style="position: relative; height: 500px">
-                                            <c:choose>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive table-scroll"
+                                         style="position: relative; height: 500px">
+                                        <c:choose>
                                             <c:when test="${leaks.size()!=0}">
-                                            <table class="table table-dark mb-0">
-                                                <thead style="background-color: #393939;">
-                                                <tr class="text-uppercase">
-                                                    <th class="text-left" scope="col">ID</th>
-                                                    <th class="text-left" scope="col">Locatie</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <c:forEach var="leak" items="${leaks}">
-                                                <tr>
-                                                    <td class="text-left">${leak.id}</td>
-                                                    <td class="text-left">${leak.street} ${leak.houseNumber}, ${leak.postalCode} ${leak.city}</td>
-                                                    <td><a href="Controller?command=CreateServiceAssignmentForm&id=${leak.id}"><button>Maak SO aan</button></a></td>
-                                                </tr>
-                                                </c:forEach>
-                                                </tbody>
+                                                <table class="table table-dark mb-0">
+                                                    <thead style="background-color: #393939;">
+                                                    <tr class="text-uppercase">
+                                                        <th class="text-left" scope="col">ID</th>
+                                                        <th class="text-left" scope="col">Locatie</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <c:forEach var="leak" items="${leaks}">
+                                                        <tr>
+                                                            <td class="text-left">${leak.id}</td>
+                                                            <td class="text-left">${leak.street} ${leak.houseNumber}, ${leak.postalCode} ${leak.city}</td>
+                                                            <td>
+                                                                <a href="Controller?command=CreateServiceAssignmentForm&id=${leak.id}">
+                                                                    <button>Maak SO aan</button>
+                                                                </a></td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                    </tbody>
 
-                                            </table>
+                                                </table>
                                             </c:when>
-                                                <c:otherwise>
-                                                    <p>Er zijn geen lekken geraporteerd!</p>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </div>
+                                            <c:otherwise>
+                                                <p>Er zijn geen lekken geraporteerd!</p>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
                                 </div>
                             </div>
@@ -68,8 +58,9 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+</div>
+</section>
+</main>
 </div>
 
 
