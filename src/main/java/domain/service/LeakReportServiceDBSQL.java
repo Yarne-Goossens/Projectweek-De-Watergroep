@@ -1,6 +1,6 @@
 package domain.service;
 
-import domain.model.Animal;
+
 import domain.model.LeakReport;
 import util.DbConnectionService;
 
@@ -40,6 +40,9 @@ public class LeakReportServiceDBSQL implements LeakReportService {
         }
     }
 
+
+
+
     @Override
     public LeakReport findLeakId(int id) {
         return null;
@@ -67,13 +70,13 @@ public class LeakReportServiceDBSQL implements LeakReportService {
                 leakReport.setComment(comment);
                 leakReports.add(leakReport);
             }
+            return leakReports;
+
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
-        return leakReports;
+        return null;
     }
-
-
     @Override
     public void updateLeak(LeakReport leak) {
         String query = String.format("UPDATE %s.leak SET city = ? , postal = ? , street = ? , house_number = ? , " +
@@ -89,10 +92,11 @@ public class LeakReportServiceDBSQL implements LeakReportService {
             preparedStatement.executeUpdate();
             System.out.println(leak);
 
-        } catch (SQLException e) {
-            throw new DbException(e.getMessage());
+            } catch (SQLException e) {
+                throw new DbException(e.getMessage());
+            }
         }
-    }
+
 
     @Override
     public LeakReport getLeakFromId(int idleak) {
@@ -120,10 +124,9 @@ public class LeakReportServiceDBSQL implements LeakReportService {
             throw new DbException(e.getMessage());
         }
 
-        return null;
+            return null;
 
-    }
-
+        }
 
     private Connection getConnection() {
         return this.connection;

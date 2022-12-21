@@ -15,6 +15,15 @@
         <jsp:param name="actual" value="Home"/>
     </jsp:include>
     <main role="main" class="inner cover">
+        <c:if test="${not empty errors}">
+            <div class="alert alert-danger">
+                <ul>
+                    <c:forEach items="${errors}" var="error">
+                        <li>${error}</li>
+                    </c:forEach>
+                </ul>
+            </div>
+        </c:if>
         <section class="intro">
             <div class="bg-image h-100">
                 <div class="mask d-flex align-items-center h-100">

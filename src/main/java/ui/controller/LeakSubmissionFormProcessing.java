@@ -29,8 +29,8 @@ public class LeakSubmissionFormProcessing extends RequestHandler {
                 HttpSession session = request.getSession();
                 session.setAttribute("lastAddedLeak", newLeak);
 
-                response.sendRedirect("Controller?command=OverviewLeaks");
-                return "Controller?command=OverviewLeaks";
+                response.sendRedirect("Controller?command=ThankPage");
+                return "Controller?command=ThankPage";
             }
             catch (IllegalArgumentException | IOException exc) {
                 request.setAttribute("error", exc.getMessage());

@@ -99,6 +99,10 @@ public class LeakReport {
     }
 
     public void setFirstName(String firstName) {
+        if(this.firstName != null){
+            throw new IllegalArgumentException("Voornaam mag niet veranderd worden.");
+        }
+
         if(firstName.isEmpty()){
             throw new IllegalArgumentException("Vul een voornaam in.");
         }
@@ -106,6 +110,9 @@ public class LeakReport {
     }
 
     public void setLastName(String lastName) {
+        if(this.lastName != null){
+            throw new IllegalArgumentException("Achternaam mag niet veranderd worden.");
+        }
         if(lastName.isEmpty()){
             throw new IllegalArgumentException("Vul een achternaam in.");
         }
@@ -113,6 +120,9 @@ public class LeakReport {
     }
 
     public void setEmail(String email) {
+        if(this.email != null){
+            throw new IllegalArgumentException("Email mag niet veranderd worden.");
+        }
         if (email.isEmpty()) {
             throw new IllegalArgumentException("Vul een email in.");
         }
