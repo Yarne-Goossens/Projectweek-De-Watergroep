@@ -62,11 +62,8 @@
         <h2>
             <c:choose>
                 <c:when test="${user!=null}">
-                    <p>You are logged in as ${user.name} ${user.type}.</p>
+                    <p>U bent ingelogd als ${user.name} ${user.type}.</p>
                 </c:when>
-                <c:otherwise>
-                    <p>You are not logged in.</p>
-                </c:otherwise>
             </c:choose>
         </h2>
     </div>
