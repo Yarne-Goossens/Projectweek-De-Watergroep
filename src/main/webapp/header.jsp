@@ -32,10 +32,22 @@
                             <a class="nav-link pt-5" style="font-size: 20px"
                                href="Controller?command=OverviewServiceAssignments">Overzicht Service Opdrachten</a>
                         </li>
-                        <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
-                            <a class="nav-link pt-5" style="font-size: 20px"
-                               href="Controller?command=LogInPage">Login</a>
-                        </li>
+                        <c:choose>
+                            <c:when test="${empty user}">
+                                <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
+                                    <a class="nav-link pt-5" style="font-size: 20px"
+                                       href="Controller?command=LogInPage">Login</a>
+                                </li>
+
+                            </c:when>
+
+                            <c:otherwise>
+                                <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
+                                    <a class="nav-link pt-5" style="font-size: 20px"
+                                       href="Controller?command=Logout">Logout</a>
+                                </li>
+                            </c:otherwise>
+                        </c:choose>
 
                         <%--<li class="nav-item" ${param.actual eq 'Verstuur Email' ? "id = actual":""}>--%>
                         <%--<a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=SendEmailform">Verstuur Email</a></li>--%>

@@ -2,9 +2,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+<c:choose>
+<c:when test="${empty user}">
+
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Login User"/>
 </jsp:include>
+</c:when>
+    <c:otherwise>
+        <jsp:include page="head.jsp">
+        <jsp:param name="title" value="Logout User"/>
+        </jsp:include>
+    </c:otherwise>
+</c:choose>
 <body class="bg-dark">
 <jsp:include page="header.jsp">
     <jsp:param name="actual" value="Login"/>
@@ -20,10 +30,13 @@
                     <div class="card-body p-md-5">
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log in</p>
-                                <c:forEach var="e" items="${errors}">
-                                    <p class="alert">${e}</p>
-                                </c:forEach>
+                                <c:choose>
+                                <c:when test="${empty user}">
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log in</p>
+                                    <c:forEach var="e" items="${errors}">
+                                        <p class="alert">${e}</p>
+                                    </c:forEach>
+
                                 <form class="mx-1 mx-md-4" action="Controller" method="post">
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <div class="form-outline flex-fill mb-0">
@@ -51,6 +64,16 @@
                                         <button type="submit" class="btn btn-primary btn-lg">Log in</button>
                                     </div>
                                 </form>
+                                </c:when>
+
+                                <c:otherwise>
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log Out</p>
+                                    <c:forEach var="e" items="${errors}">
+                                        <p class="alert">${e}</p>
+                                    </c:forEach>
+                                    <p>logout</p>
+                                </c:otherwise>
+                                </c:choose>
                             </div>
                             <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                                 <img src="img/watergroep_logo_small.png" class="img-fluid" alt="watergroep logo">
