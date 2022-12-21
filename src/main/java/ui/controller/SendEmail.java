@@ -1,6 +1,7 @@
 package ui.controller;
 
 import domain.model.Email;
+import domain.model.EmployeeType;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ public class SendEmail extends RequestHandler {
 
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+        Utility.checkRole(request, new EmployeeType[]{EmployeeType.TECHNICIAN});
         ArrayList<String> errors = new ArrayList<>();
         Email email = new Email();
         setRecipient(email, request, errors);

@@ -100,4 +100,7 @@ public class Employee {
         return this.type;
     }
 
+    public int getId() {
+        return id;
+    }
 }
