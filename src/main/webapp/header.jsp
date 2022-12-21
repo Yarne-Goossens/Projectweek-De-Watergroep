@@ -34,6 +34,7 @@
                             <a class="nav-link pt-5" style="font-size: 20px"
                                href="Controller?command=OverviewServiceAssignments">Overzicht Service Opdrachten</a>
                         </li>
+                        </c:if>
                         <c:choose>
                             <c:when test="${empty user}">
                                 <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
