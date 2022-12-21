@@ -38,13 +38,13 @@
                                                    placeholder="Vul je password in"/>
                                         </div>
                                     </div>
-                                    <div class="d-flex flex-row align-items-center mb-4">
+                                    <%--<div class="d-flex flex-row align-items-center mb-4">
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="keepLoggedIn" name="checkbox">
                                             <label class="form-check-label" for="keepLoggedIn">Hou mij
                                                 ingelogd</label>
                                         </div>
-                                    </div>
+                                    </div>--%>
                                     <input type="hidden" name="command" value="LogIn">
                                     <div class="form-outline flex-fill mb-0">
                                         <button type="submit" class="btn btn-primary btn-lg">Log in</button>

@@ -1,6 +1,5 @@
 package domain.service;
 
-import domain.model.Animal;
 import domain.model.LeakReport;
 import domain.model.Employee;
 import domain.model.Email;
@@ -42,8 +41,8 @@ public class AppService {
         emailService.sendEmail(email);
     }
 
-
-
+    // employeeService
+    private EmployeeService employees = new EmployeeServiceDBSQL();
 
     // userService
     public void addEmployee(Employee employee) {
@@ -54,7 +53,6 @@ public class AppService {
         return employees.findEmployeeWithEmail(email);
     }
 
-
     //Leak
     public void updateLeak(LeakReport leak) {
        leakReport.updateLeak(leak);
@@ -64,13 +62,24 @@ public class AppService {
         return employees.getAllEmployees();
     }
 
-
-    public ArrayList<Animal> getAllAnimals() {
-        return animals.getAllAnimals();
-    }
-
     public LeakReport getLeakFromId(int id){
        return leakReport.getLeakFromId(id);
+    }
+
+    // ServiceAssignmentService
+
+    private ServiceAssignmentService serviceAssignmentService = new ServiceAssignmentServiceDBSQL();
+
+    public void addServiceAssignment(ServiceAssignment serviceAssignment){
+        serviceAssignmentService.addServiceAssignment(serviceAssignment);
+    }
+
+    public ServiceAssignment findServiceAssignmentWith() {
+        return serviceAssignmentService.findServiceAssignmentBy();
+    }
+
+    public ArrayList<ServiceAssignment> getAllServiceAssignments(){
+        return serviceAssignmentService.getAllServiceAssignments();
     }
 
 }

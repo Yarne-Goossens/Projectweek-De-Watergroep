@@ -11,13 +11,22 @@ CREATE TABLE "2Danhé".employee
     name     character varying COLLATE pg_catalog."default" NOT NULL,
     email    character varying COLLATE pg_catalog."default" NOT NULL,
     password character varying COLLATE pg_catalog."default" NOT NULL,
+    type     character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT employee_pkey PRIMARY KEY (id)
 );
 
-INSERT INTO "2Danhé".employee ("name", "email", "password")
-values ('Bob', 'bob@wg.be', '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75');
-INSERT INTO "2Danhé".employee ("name", "email", "password")
-values ('test', 't@t.be', '99f97d455d5d62b24f3a942a1abc3fa8863fc0ce2037f52f09bd785b22b800d4f2e7b2b614cb600ffc2a4fe24679845b24886d69bb776fcfa46e54d188889c6f');
+INSERT INTO "2Danhé".employee ("name", "email", "password", "type")
+values ('Peter', 'peter@wg.be', '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75','Klant Contact Centrum');
+INSERT INTO "2Danhé".employee ("name", "email", "password", "type")
+values ('Paulina', 'paulina@wg.be', '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75','Leiding Monitor');
+INSERT INTO "2Danhé".employee ("name", "email", "password", "type")
+values ('Petra', 'bob@wg.be', '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75','Technieker');
+INSERT INTO "2Danhé".employee ("name", "email", "password", "type")
+values ('test', 't@t.be', '99f97d455d5d62b24f3a942a1abc3fa8863fc0ce2037f52f09bd785b22b800d4f2e7b2b614cb600ffc2a4fe24679845b24886d69bb776fcfa46e54d188889c6f','Technieker');
+
+
+INSERT INTO "2Danhé".employee ("name", "email", "password", "type")
+values ('Bob', 'bob@wg.be', '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75',);
 INSERT INTO "2Danhé".employee ("name", "email", "password")
 values ('Yannick', 'yv@wg.be', 'ef71c21470c7c39f7ecd2a67c8d5dcd0cb9c8efeb1881ca85200943b08b040d3a0e6fabfaf91e23e877d19535f20e71902c569ee772412e92b11634343483df3');
 INSERT INTO "2Danhé".employee ("name", "email", "password")
