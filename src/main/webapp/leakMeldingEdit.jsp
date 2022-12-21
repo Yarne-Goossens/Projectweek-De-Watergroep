@@ -13,7 +13,7 @@
 
 
 <main class="container">
-    <h3>Pass leak met id  ${editedLeak.id}</h3>
+
 
     <p>
         <c:if test="${not empty errors}">
@@ -26,8 +26,8 @@
             </div>
         </c:if>
 
-        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Pas leak met id : ${editedLeak.id}</p>
-        <form name="formulier" method="POST" action="Controller">
+        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Pas lek met id : ${editedLeak.id}</p>
+        <form name="formulier" method="POST" action="Controller?command=LeakMeldingInfoEditConfirmation">
             <p>
                 <label for="firstname">Voornaam</label>
             </p>
@@ -78,19 +78,21 @@
             <input id="houseNumber" name="houseNumber" value="${editedLeak.houseNumber}" type="text">
             </p>
 
-            <input  name="id" value="${editedLeak.id}" type="hidden">
 
             <p>
                 <label for="comment">Comment</label>
             <p>
             </p>
+            <p>
                 <textarea id="comment" name="comment"> ${editedLeak.comment}</textarea>
             </p>
             <input type="hidden" name="command" value="LeakMeldingInfoEditConfirmation">
             <p>
                 <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
             </p>
-    </form>
+            <input  name="id" value="${editedLeak.id}" type="hidden">
+
+        </form>
 </main>
 </body>
 </html>
