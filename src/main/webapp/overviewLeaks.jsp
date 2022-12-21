@@ -8,11 +8,11 @@
     <jsp:param name="title" value="Overview Leaks"/>
 </jsp:include>
 
-<body class="bg-dark text-white">
+<body class="bg-dark">
 <jsp:include page="header.jsp">
     <jsp:param name="actual" value="Home"/>
 </jsp:include>
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center text-white">
     <main role="main" class="inner cover">
         <section class="intro">
             <div class="bg-image h-100">
