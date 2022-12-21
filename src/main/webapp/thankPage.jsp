@@ -7,30 +7,20 @@
 </jsp:include>
 <body class="bg-dark">
 <div id="container">
-    <jsp:include page="header.jsp">
-        <jsp:param name="actual" value="Home"/>
-    </jsp:include>
     <main>
         <div class="row justify-content-center">
             <div class="text-center col-8 card text-black mb-5 mt-5" style="border-radius: 25px; width: 80%;">
                 <div class="card-body p-md-5">
-                    <h2>Beste bezoeker</h2>
+                    <h2>Bedankt!</h2>
                     <p>
-                        Wij zijn “De Watergroep”. Sinds 1913 staan wij in voor de watervoorziening in jouw buurt.
-                        De infrastructuur bestaat uit een leidingennetwerk van meer dan 34.000 kilometer.
+                        Bedankt voor het melden van een lek.
+                        Onze techniekers komen zo snel mogelijk ter plaatse om het lek te onderzoeken.
+                        Jouw bijdrage helpt om het waterverlies in Vlaanderen tegen te gaan.
+                        Waarvoor onze dank.
                     </p>
-                    <p>
-                        Natuurlijk brengt deze omvang veel onderhoud met zich mee en kunnen er door factoren van buitenaf lekken ontstaan.
-                        Daarom zijn we begonnen met een initiatief om sneller te reageren op lekken.
-                    </p>
-                    <p>
-                        Iedereen kan nu op een heel efficiënte manier een lek melden op onze site, zodat deze zo snel mogelijk hersteld kan worden.
-                    </p>
-                    <p>Help jij ons in de strijd tegen waterschaarste?</p>
                     <p class="font-weight-bold">Want elke druppel telt!</p>
-                    <p>Je kan een lek melden via onderstaande knop</p>
 
-                    <a class="btn btn-primary btn-xl text-uppercase" role="button" href="Controller?command=LeakSubmissionForm">Meld een water lek!</a>
+                    <a class="btn btn-primary btn-xl text-uppercase" role="button" href="Controller?command=Home">Ga terug naar home</a>
                 </div>
             </div>
         </div>
