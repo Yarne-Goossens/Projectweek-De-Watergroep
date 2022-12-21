@@ -1,6 +1,8 @@
 package domain.service;
 
 import domain.model.AssignmentType;
+import domain.model.Employee;
+import domain.model.EmployeeType;
 import domain.model.ServiceAssignment;
 import util.DbConnectionService;
 
@@ -27,8 +29,8 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
             sql.setString(2, String.valueOf(serviceAssignment.getPostalCode()));
             sql.setString(3, serviceAssignment.getStreet());
             sql.setString(4, serviceAssignment.getHouseNumber());
-            sql.setString(5, serviceAssignment.getType().getStringValue());
-            sql.setString(6, serviceAssignment.getStartDate().toString());
+            sql.setString(5, serviceAssignment.getType().toString());
+            sql.setDate(6, Date.valueOf(serviceAssignment.getStartDate()));
             sql.setString(7, serviceAssignment.getComment());
             sql.execute();
         } catch (SQLException e) {
@@ -38,10 +40,17 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
 
     @Override
     public ServiceAssignment findServiceAssignmentById(int findId) {
-        String sql = String.format("SELECT * FROM %s.service_assignment WHERE id = ?", schema);
+        String querry = "select " +
+                "s.id,city,postal,street,house_number,technician, " +
+                "s.type as service_type, start_date, end_date, comment, " +
+                "e.id as technician_id, name, email, password, e.type as employee_type  " +
+                "from %s.service_assignment as s " +
+                "left outer join %s.employee as e on s.technician_id = e.id " +
+                "where s.id = ? ";
+        querry = String.format(querry,schema,schema);
         ServiceAssignment serviceAssignment = null;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(querry);
             preparedStatement.setInt(1, findId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -50,8 +59,8 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
                 int postal = resultSet.getInt("postal");
                 String street = resultSet.getString("street");
                 String houseNumber = resultSet.getString("house_number");
-                String technician = resultSet.getString("technician");
-                AssignmentType type = AssignmentType.valueOf(resultSet.getString("type").toUpperCase());
+                int technicianId = resultSet.getInt("technician_id");
+                AssignmentType type = AssignmentType.valueOf(resultSet.getString("service_type").toUpperCase());
                 LocalDate startDate = resultSet.getDate("start_date").toLocalDate();
                 LocalDate endDate;
                 try {
@@ -60,6 +69,16 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
                     endDate = null;
                 }
                 String comment = resultSet.getString("comment");
+                String naamTechnician = resultSet.getString("name");
+                String emailTechnician = resultSet.getString("email");
+                String passwordTechnician = resultSet.getString("password");
+                String typeTechnician = resultSet.getString("employee_type");
+
+                Employee technician;
+                if (naamTechnician == null) {
+                    technician = null;
+                } else technician = new Employee(technicianId,naamTechnician,emailTechnician,passwordTechnician, EmployeeType.valueOf(typeTechnician.toUpperCase()));
+
                 serviceAssignment = new ServiceAssignment(id, city, postal, street, houseNumber, type, startDate, endDate, comment, technician);
             }
         } catch (SQLException e) {
@@ -86,9 +105,15 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
     @Override
     public ArrayList<ServiceAssignment> getAllServiceAssignments() {
         ArrayList<ServiceAssignment> serviceAssignments = new ArrayList<>();
-        String sql = String.format("SELECT * FROM %s.service_assignment", schema);
+        String querry = "select " +
+                "s.id,city,postal,street,house_number,technician, " +
+                "s.type as service_type, start_date, end_date, comment, " +
+                "e.id as technician_id, name, email, password, e.type as employee_type " +
+                "from %s.service_assignment as s " +
+                "left outer join %s.employee as e on s.technician_id = e.id ";
+        querry = String.format(querry,schema,schema);
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(querry);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
@@ -96,8 +121,8 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
                 int postal = resultSet.getInt("postal");
                 String street = resultSet.getString("street");
                 String houseNumber = resultSet.getString("house_number");
-                String technician = resultSet.getString("technician");
-                AssignmentType type = AssignmentType.valueOf(resultSet.getString("type").toUpperCase());
+                int technicianId = resultSet.getInt("technician_id");
+                AssignmentType type = AssignmentType.valueOf(resultSet.getString("service_type").toUpperCase());
                 LocalDate startDate = resultSet.getDate("start_date").toLocalDate();
                 LocalDate endDate;
                 try {
@@ -106,10 +131,24 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
                     endDate = null;
                 }
                 String comment = resultSet.getString("comment");
+
                 if(endDate == null){
                     ServiceAssignment serviceAssignment = new ServiceAssignment(id, city, postal, street, houseNumber, type, startDate, null, comment, technician);
                     serviceAssignments.add(serviceAssignment);
                 }
+
+                String naamTechnician = resultSet.getString("name");
+                String emailTechnician = resultSet.getString("email");
+                String passwordTechnician = resultSet.getString("password");
+                String typeTechnician = resultSet.getString("employee_type");
+
+                Employee technician;
+                if (naamTechnician == null) {
+                    technician = null;
+                } else technician = new Employee(technicianId,naamTechnician,emailTechnician,passwordTechnician, EmployeeType.valueOf(typeTechnician.toUpperCase()));
+
+                ServiceAssignment serviceAssignment = new ServiceAssignment(id, city, postal, street, houseNumber, type, startDate, endDate, comment, technician);
+                serviceAssignments.add(serviceAssignment);
 
             }
         } catch (SQLException e) {
@@ -123,17 +162,17 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
         String querry = "UPDATE %s.service_assignment " +
                 "SET city = ?, postal = ?, " +
                 "street = ?, house_number = ?, " +
-                "technician = ?, type = ?, start_date = ?, " +
+                "technician_id = ?, type = ?, start_date = ?, " +
                 "end_date = ?, comment = ? " +
                 "WHERE id = ? ";
-        querry = String.format(querry,schema);
+        String query = String.format(querry,schema);
         try{
-            PreparedStatement preparedStatement = getConnection().prepareStatement(querry);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
             preparedStatement.setString(1, serviceAssignment.getCity());
             preparedStatement.setString(2, String.valueOf(serviceAssignment.getPostalCode()));
             preparedStatement.setString(3, serviceAssignment.getStreet());
             preparedStatement.setString(4, serviceAssignment.getHouseNumber());
-            preparedStatement.setString(5, serviceAssignment.getTechnician());
+            preparedStatement.setInt(5, serviceAssignment.getTechnician().getId());
             preparedStatement.setString(6, serviceAssignment.getType().toString().toUpperCase());
             preparedStatement.setDate(7, Date.valueOf(serviceAssignment.getStartDate()));
             if (serviceAssignment.getEndDate()==null) {
