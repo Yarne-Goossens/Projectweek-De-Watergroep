@@ -71,7 +71,7 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
     @Override
     public ArrayList<ServiceAssignment> getAllServiceAssignments() {
         ArrayList<ServiceAssignment> serviceAssignments = new ArrayList<>();
-        String sql = String.format("SELECT * FROM %s.service_assignment", schema);
+        String sql = String.format("SELECT * FROM %s.service_assignment order by id", schema);
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();

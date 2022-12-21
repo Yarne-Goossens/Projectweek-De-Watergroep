@@ -76,23 +76,37 @@
                         <div class="form-outline flex-fill mb-0">
                             <label class="form-label" for="type">Type: </label>
                             <select id="type" name="type" class="form-control">
-                                <option hidden disabled selected value="">Selecteer het type</option>
+                                <%--                                <option hidden disabled selected value="">Selecteer het type</option>--%>
+                                <option selected value="EVALUATIE">Evaluatie</option>
                                 <option value="LEKHERSTEL">Lekherstel</option>
-                                <option value="EVALUATIE">Evaluatie</option>
                             </select>
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                             <label class="form-label" for="comment">Commentaar:</label>
-                            <textarea type="text" id="comment" name="comment" class="form-control"
-                                      value="${commentPrevious}"></textarea>
+                            <textarea type="text" id="comment" name="comment"
+                                      class="form-control">${commentPrevious}</textarea>
                         </div>
                     </div>
                     <input type="hidden" name="id" value="${editedLeak.id}">
                     <input type="hidden" name="command" value="CreateServiceAssignment">
                     <div class="form-outline flex-fill mb-4">
-                        <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Maak aan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="card text-black mt-5 mb-5" style="border-radius: 25px;">
+            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Lek met id: ${editedLeak.id} toewijzen aan
+                bestaande SO</p>
+            <div class="mx-1 mx-md-4">
+                <form action="Controller" method="get">
+                    <input type="hidden" name="id" value="${editedLeak.id}">
+                    <div class="form-outline flex-fill mb-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Wijs toe</button>
                     </div>
                 </form>
             </div>
