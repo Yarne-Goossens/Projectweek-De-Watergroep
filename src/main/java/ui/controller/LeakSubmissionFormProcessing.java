@@ -127,7 +127,6 @@ public class LeakSubmissionFormProcessing extends RequestHandler {
             if(houseNumber.isEmpty()){
                 throw new IllegalArgumentException("Vul een huisnummer in.");
             }
-
             leakReport.setHouseNumber(houseNumber);
             request.setAttribute("houseNumberPreviousValue", houseNumber);
         }

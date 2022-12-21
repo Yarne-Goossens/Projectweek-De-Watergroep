@@ -39,8 +39,11 @@ public class AppService {
         emailService.sendEmail(email);
     }
 
+<<<<<<< HEAD
     // employeeService
 
+=======
+>>>>>>> 2981109391a70dbd5efcb7db6a63c80276a360d3
     // userService
     public void addEmployee(Employee employee) {
         employees.addEmployee(employee);
@@ -71,8 +74,11 @@ public class AppService {
         serviceAssignmentService.addServiceAssignment(serviceAssignment);
     }
 
-    public ServiceAssignment findServiceAssignmentWith() {
-        return serviceAssignmentService.findServiceAssignmentBy();
+    public ServiceAssignment findServiceAssignmentWithId(int id) {
+        return serviceAssignmentService.findServiceAssignmentById(id);
+    }
+    public void updateServiceAssignment(ServiceAssignment serviceAssignment) {
+        serviceAssignmentService.updateServiceAssignment(serviceAssignment);
     }
 
     public ArrayList<ServiceAssignment> getAllServiceAssignments(){

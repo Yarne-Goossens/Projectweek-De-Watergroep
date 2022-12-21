@@ -26,8 +26,13 @@
             </div>
         </c:if>
 
+<<<<<<< HEAD
         <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Pas lek met id : ${editedLeak.id}</p>
         <form name="formulier" method="POST" action="Controller?command=LeakMeldingInfoEditConfirmation">
+=======
+        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Pas leak met id : ${editedLeak.id}</p>
+        <form name="formulier" method="POST" action="Controller">
+>>>>>>> 2981109391a70dbd5efcb7db6a63c80276a360d3
             <p>
                 <label for="firstname">Voornaam</label>
             </p>
@@ -86,7 +91,7 @@
             <p>
                 <textarea id="comment" name="comment"> ${editedLeak.comment}</textarea>
             </p>
-
+            <input type="hidden" name="command" value="LeakMeldingInfoEditConfirmation">
             <p>
                 <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
             </p>

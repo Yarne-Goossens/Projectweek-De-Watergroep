@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class LeakReport {
     private int id,postalCode;
-    private String firstName,lastName,email,city,street,comment, houseNumber;
+    private String firstName,lastName,email,city,street,comment,houseNumber;
 
     public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street) {
         this.id = id;
@@ -16,7 +16,6 @@ public class LeakReport {
         this.email = email;
         this.city = city;
         this.street = street;
-
     }
 
     public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street, String comment){
@@ -93,6 +92,9 @@ public class LeakReport {
         if(houseNumber.isBlank()){
             throw new IllegalArgumentException("Vul een juist huisnummer in.");
         }
+//        if(Integer.parseInt(houseNumber)<=0){
+//            throw new IllegalArgumentException("Vul een juist huisnummer in.");
+//        }
         this.houseNumber = houseNumber;
     }
 
