@@ -51,7 +51,7 @@
                                                                         </td>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                        <td class="text-left">${service.technician}</td>
+                                                                        <td class="text-left">${service.technician.name}</td>
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                                 <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}</td>
@@ -60,7 +60,7 @@
                                                                 <td colspan="12" class="p-0 text-left bg-secondary">
                                                                     <div id="collapse${service.id}" class="accordian-body collapse">
                                                                         <ul>
-                                                                            <li>Id: ${service.id}</li>
+                                                                            <li>Service Opdracht Id: ${service.id}</li>
                                                                             <li>Start datum: ${service.startDate}</li>
                                                                             <c:if test="${service.endDate!=null}">
                                                                                 <li>Eind datum: ${service.endDate}</li>

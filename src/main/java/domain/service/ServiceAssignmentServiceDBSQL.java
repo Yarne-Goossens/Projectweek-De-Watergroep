@@ -29,8 +29,8 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
             sql.setString(2, String.valueOf(serviceAssignment.getPostalCode()));
             sql.setString(3, serviceAssignment.getStreet());
             sql.setString(4, serviceAssignment.getHouseNumber());
-            sql.setString(5, serviceAssignment.getType().getStringValue());
-            sql.setString(6, serviceAssignment.getStartDate().toString());
+            sql.setString(5, serviceAssignment.getType().toString());
+            sql.setDate(6, Date.valueOf(serviceAssignment.getStartDate()));
             sql.setString(7, serviceAssignment.getComment());
             sql.execute();
         } catch (SQLException e) {
@@ -46,7 +46,7 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
                 "e.id as technician_id, name, email, password, e.type as employee_type  " +
                 "from %s.service_assignment as s " +
                 "left outer join %s.employee as e on s.technician_id = e.id " +
-                "where id = ? ";
+                "where s.id = ? ";
         querry = String.format(querry,schema,schema);
         ServiceAssignment serviceAssignment = null;
         try {
@@ -143,9 +143,9 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
                 "technician_id = ?, type = ?, start_date = ?, " +
                 "end_date = ?, comment = ? " +
                 "WHERE id = ? ";
-        querry = String.format(querry,schema);
+        String query = String.format(querry,schema);
         try{
-            PreparedStatement preparedStatement = getConnection().prepareStatement(querry);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
             preparedStatement.setString(1, serviceAssignment.getCity());
             preparedStatement.setString(2, String.valueOf(serviceAssignment.getPostalCode()));
             preparedStatement.setString(3, serviceAssignment.getStreet());
