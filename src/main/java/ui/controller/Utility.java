@@ -15,7 +15,7 @@ public class Utility {
         Employee user = (Employee) request.getSession().getAttribute("user");
         if (user != null)
             for (EmployeeType employeeType : employeeTypes) {
-                if (user.getType().toString().equalsIgnoreCase(employeeType.getStringValue())) {
+                if (user.getType().toString().equalsIgnoreCase(employeeType.toString())) {
                     found = true;
                     break;
                 }
@@ -29,7 +29,7 @@ public class Utility {
         Employee user = (Employee) request.getSession().getAttribute("user");
         for(EmployeeType employeeType:employeeTypes){
             if (user != null) {
-                found =  user.getType().toString().equalsIgnoreCase(employeeType.getStringValue());
+                found =  user.getType().toString().equalsIgnoreCase(employeeType.toString());
                 if (found){
                     break;
                 }

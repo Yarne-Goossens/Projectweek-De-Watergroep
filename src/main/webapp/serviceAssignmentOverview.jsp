@@ -8,12 +8,11 @@
     <jsp:param name="title" value="serviceAssignmentOverview"/>
 </jsp:include>
 
-<body class="text-center bg-dark text-white">
-
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-    <jsp:include page="header.jsp">
-        <jsp:param name="actual" value="serviceAssignmentOverview"/>
-    </jsp:include>
+<body class="bg-dark text-white">
+<jsp:include page="header.jsp">
+    <jsp:param name="actual" value="serviceAssignmentOverview"/>
+</jsp:include>
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
     <main role="main" class="inner cover">
         <section class="intro">
             <div class="bg-image h-100">
@@ -51,21 +50,26 @@
                                                                         </td>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                        <td class="text-left">${service.technician}</td>
+                                                                        <td class="text-left">${service.technician.name}</td>
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                                 <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}</td>
+
+                                                                <c:if test="${sessionScope.employee.name eq service.technician && service.technician ne null}">
+                                                                      <td><a href="Controller?command=CloseAssignment&id=${service.id}"><button>Sluit Service</button></a></td>
+                                                                </c:if>
+
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="12" class="p-0 text-left bg-secondary">
                                                                     <div id="collapse${service.id}" class="accordian-body collapse">
                                                                         <ul>
-                                                                            <li>Id: ${service.id}</li>
+                                                                            <li>Service Opdracht Id: ${service.id}</li>
                                                                             <li>Start datum: ${service.startDate}</li>
                                                                             <c:if test="${service.endDate!=null}">
                                                                                 <li>Eind datum: ${service.endDate}</li>
                                                                             </c:if>
-                                                                            <li>Type: ${service.type}</li>
+                                                                            <li>Type: ${service.type.stringValue}</li>
                                                                             <c:if test="${service.comment!=null}">
                                                                                 <li>Opmerkingen: ${service.comment}</li>
                                                                             </c:if>

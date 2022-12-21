@@ -81,6 +81,10 @@ public class AppService {
         return serviceAssignmentService.getAllServiceAssignments();
     }
 
+    public  void closeAssignment(ServiceAssignment serviceAssignment){
+        serviceAssignmentService.closeAssignment(serviceAssignment);
+    }
+
 }
 
 
