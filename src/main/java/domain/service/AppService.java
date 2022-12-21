@@ -5,8 +5,10 @@ import domain.model.*;
 import java.util.ArrayList;
 
 public class AppService {
-    //LEAKS
     private LeakReportService leakReport = new LeakReportServiceDBSQL();
+    private EmailService emailService = new MailService();
+    private AnimalService animals = new AnimalServiceDBSQL();
+    private EmployeeService employees = new EmployeeServiceDBSQL();
 
     public void addLeakReport(LeakReport leak) {
         leakReport.addLeakReport(leak);
@@ -20,41 +22,43 @@ public class AppService {
         return leakReport.getAllLeakReports();
     }
 
-    // currentAnimalService
-    private AnimalService animals = new AnimalServiceDBSQL();
+
 
     public void addAnimal(Animal animal) {
         animals.addAnimal(animal);
     }
 
+
+
     public Animal findAnimalWithName(String naam) {
         return animals.findAnimalWithName(naam);
     }
 
-    public ArrayList<Animal> getAllAnimals() {
-        return animals.getAllAnimals();
-    }
 
-
-    // emailService
-    private EmailService emailService = new MailService();
-    public void sendEmail(Email email){
+    public void sendEmail(Email email) {
         emailService.sendEmail(email);
     }
 
-    // employeeService
-    private EmployeeService employees = new EmployeeServiceDBSQL();
-
+    // userService
     public void addEmployee(Employee employee) {
         employees.addEmployee(employee);
     }
 
-    public Employee findEmployeeWithEmail(String email){
+    public Employee findEmployeeWithEmail(String email) {
         return employees.findEmployeeWithEmail(email);
+    }
+
+    //Leak
+    public void updateLeak(LeakReport leak) {
+       leakReport.updateLeak(leak);
     }
 
     public ArrayList<Employee> getAllEmployees() {
         return employees.getAllEmployees();
+    }
+
+    public LeakReport getLeakFromId(int id){
+       return leakReport.getLeakFromId(id);
     }
 
     // ServiceAssignmentService
@@ -65,11 +69,17 @@ public class AppService {
         serviceAssignmentService.addServiceAssignment(serviceAssignment);
     }
 
-    public ServiceAssignment findServiceAssignmentWith() {
-        return serviceAssignmentService.findServiceAssignmentBy();
+    public ServiceAssignment findServiceAssignmentWithId(int id) {
+        return serviceAssignmentService.findServiceAssignmentById(id);
+    }
+    public void updateServiceAssignment(ServiceAssignment serviceAssignment) {
+        serviceAssignmentService.updateServiceAssignment(serviceAssignment);
     }
 
     public ArrayList<ServiceAssignment> getAllServiceAssignments(){
         return serviceAssignmentService.getAllServiceAssignments();
     }
+
 }
+
+

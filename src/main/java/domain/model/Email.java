@@ -13,6 +13,7 @@ public class Email {
     }
 
     public Email() {
+
     }
 
     public String getMessage() {
