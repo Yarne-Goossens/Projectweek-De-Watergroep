@@ -8,12 +8,11 @@
     <jsp:param name="title" value="serviceAssignmentOverview"/>
 </jsp:include>
 
-<body class="text-center bg-dark text-white">
-
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-    <jsp:include page="header.jsp">
-        <jsp:param name="actual" value="serviceAssignmentOverview"/>
-    </jsp:include>
+<body class="bg-dark text-white">
+<jsp:include page="header.jsp">
+    <jsp:param name="actual" value="serviceAssignmentOverview"/>
+</jsp:include>
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
     <main role="main" class="inner cover">
         <section class="intro">
             <div class="bg-image h-100">
