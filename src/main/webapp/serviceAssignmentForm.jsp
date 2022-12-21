@@ -11,7 +11,8 @@
     </jsp:include>
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="card text-black mt-5 mb-5" style="border-radius: 25px;">
-            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Service Opdracht Aanmaken voor id: ${editedLeak.id}</p>
+            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Service Opdracht Aanmaken voor
+                id: ${editedLeak.id}</p>
             <c:if test="${not empty errors}">
                 <div id="error" class="alert alert-danger">
                     <c:forEach items="${errors}" var="error">
@@ -22,69 +23,77 @@
                 </div>
             </c:if>
             <div class="mx-1 mx-md-4">
-                <form method="post" action="Controller">
+                <form action="Controller" method="post">
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                             <label class="form-label" for="firstname">Voornaam</label>
-                            <input id="firstname" class="form-control"  value="${editedLeak.firstName}" disabled type="text">
+                            <input id="firstname" class="form-control" value="${editedLeak.firstName}" disabled
+                                   type="text">
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                             <label class="form-label" for="lastname">Achternaam</label>
-                            <input id="lastname" class="form-control"  value="${editedLeak.lastName}" disabled type="text">
+                            <input id="lastname" class="form-control" value="${editedLeak.lastName}" disabled
+                                   type="text">
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                             <label class="form-label" for="email">Email</label>
-                            <input id="email" class="form-control"  value="${editedLeak.email}" disabled type="text">
+                            <input id="email" class="form-control" value="${editedLeak.email}" disabled type="text">
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="plaats">Plaats: </label>
-                        <input type="text" id="plaats" name="plaats" class="form-control" value="${plaatsPrevious}"/>
+                        <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="plaats">Plaats: </label>
+                            <input type="text" id="plaats" name="plaats" class="form-control"
+                                   value="${plaatsPrevious}"/>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="postcode">Postcode: </label>
-                        <input type="text" id="postcode" name="postcode" class="form-control" value="${postcodePrevious}"/>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="postcode">Postcode: </label>
+                            <input type="text" id="postcode" name="postcode" class="form-control"
+                                   value="${postcodePrevious}"/>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="straat">Straat: </label>
-                        <input type="text" id="straat" name="straat" class="form-control" value="${straatPrevious}"/>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="straat">Straat: </label>
+                            <input type="text" id="straat" name="straat" class="form-control"
+                                   value="${straatPrevious}"/>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="huisnr">Huis nummer: </label>
-                        <input type="text" id="huisnr" name="huisnr" class="form-control" value="${huisnrPrevious}"/>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="huisnr">Huis nummer: </label>
+                            <input type="text" id="huisnr" name="huisnr" class="form-control"
+                                   value="${huisnrPrevious}"/>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="type">Type: </label>
-                        <select id="type" name="type" class="form-control">
-                            <option hidden disabled selected value="">Selecteer het type</option>
-                            <option value="LEKHERSTEL">Lekherstel</option>
-                            <option value="EVALUATIE">Evaluatie</option>
-                        </select>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="type">Type: </label>
+                            <select id="type" name="type" class="form-control">
+                                <option hidden disabled selected value="">Selecteer het type</option>
+                                <option value="LEKHERSTEL">Lekherstel</option>
+                                <option value="EVALUATIE">Evaluatie</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="comment">Commentaar:</label>
-                        <textarea type="text" id="comment" name="comment" class="form-control" value="${commentPrevious}"></textarea>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="comment">Commentaar:</label>
+                            <textarea type="text" id="comment" name="comment" class="form-control"
+                                      value="${commentPrevious}"></textarea>
+                        </div>
                     </div>
-                </div>
+                    <input type="hidden" name="id" value="${editedLeak.id}">
                     <input type="hidden" name="command" value="CreateServiceAssignment">
-                <div class="form-outline flex-fill mb-4">
-                    <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
-                </div>
+                    <div class="form-outline flex-fill mb-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
+                    </div>
                 </form>
             </div>
         </div>
