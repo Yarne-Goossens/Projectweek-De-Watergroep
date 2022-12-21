@@ -30,6 +30,7 @@
                                                     <tr class="text-uppercase">
                                                         <th class="text-left" scope="col">ID</th>
                                                         <th class="text-left" scope="col">Locatie</th>
+                                                        <th class="text-center" scope="col">SO Aanmaken</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -37,10 +38,7 @@
                                                         <tr>
                                                             <td class="text-left">${leak.id}</td>
                                                             <td class="text-left">${leak.street} ${leak.houseNumber}, ${leak.postalCode} ${leak.city}</td>
-                                                            <td>
-                                                                <a href="Controller?command=CreateServiceAssignmentForm&id=${leak.id}">
-                                                                    <button>Maak SO aan</button>
-                                                                </a></td>
+                                                            <td><button type="button" class="btn btn-primary" onclick="location.href='Controller?command=CreateServiceAssignmentForm&id=${leak.id}'">Maak SO aan</button></td>
                                                         </tr>
                                                     </c:forEach>
                                                     </tbody>
