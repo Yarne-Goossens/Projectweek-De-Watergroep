@@ -5,13 +5,12 @@
             <a href="Controller?command=Home"><img class="mt-2 mb-2" src="/img/watergroep_logo_small.png"
                                                    alt="De WaterGroep" width="120" height="100"></a>
 
-            <nav class="navbar-light navbar-expand-md">
                 <div class="float-right">
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                 </div>
                 <div class="container-fluid">
 
@@ -41,7 +40,6 @@
                         </ul>
                     </div>
                 </div>
-            </nav>
         </div>
     </nav>
 </header>
