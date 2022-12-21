@@ -2,6 +2,7 @@ package ui.controller;
 
 import domain.model.AssignmentType;
 import domain.model.Employee;
+import domain.model.EmployeeType;
 import domain.model.ServiceAssignment;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 public class ClaimServiceAssignment extends RequestHandler {
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Utility.checkRole(request, new EmployeeType[]{EmployeeType.TECHNICIAN});
         Employee employee = (Employee) request.getSession().getAttribute("user");
         ArrayList<String> errors = new ArrayList<>();
         if (employee != null) {

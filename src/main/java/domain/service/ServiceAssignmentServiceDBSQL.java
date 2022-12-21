@@ -132,10 +132,6 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
                 }
                 String comment = resultSet.getString("comment");
 
-                if(endDate == null){
-                    ServiceAssignment serviceAssignment = new ServiceAssignment(id, city, postal, street, houseNumber, type, startDate, null, comment, technician);
-                    serviceAssignments.add(serviceAssignment);
-                }
 
                 String naamTechnician = resultSet.getString("name");
                 String emailTechnician = resultSet.getString("email");
