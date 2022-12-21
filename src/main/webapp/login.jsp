@@ -2,14 +2,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Login User"/>
 </jsp:include>
+
 <body class="bg-dark">
+<jsp:include page="header.jsp">
+    <jsp:param name="actual" value="Login"/>
+</jsp:include>
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column ">
-    <jsp:include page="header.jsp">
-        <jsp:param name="actual" value="Login"/>
-    </jsp:include>
+
 </div>
 <section class="vh-100">
     <div class="container h-100">
@@ -19,10 +22,7 @@
                     <div class="card-body p-md-5">
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log in</p>
-                                <c:forEach var="e" items="${errors}">
-                                    <p class="alert">${e}</p>
-                                </c:forEach>
+
                                 <form class="mx-1 mx-md-4" action="Controller" method="post">
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <div class="form-outline flex-fill mb-0">

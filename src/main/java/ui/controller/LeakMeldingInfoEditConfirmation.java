@@ -1,5 +1,6 @@
 package ui.controller;
 
+import domain.model.EmployeeType;
 import domain.model.LeakReport;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 public class LeakMeldingInfoEditConfirmation extends RequestHandler{
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+        Utility.checkRole(request, new EmployeeType[]{EmployeeType.KCC});
         ArrayList<String> errors = new ArrayList<>();
         int id = Integer.parseInt(request.getParameter("id"));
         LeakReport leak = service.getLeakFromId(id);

@@ -21,27 +21,53 @@
                         <li class="nav-item" ${param.actual eq 'Home'?"id = actual":""}>
                             <a class="nav-link pt-5" style="font-size: 20px" id="goHome"
                                href="Controller?command=Home">Home</a></li>
-                        <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
-                            <a class="nav-link pt-5" style="font-size: 20px"
-                               href="Controller?command=LogInPage">Login</a>
-                        </li>
                         <li class="nav-item"  ${param.actual eq 'VoegToe'?"id = actual":""}>
                             <a class="nav-link pt-5" style="font-size: 20px"
                                href="Controller?command=LeakSubmissionForm">Lek Melden</a></li>
+                        <c:if test="${user.type =='KCC'}" >
                         <li class="nav-item" ${param.actual eq 'SignalLeak'?"id = actual":""}>
                             <a class="nav-link pt-5" style="font-size: 20px"
                                href="Controller?command=OverviewLeaks">Overzicht Lekken</a></li>
+                        </c:if>
+                        <c:if test="${user.type =='TECHNICIAN' || user.type == 'KCC'}" >
                         <li class="nav-item" ${param.actual eq 'Overzicht'?"id = actual":""}>
                             <a class="nav-link pt-5" style="font-size: 20px"
                                href="Controller?command=OverviewServiceAssignments">Overzicht Service Opdrachten</a>
                         </li>
-                        <%--                            <li class="nav-item" ${param.actual eq 'Verstuur Email' ? "id = actual":""}>--%>
-                        <%--                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=SendEmailform">Verstuur Email</a></li>--%>
-                        <%--                            <li class="nav-item" ${param.actual eq 'ShowPDF' ? "id = actual":""}>--%>
-                        <%--                               a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=CreatePDF">PDF maken</a></li>--%>
+                        </c:if>
+                        <c:choose>
+                            <c:when test="${empty user}">
+                                <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
+                                    <a class="nav-link pt-5" style="font-size: 20px"
+                                       href="Controller?command=LogInPage">Login</a>
+                                </li>
+
+                            </c:when>
+
+                            <c:otherwise>
+                                <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
+                                    <a class="nav-link pt-5" style="font-size: 20px"
+                                       href="Controller?command=Logout">Logout</a>
+                                </li>
+                            </c:otherwise>
+                        </c:choose>
+                        <%--<li class="nav-item" ${param.actual eq 'Verstuur Email' ? "id = actual":""}>--%>
+                        <%--<a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=SendEmailform">Verstuur Email</a></li>--%>
+                        <%--<li class="nav-item" ${param.actual eq 'ShowPDF' ? "id = actual":""}>--%>
+                        <%--<a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=CreatePDF">PDF maken</a></li>--%>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
+    <div class="text-white">
+        <h2>
+            <c:choose>
+                <c:when test="${user!=null}">
+                    <p>U bent ingelogd als ${user.name} ${user.type}.</p>
+                </c:when>
+            </c:choose>
+        </h2>
+    </div>
+
 </header>

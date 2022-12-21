@@ -11,7 +11,7 @@
         <jsp:param name="actual" value="VoegToe"/>
     </jsp:include>
     <main role="main" class="inner cover">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100 container-fluid">
             <div class="card text-black mb-5 mt-5 w-70" style="border-radius: 25px; width: 80%;">
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Lek melden</p>
                 <c:if test="${not empty errors}">
@@ -77,8 +77,7 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                             <div class="form-outline flex-fill mb-0">
                                 <label class="form-label" for="Commentaar">Commentaar:</label>
-                                <textarea name="Commentaar" type="text" id="Commentaar" class="form-control"
-                                          placeholder="" value="${commentaryPreviousValue}"></textarea>
+                                <textarea name="Commentaar" type="text" id="Commentaar" class="form-control" value="${commentaryPreviousValue}"></textarea>
                             </div>
                         </div>
                         <div class="d-flex flex-row align-items-center mb-4">
@@ -87,7 +86,7 @@
                                 <input type="file" id="img" name="img" accept="image/*">
                             </div>
                         </div>
-                        <div class="form-outline flex-fill mb-0">
+                        <div class="d-flex flex-row align-items-center mb-4">
                             <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
                         </div>
                     </form>
