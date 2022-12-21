@@ -28,7 +28,7 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
             sql.setString(3, serviceAssignment.getStreet());
             sql.setString(4, serviceAssignment.getHouseNumber());
             sql.setString(5, serviceAssignment.getType().getStringValue());
-            sql.setString(6, serviceAssignment.getStartDate().toString());
+            sql.setDate(6, Date.valueOf(serviceAssignment.getStartDate()));
             sql.setString(7, serviceAssignment.getComment());
             sql.execute();
         } catch (SQLException e) {
