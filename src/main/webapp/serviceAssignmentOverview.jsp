@@ -54,7 +54,9 @@
                                                                         <td class="text-left">${service.technician}</td>
                                                                     </c:otherwise>
                                                                 </c:choose>
-                                                                <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}</td>
+                                                                <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}git stat
+                                                                <td><a href="Controller?command=CloseService&id=${service.id}"><button> Afronden</button></a></td>
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="12" class="p-0 text-left bg-secondary">
