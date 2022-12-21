@@ -14,9 +14,9 @@ public class ServiceAssignment {
     private LocalDate endDate;
     private String comment;
 
-    private String technician;
+    private Employee technician;
 
-    public ServiceAssignment(int id, String city, int postalCode, String street, String houseNumber, AssignmentType type, LocalDate startDate, LocalDate endDate, String comment, String technician) {
+    public ServiceAssignment(int id, String city, int postalCode, String street, String houseNumber, AssignmentType type, LocalDate startDate, LocalDate endDate, String comment, Employee technician) {
         setId(id);
         setCity(city);
         setPostalCode(postalCode);
@@ -104,11 +104,11 @@ public class ServiceAssignment {
         this.comment = comment;
     }
 
-    public String getTechnician() {
+    public Employee getTechnician() {
         return technician;
     }
 
-    public void setTechnician(String technician) {
+    public void setTechnician(Employee technician) {
         this.technician = technician;
     }
 }
