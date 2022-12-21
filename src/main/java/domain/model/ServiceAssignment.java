@@ -29,6 +29,9 @@ public class ServiceAssignment {
         setTechnician(technician);
     }
 
+    public ServiceAssignment(){
+    }
+
     public int getId() {
         return id;
     }

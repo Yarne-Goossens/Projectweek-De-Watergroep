@@ -102,15 +102,15 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
 
     @Override
     public void updateServiceAssignment(ServiceAssignment serviceAssignment) {
-        String querry = "UPDATE %s.service_assignment " +
+        /*String querry = "UPDATE %s.service_assignment " +
                 "SET city = ?, postal = ?, " +
                 "street = ?, house_number = ?, " +
                 "technician = ?, type = ?, start_date = ?, " +
                 "end_date = ?, comment = ? " +
-                "WHERE id = ? ";
-        querry = String.format(querry,schema);
+                "WHERE id = ? ";//*/
+        String query = String.format("update %s.service_assignment set city=?, postal=?, street=?, house_number=?, technician=?, type=?, start_date=?, end_date=?, comment=? where id=?",schema);
         try{
-            PreparedStatement preparedStatement = getConnection().prepareStatement(querry);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
             preparedStatement.setString(1, serviceAssignment.getCity());
             preparedStatement.setString(2, String.valueOf(serviceAssignment.getPostalCode()));
             preparedStatement.setString(3, serviceAssignment.getStreet());
