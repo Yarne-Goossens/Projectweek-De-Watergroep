@@ -4,7 +4,6 @@ import domain.model.Animal;
 import domain.model.LeakReport;
 import domain.model.Employee;
 import domain.model.Email;
-import domain.model.Leak;
 
 import java.util.ArrayList;
 

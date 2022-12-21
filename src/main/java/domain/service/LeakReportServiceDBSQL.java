@@ -83,7 +83,6 @@ public class LeakReportServiceDBSQL implements LeakReportService{
             preparedStatement.setString(5,leak.getComment());
             preparedStatement.setInt(6,leak.getId());
             preparedStatement.executeUpdate();
-            System.out.println(leak);
 
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
@@ -91,14 +90,13 @@ public class LeakReportServiceDBSQL implements LeakReportService{
     }
 
     @Override
-    public LeakReport getLeakFromId(int idleak) {
+    public LeakReport getLeakFromId(int leakId) {
             String sql = String.format("SELECT * from %s.leak WHERE id = ?;", schema);
             try {
                 PreparedStatement statement = getConnection().prepareStatement(sql);
-                statement.setInt(1, idleak);
+                statement.setInt(1, leakId);
                 ResultSet result = statement.executeQuery();
                 if(result.next()){
-
                     int id = result.getInt("id");
                     String firstname = result.getString("first_name");
                     String lastname = result.getString("last_name");
@@ -108,8 +106,6 @@ public class LeakReportServiceDBSQL implements LeakReportService{
                     String city = result.getString("city");
                     String street = result.getString("street");
                     int postal = result.getInt("postal");
-
-
                     return new LeakReport(id,postal,housenumber,firstname,lastname,email,city,street,comment);
                 }
             } catch (SQLException e) {
