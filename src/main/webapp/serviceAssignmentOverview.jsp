@@ -12,17 +12,16 @@
 <jsp:include page="header.jsp">
     <jsp:param name="actual" value="serviceAssignmentOverview"/>
 </jsp:include>
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center mb-0">
     <main role="main" class="inner cover">
         <section class="intro">
             <div class="bg-image h-100">
                 <div class="mask d-flex align-items-center h-100">
                     <div class="container">
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center mb-0">
                             <div class="col-8">
                                 <div class="card-body p-0">
-                                    <div class="table-responsive table-scroll"
-                                         style="position: relative; height: 500px">
+                                    <div class="table-responsive table-scroll " style="position: relative; height: 500px">
                                         <c:choose>
                                             <c:when test="${serviceAssignments.size()!=0}">
                                                 <table class="table table-dark mb-0">
