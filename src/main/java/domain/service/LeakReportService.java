@@ -8,6 +8,8 @@ public interface LeakReportService {
 
     void addLeakReport(LeakReport leak);
 
+    LeakReport findLeakId(int id);
+
     ArrayList<LeakReport> getAllLeakReports();
     void updateLeak(LeakReport leak);
 
