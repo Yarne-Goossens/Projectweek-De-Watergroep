@@ -6,7 +6,7 @@
     <jsp:param name="title" value="Lek melden"/>
 </jsp:include>
 <body class="bg-dark">
-<div id="container">
+<div id="container" class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <jsp:include page="header.jsp">
         <jsp:param name="actual" value="SignalLeak"/>
     </jsp:include>

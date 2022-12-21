@@ -13,7 +13,6 @@
     <jsp:param name="actual" value="serviceAssignmentOverview"/>
 </jsp:include>
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
-
     <main role="main" class="inner cover">
         <section class="intro">
             <div class="bg-image h-100">
