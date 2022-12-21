@@ -77,8 +77,7 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                             <div class="form-outline flex-fill mb-0">
                                 <label class="form-label" for="Commentaar">Commentaar:</label>
-                                <textarea name="Commentaar" type="text" id="Commentaar" class="form-control"
-                                          placeholder="" value="${commentaryPreviousValue}"></textarea>
+                                <textarea name="Commentaar" type="text" id="Commentaar" class="form-control" value="${commentaryPreviousValue}"></textarea>
                             </div>
                         </div>
                         <div class="d-flex flex-row align-items-center mb-4">
