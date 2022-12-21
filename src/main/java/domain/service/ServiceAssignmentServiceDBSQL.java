@@ -88,6 +88,21 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
     }
 
     @Override
+    public void closeAssignment(ServiceAssignment serviceAssignment) {
+        String querry = "UPDATE %s.service_assignment SET end_date = ?  WHERE id = ? ";
+        querry = String.format(querry,schema);
+        try{
+            PreparedStatement preparedStatement = getConnection().prepareStatement(querry);
+            preparedStatement.setDate(1, Date.valueOf(LocalDate.now()));
+            preparedStatement.setInt(2, serviceAssignment.getId());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+
+    }
+
+    @Override
     public ArrayList<ServiceAssignment> getAllServiceAssignments() {
         ArrayList<ServiceAssignment> serviceAssignments = new ArrayList<>();
         String querry = "select " +
@@ -116,6 +131,12 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
                     endDate = null;
                 }
                 String comment = resultSet.getString("comment");
+
+                if(endDate == null){
+                    ServiceAssignment serviceAssignment = new ServiceAssignment(id, city, postal, street, houseNumber, type, startDate, null, comment, technician);
+                    serviceAssignments.add(serviceAssignment);
+                }
+
                 String naamTechnician = resultSet.getString("name");
                 String emailTechnician = resultSet.getString("email");
                 String passwordTechnician = resultSet.getString("password");
@@ -128,6 +149,7 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
 
                 ServiceAssignment serviceAssignment = new ServiceAssignment(id, city, postal, street, houseNumber, type, startDate, endDate, comment, technician);
                 serviceAssignments.add(serviceAssignment);
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
