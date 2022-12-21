@@ -27,7 +27,7 @@
                         <li class="nav-item"  ${param.actual eq 'voegToe'?"id = actual":""}>
                             <a class="nav-link pt-5" style="font-size: 20px"
                                href="Controller?command=LeakSubmissionForm">Lek Melden</a></li>
-                        <li class="nav-item" ${param.actual eq 'Overzicht'?"id = actual":""}>
+                        <li class="nav-item" ${param.actual eq 'SignalLeak'?"id = actual":""}>
                             <a class="nav-link pt-5" style="font-size: 20px"
                                href="Controller?command=OverviewLeaks">Overzicht Lekken</a></li>
                         <li class="nav-item" ${param.actual eq 'Overzicht'?"id = actual":""}>

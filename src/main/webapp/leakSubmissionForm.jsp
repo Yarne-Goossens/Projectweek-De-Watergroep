@@ -11,7 +11,7 @@
 <div id="container">
 
     <jsp:include page="header.jsp">
-        <jsp:param name="actual" value="SignalLeak"/>
+        <jsp:param name="actual" value="Home"/>
     </jsp:include>
 
     <div>
