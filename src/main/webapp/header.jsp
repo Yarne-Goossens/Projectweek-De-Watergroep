@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header>
-    <nav class="navbar navbar-light navbar-expand-md bg-white clean-navbar ">
+    <nav class="navbar navbar-light navbar-expand-md bg-white clean-navbar">
         <div class="container">
             <a href="Controller?command=Home"><img class="mt-2 mb-2" src="/img/watergroep_logo_small.png"
                                                    alt="De WaterGroep" width="120" height="100"></a>
@@ -12,6 +12,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
+
             <div class="container-fluid">
 
                 <div id="navbarSupportedContent" class="collapse navbar-collapse">
@@ -24,7 +25,7 @@
                             <a class="nav-link pt-5" style="font-size: 20px"
                                href="Controller?command=LogInPage">Login</a>
                         </li>
-                        <li class="nav-item"  ${param.actual eq 'voegToe'?"id = actual":""}>
+                        <li class="nav-item"  ${param.actual eq 'VoegToe'?"id = actual":""}>
                             <a class="nav-link pt-5" style="font-size: 20px"
                                href="Controller?command=LeakSubmissionForm">Lek Melden</a></li>
                         <li class="nav-item" ${param.actual eq 'SignalLeak'?"id = actual":""}>

@@ -10,7 +10,7 @@
 
 <body class="text-center bg-dark text-white">
 
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column ">
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <jsp:include page="header.jsp">
         <jsp:param name="actual" value="serviceAssignmentOverview"/>
     </jsp:include>
