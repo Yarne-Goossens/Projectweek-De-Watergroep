@@ -32,6 +32,7 @@ public class CreateServiceAssignment extends RequestHandler{
                 errors.add(e.getMessage());
             }
         }
+        request.setAttribute("errors", errors);
         return "Controller?command=CreateServiceAssignmentForm&id="+idString;
     }
 
@@ -54,7 +55,7 @@ public class CreateServiceAssignment extends RequestHandler{
             serviceAssignment.setPostalCode(postal);
             request.setAttribute("postalPrevious", postal);
         }
-        catch (IllegalArgumentException e){
+        catch (Exception e){
             errors.add(e.getMessage());
         }
     }
@@ -88,7 +89,7 @@ public class CreateServiceAssignment extends RequestHandler{
             serviceAssignment.setType(type);
             request.setAttribute("typePrevious", typeString);
         }
-        catch (IllegalArgumentException e){
+        catch (Exception e){
             errors.add(e.getMessage());
         }
     }
