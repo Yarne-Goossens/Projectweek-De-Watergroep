@@ -1,13 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Lek melden"/>
 </jsp:include>
 <body class="bg-dark">
 <div id="container">
     <jsp:include page="header.jsp">
-        <jsp:param name="actual" value="SignalLeak"/>
+        <jsp:param name="actual" value="Home"/>
     </jsp:include>
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="card text-black mb-5 mt-5 w-70" style="border-radius: 25px; width: 80%;">
