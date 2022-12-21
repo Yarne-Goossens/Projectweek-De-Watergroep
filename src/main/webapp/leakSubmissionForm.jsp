@@ -87,7 +87,7 @@
                                 <input type="file" id="img" name="img" accept="image/*">
                             </div>
                         </div>
-                        <div class="form-outline flex-fill mb-0">
+                        <div class="d-flex flex-row align-items-center mb-4">
                             <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
                         </div>
                     </form>
