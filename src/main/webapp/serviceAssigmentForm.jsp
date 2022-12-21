@@ -11,30 +11,39 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="card text-black" style="border-radius: 25px;">
             <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Service Opdracht Aanmaken</p>
+            <c:if test="${not empty errors}">
+                <div id="error" class="alert alert-danger">
+                    <c:forEach items="${errors}" var="error">
+                        <ul style="list-style: none;">
+                            <li>${error}</li>
+                        </ul>
+                    </c:forEach>
+                </div>
+            </c:if>
             <div class="mx-1 mx-md-4">
                 <form>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="Plaats">Plaats: </label>
-                        <input type="text" id="Plaats" class="form-control" value="${plaatsPrevious}"/>
+                        <label class="form-label" for="plaats">Plaats: </label>
+                        <input type="text" id="plaats" name="plaats" class="form-control" value="${plaatsPrevious}"/>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="Postcode">Postcode: </label>
-                        <input type="text" id="Postcode" class="form-control" value="${postcodePrevious}"/>
+                        <label class="form-label" for="postcode">Postcode: </label>
+                        <input type="text" id="postcode" name="postcode" class="form-control" value="${postcodePrevious}"/>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="Straat">Straat: </label>
-                        <input type="text" id="Straat" class="form-control" value="${straatPrevious}"/>
+                        <label class="form-label" for="straat">Straat: </label>
+                        <input type="text" id="straat" name="straat" class="form-control" value="${straatPrevious}"/>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="HuisNummer">Huis nummer: </label>
-                        <input type="text" id="HuisNummer" class="form-control" value="${huisnrPrevious}"/>
+                        <label class="form-label" for="huisnr">Huis nummer: </label>
+                        <input type="text" id="huisnr" name="huisnr" class="form-control" value="${huisnrPrevious}"/>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
@@ -49,11 +58,11 @@
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="Commentaar">Commentaar:</label>
-                        <textarea type="text" id="Commentaar" class="form-control"
-                                  value="${commentPrevious}"></textarea>
+                        <label class="form-label" for="comment">Commentaar:</label>
+                        <textarea type="text" id="comment" name="comment" class="form-control" value="${commentPrevious}"></textarea>
                     </div>
                 </div>
+                    <input type="hidden" name="command" value="CreateServiceAssignment">
                 <div class="form-outline flex-fill mb-4">
                     <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
                 </div>

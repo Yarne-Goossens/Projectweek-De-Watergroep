@@ -11,7 +11,9 @@
         <jsp:param name="actual" value="Home"/>
     </jsp:include>
     <main>
-
+        <c:if test="${not empty user}">
+            <h1>Welkom, ${user.name}</h1>
+        </c:if>
     </main>
     <jsp:include page="footer.jsp"/>
 </div>
