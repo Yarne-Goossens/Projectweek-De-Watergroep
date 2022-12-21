@@ -40,7 +40,13 @@ public class Controller extends HttpServlet {
         }
 
         RequestHandler handler = handlerFactory.getHandler(command, service);
-        destination = handler.handleRequest(request, response);
+        try {
+            destination = handler.handleRequest(request, response);
+        } catch (NotAuthorizedException e){
+            request.setAttribute("notAuthorized","Je hebt niet voldoende rechten om deze pagina te bezoeken");
+            destination = "Controller?command=Home";
+        }
+
 
 
 

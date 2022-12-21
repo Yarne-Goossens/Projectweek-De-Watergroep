@@ -69,7 +69,7 @@
                                                                             <c:if test="${service.endDate!=null}">
                                                                                 <li>Eind datum: ${service.endDate}</li>
                                                                             </c:if>
-                                                                            <li>Type: ${service.type}</li>
+                                                                            <li>Type: ${service.type.stringValue}</li>
                                                                             <c:if test="${service.comment!=null}">
                                                                                 <li>Opmerkingen: ${service.comment}</li>
                                                                             </c:if>
