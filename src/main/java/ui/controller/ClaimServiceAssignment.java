@@ -18,7 +18,6 @@ public class ClaimServiceAssignment extends RequestHandler {
             int serviceId = Integer.parseInt(request.getParameter("claimId"));
             ServiceAssignment serviceAssignment = service.findServiceAssignmentWithId(serviceId);
             serviceAssignment.setTechnician(employee.getName());
-            serviceAssignment.setType(AssignmentType.LEKHERSTEL);
             service.updateServiceAssignment(serviceAssignment);
             response.sendRedirect("Controller?command=OverviewServiceAssignments");
         } else {

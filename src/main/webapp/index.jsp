@@ -32,6 +32,7 @@
 
                     <a class="btn btn-primary btn-xl text-uppercase" role="button" href="Controller?command=LeakSubmissionForm">Meld een water lek!</a>
                 </div>
+                <p>Je kan ook een lek melden door te bellen naar : 02 238 96 99</p>
             </div>
         </div>
     </main>
