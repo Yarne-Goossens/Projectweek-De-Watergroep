@@ -1,8 +1,6 @@
 package domain.service;
 
-import domain.model.LeakReport;
-import domain.model.Employee;
-import domain.model.Email;
+import domain.model.*;
 
 import java.util.ArrayList;
 
@@ -42,7 +40,6 @@ public class AppService {
     }
 
     // employeeService
-    private EmployeeService employees = new EmployeeServiceDBSQL();
 
     // userService
     public void addEmployee(Employee employee) {
