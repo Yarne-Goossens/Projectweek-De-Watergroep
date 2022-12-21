@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <jsp:include page="head.jsp">
@@ -9,8 +10,8 @@
         <jsp:param name="actual" value="AssignmentService"/>
     </jsp:include>
     <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="card text-black" style="border-radius: 25px;">
-            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Service Opdracht Aanmaken</p>
+        <div class="card text-black mt-5 mb-5" style="border-radius: 25px;">
+            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Service Opdracht Aanmaken voor id: ${editedLeak.id}</p>
             <c:if test="${not empty errors}">
                 <div id="error" class="alert alert-danger">
                     <c:forEach items="${errors}" var="error">
@@ -21,8 +22,26 @@
                 </div>
             </c:if>
             <div class="mx-1 mx-md-4">
-                <form>
-                <div class="d-flex flex-row align-items-center mb-4">
+                <form method="post" action="Controller">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="firstname">Voornaam</label>
+                            <input id="firstname" class="form-control"  value="${editedLeak.firstName}" disabled type="text">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="lastname">Achternaam</label>
+                            <input id="lastname" class="form-control"  value="${editedLeak.lastName}" disabled type="text">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="email">Email</label>
+                            <input id="email" class="form-control"  value="${editedLeak.email}" disabled type="text">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="plaats">Plaats: </label>
                         <input type="text" id="plaats" name="plaats" class="form-control" value="${plaatsPrevious}"/>
