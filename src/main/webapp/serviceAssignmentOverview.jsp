@@ -55,6 +55,13 @@
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                                 <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}</td>
+                                                                <c:choose>
+
+                                                                <c:when test="${sessionScope.name eq service.technician}">
+                                                                <td><a href="Controller?command=CloseService&id=${service.id}"><button>Sluit Service</button></a></td>
+                                                                </c:when>
+                                                                </c:choose>
+
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="12" class="p-0 text-left bg-secondary">
