@@ -122,16 +122,11 @@ public class LeakSubmissionFormProcessing extends RequestHandler {
 
     public void setHouseNumberRequest(LeakReport leakReport, HttpServletRequest request, ArrayList<String> errors) {
 
-        String stringPostcode =request.getParameter("HuisNummer");
-        String regex = "^[0-9]+";
+        String houseNumber =request.getParameter("HuisNummer");
         try {
-            if(stringPostcode.isEmpty()){
+            if(houseNumber.isEmpty()){
                 throw new IllegalArgumentException("Vul een huisnummer in.");
             }
-            if(! stringPostcode.matches(regex)){
-                throw new IllegalArgumentException("Vul een juist huisnummer in.");
-            }
-            int houseNumber= Integer.parseInt(stringPostcode);
             leakReport.setHouseNumber(houseNumber);
             request.setAttribute("houseNumberPreviousValue", houseNumber);
         }

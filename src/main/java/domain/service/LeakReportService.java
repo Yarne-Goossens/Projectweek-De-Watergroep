@@ -1,6 +1,5 @@
 package domain.service;
 
-import domain.model.Animal;
 import domain.model.LeakReport;
 
 import java.util.ArrayList;
@@ -12,5 +11,7 @@ public interface LeakReportService {
     LeakReport findLeakId(int id);
 
     ArrayList<LeakReport> getAllLeakReports();
+    void updateLeak(LeakReport leak);
 
+    LeakReport getLeakFromId(int id);
 }
