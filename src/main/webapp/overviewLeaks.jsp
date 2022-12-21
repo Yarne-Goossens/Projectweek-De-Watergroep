@@ -1,6 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +37,7 @@
                                                         <tr>
                                                             <td class="text-left">${leak.id}</td>
                                                             <td class="text-left">${leak.street} ${leak.houseNumber}, ${leak.postalCode} ${leak.city}</td>
-                                                            <td><button type="button" class="btn btn-primary" onclick="location.href='Controller?command=CreateServiceAssignmentForm&id=${leak.id}'">Maak SO aan</button></td>
+                                                            <td class="text-left"><button type="button" class="btn btn-primary" onclick="location.href='Controller?command=CreateServiceAssignmentForm&id=${leak.id}'">Maak SO aan</button></td>
                                                         </tr>
                                                     </c:forEach>
                                                     </tbody>
