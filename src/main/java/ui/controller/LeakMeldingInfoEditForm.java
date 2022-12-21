@@ -1,14 +1,13 @@
 package ui.controller;
 
-import domain.model.Employee;
+import domain.model.LeakReport;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class OverviewServiceAssignments extends RequestHandler{
+public class LeakMeldingInfoEditForm extends RequestHandler {
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("serviceAssignments",service.getAllServiceAssignments());
-        return "serviceAssignmentOverview.jsp";
+        return "leakMeldingEdit.jsp";
     }
 }

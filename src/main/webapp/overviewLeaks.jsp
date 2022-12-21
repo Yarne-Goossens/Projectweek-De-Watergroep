@@ -15,6 +15,15 @@
         <jsp:param name="actual" value="Home"/>
     </jsp:include>
     <main role="main" class="inner cover">
+        <c:if test="${not empty errors}">
+            <div class="alert alert-danger">
+                <ul>
+                    <c:forEach items="${errors}" var="error">
+                        <li>${error}</li>
+                    </c:forEach>
+                </ul>
+            </div>
+        </c:if>
         <section class="intro">
             <div class="bg-image h-100">
                 <div class="mask d-flex align-items-center h-100">
@@ -39,9 +48,11 @@
                                                 <tr>
                                                     <td class="text-left">${leak.id}</td>
                                                     <td class="text-left">${leak.street} ${leak.houseNumber}, ${leak.postalCode} ${leak.city}</td>
+                                                    <td><a href="Controller?command=LeakMeldingInfoEdit&id=${leak.id}"><button>Pas aan</button></a></td>
                                                 </tr>
                                                 </c:forEach>
                                                 </tbody>
+
                                             </table>
                                             </c:when>
                                                 <c:otherwise>
