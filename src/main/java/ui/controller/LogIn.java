@@ -13,7 +13,7 @@ public class LogIn extends RequestHandler {
         try {
             Employee employee = service.findEmployeeWithEmail(email);
             if (employee.isCorrectPassword(password)) {
-                request.getSession().setAttribute("employee", employee);
+                request.getSession().setAttribute("user", employee);
                 return "index.jsp";
             }
         } catch (Exception e) {
