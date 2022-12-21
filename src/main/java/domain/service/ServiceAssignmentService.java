@@ -8,7 +8,9 @@ public interface ServiceAssignmentService {
 
     void addServiceAssignment(ServiceAssignment serviceAssignment);
 
-    ServiceAssignment findServiceAssignmentBy();
+    ServiceAssignment findServiceAssignmentById(int id);
 
     ArrayList<ServiceAssignment> getAllServiceAssignments();
+
+    void updateServiceAssignment(ServiceAssignment serviceAssignment);
 }

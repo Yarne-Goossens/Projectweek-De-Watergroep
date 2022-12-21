@@ -39,9 +39,11 @@
                                                 <tr>
                                                     <td class="text-left">${leak.id}</td>
                                                     <td class="text-left">${leak.street} ${leak.houseNumber}, ${leak.postalCode} ${leak.city}</td>
+                                                    <td><a href="Controller?command=LeakMeldingInfoEdit&id=${leak.id}"><button>Pas aan</button></a></td>
                                                 </tr>
                                                 </c:forEach>
                                                 </tbody>
+
                                             </table>
                                             </c:when>
                                                 <c:otherwise>
