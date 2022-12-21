@@ -42,11 +42,12 @@ public class EmployeeServiceDBSQL implements EmployeeService {
             statement.setString(1, email);
             ResultSet result =  statement.executeQuery();
             while (result.next()){
+                int id  = result.getInt("id");
                 String nameString = result.getString("name");
                 String mailString = result.getString("email");
                 String passwordString = result.getString("password");
                 EmployeeType type = EmployeeType.valueOf(result.getString("type"));
-                return new Employee(nameString, mailString, passwordString, type);
+                return new Employee(id,nameString, mailString, passwordString, type);
             }
         } catch (SQLException e) {
             throw new DbException(e.getMessage());

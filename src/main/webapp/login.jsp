@@ -6,10 +6,11 @@
     <jsp:param name="title" value="Login User"/>
 </jsp:include>
 <body class="bg-dark">
+<jsp:include page="header.jsp">
+    <jsp:param name="actual" value="Login"/>
+</jsp:include>
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column ">
-    <jsp:include page="header.jsp">
-        <jsp:param name="actual" value="Login"/>
-    </jsp:include>
+
 </div>
 <section class="vh-100">
     <div class="container h-100">

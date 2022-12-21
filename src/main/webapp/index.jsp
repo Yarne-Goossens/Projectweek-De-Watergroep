@@ -10,8 +10,9 @@
     <jsp:include page="header.jsp">
         <jsp:param name="actual" value="Home"/>
     </jsp:include>
-    <main>
-        <div class="row justify-content-center">
+    <main role="main" class="inner cover">
+
+        <div class="row justify-content-center container-fluid">
             <div class="text-center col-8 card text-black mb-5 mt-5" style="border-radius: 25px; width: 80%;">
                 <div class="card-body p-md-5">
                     <h2>Beste bezoeker</h2>
@@ -32,6 +33,7 @@
 
                     <a class="btn btn-primary btn-xl text-uppercase" role="button" href="Controller?command=LeakSubmissionForm">Meld een water lek!</a>
                 </div>
+                <p>Je kan ook een lek melden door te bellen naar : 02 238 96 99</p>
             </div>
         </div>
     </main>
