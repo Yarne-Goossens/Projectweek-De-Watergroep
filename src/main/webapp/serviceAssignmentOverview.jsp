@@ -26,9 +26,9 @@
                                              style="position: relative; height: 500px">
                                             <c:if test="${errors.size()!=0}">
                                                 <ul>
-                                                <c:forEach var="error" items="${errors}">
-                                                    <li>${error}</li>
-                                                </c:forEach>
+                                                    <c:forEach var="error" items="${errors}">
+                                                        <li>${error}</li>
+                                                    </c:forEach>
                                                 </ul>
                                             </c:if>
                                             <c:choose>
@@ -53,9 +53,12 @@
                                                                         <td class="text-left">${service.technician.name}</td>
                                                                     </c:otherwise>
                                                                 </c:choose>
-                                                                <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}git stat
-                                                                <td><a href="Controller?command=CloseService&id=${service.id}"><button> Afronden</button></a></td>
-                                                                </td>
+                                                                <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}</td>
+
+                                                                <c:if test="${sessionScope.employee.name eq service.technician && service.technician ne null}">
+                                                                    <td><a href="Controller?command=CloseAssignment&id=${service.id}"><button>Sluit Service</button></a></td>
+                                                                </c:if>
+
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="12" class="p-0 text-left bg-secondary">
