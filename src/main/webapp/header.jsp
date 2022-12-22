@@ -4,7 +4,6 @@
         <div class="container">
             <a href="Controller?command=Home"><img class="mt-2 mb-2" src="image/watergroep_logo_small.png"
                                                    alt="De WaterGroep" width="120" height="100"></a>
-
             <div class="float-right">
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -12,11 +11,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-
             <div class="container-fluid">
-
                 <div id="navbarSupportedContent" class="collapse navbar-collapse">
-
                     <ul class="navbar-nav">
                         <li class="nav-item" ${param.actual eq 'Home'?"id = actual":""}>
                             <a class="nav-link pt-5" style="font-size: 20px" id="goHome"
@@ -41,9 +37,7 @@
                                     <a class="nav-link pt-5" style="font-size: 20px"
                                        href="Controller?command=LogInPage">Login</a>
                                 </li>
-
                             </c:when>
-
                             <c:otherwise>
                                 <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
                                     <a class="nav-link pt-5" style="font-size: 20px"
@@ -51,6 +45,10 @@
                                 </li>
                             </c:otherwise>
                         </c:choose>
+                        <li class="nav-item" ${param.actual eq 'Overzicht'?"id = actual":""}>
+                            <a class="nav-link pt-5" style="font-size: 20px"
+                               href="Controller?command=Map">Monitor Kaart</a>
+                        </li>
                         <%--<li class="nav-item" ${param.actual eq 'Verstuur Email' ? "id = actual":""}>--%>
                         <%--<a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=SendEmailform">Verstuur Email</a></li>--%>
                         <%--<li class="nav-item" ${param.actual eq 'ShowPDF' ? "id = actual":""}>--%>
@@ -69,5 +67,4 @@
             </c:choose>
         </h2>
     </div>
-
 </header>
