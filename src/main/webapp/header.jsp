@@ -33,7 +33,7 @@
                         </li>
                         <li class="nav-item" ${param.actual eq 'Overzicht'?"id = actual":""}>
                             <a class="nav-link pt-5" style="font-size: 20px"
-                               href="Controller?command=Map">Map overzicht</a>
+                               href="Controller?command=Map">Monitor Kaart</a>
                         </li>
                         <%--                            <li class="nav-item" ${param.actual eq 'Verstuur Email' ? "id = actual":""}>--%>
                         <%--                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=SendEmailform">Verstuur Email</a></li>--%>
