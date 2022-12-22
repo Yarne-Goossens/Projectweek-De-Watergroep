@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="style/deWaterGroepStyle.scss">
 <header>
     <nav class="navbar navbar-light navbar-expand-md bg-white clean-navbar">
         <div class="container">
@@ -15,38 +16,38 @@
                 <div id="navbarSupportedContent" class="collapse navbar-collapse">
                     <ul class="navbar-nav">
                         <li class="nav-item" ${param.actual eq 'Home'?"id = actual":""}>
-                            <a class="nav-link pt-5" style="font-size: 20px" id="goHome"
+                            <a class="nav-wg pt-5" style="font-size: 20px" id="goHome"
                                href="Controller?command=Home">Home</a></li>
                         <li class="nav-item"  ${param.actual eq 'VoegToe'?"id = actual":""}>
-                            <a class="nav-link pt-5" style="font-size: 20px"
+                            <a class="nav-wg pt-5" style="font-size: 20px"
                                href="Controller?command=LeakSubmissionForm">Lek Melden</a></li>
                         <c:if test="${user.type =='KCC'}">
                             <li class="nav-item" ${param.actual eq 'SignalLeak'?"id = actual":""}>
-                                <a class="nav-link pt-5" style="font-size: 20px"
+                                <a class="nav-wg pt-5" style="font-size: 20px"
                                    href="Controller?command=OverviewLeaks">Overzicht Lekken</a></li>
                         </c:if>
                         <c:if test="${user.type =='TECHNICIAN' || user.type == 'KCC'}">
                             <li class="nav-item" ${param.actual eq 'Overzicht'?"id = actual":""}>
-                                <a class="nav-link pt-5" style="font-size: 20px"
+                                <a class="nav-wg pt-5" style="font-size: 20px"
                                    href="Controller?command=OverviewServiceAssignments">Overzicht Service Opdrachten</a>
                             </li>
                         </c:if>
                         <c:if test="${not empty user}">
                             <li class="nav-item" ${param.actual eq 'Overzicht'?"id = actual":""}>
-                                <a class="nav-link pt-5" style="font-size: 20px" href="Controller?command=Map">Monitor
+                                <a class="nav-wg pt-5" style="font-size: 20px" href="Controller?command=Map">Monitor
                                     Kaart</a>
                             </li>
                         </c:if>
                         <c:choose>
                             <c:when test="${empty user}">
                                 <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
-                                    <a class="nav-link pt-5" style="font-size: 20px"
+                                    <a class="nav-wg pt-5" style="font-size: 20px"
                                        href="Controller?command=LogInPage">Login</a>
                                 </li>
                             </c:when>
                             <c:otherwise>
                                 <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
-                                    <a class="nav-link pt-5" style="font-size: 20px"
+                                    <a class="nav-wg pt-5 " style="font-size: 20px"
                                        href="Controller?command=Logout">Logout</a>
                                 </li>
                             </c:otherwise>
@@ -64,7 +65,7 @@
         <h2>
             <c:choose>
                 <c:when test="${user!=null}">
-                    <p>U bent ingelogd als ${user.name} ${user.type}.</p>
+                    <p class="text-wggreen text-center">U bent ingelogd als ${user.name} ${user.type}.</p>
                 </c:when>
             </c:choose>
         </h2>

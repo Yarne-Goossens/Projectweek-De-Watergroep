@@ -8,7 +8,7 @@
     <jsp:param name="title" value="Overview Leaks"/>
 </jsp:include>
 
-<body class="bg-dark">
+<body class="bg-wglightblue">
 <jsp:include page="header.jsp">
     <jsp:param name="actual" value="Home"/>
 </jsp:include>
@@ -25,8 +25,8 @@
                                          style="position: relative; height: 500px">
                                         <c:choose>
                                             <c:when test="${leaks.size()!=0}">
-                                                <table class="table table-dark mb-0">
-                                                    <thead style="background-color: #393939;">
+                                                <table class="table table-wg mb-0">
+                                                    <thead>
                                                     <tr class="text-uppercase">
                                                         <th class="text-left" scope="col">ID</th>
                                                         <th class="text-left" scope="col">Locatie</th>
@@ -63,7 +63,7 @@
                                                         </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="12" class="p-0 text-left bg-secondary">
+                                                            <td colspan="12" class="p-0 text-left bg-white">
                                                                 <div id="collapse${leak.id}"
                                                                      class="accordian-body collapse">
                                                                     <ul>
@@ -99,6 +99,8 @@
         </section>
     </main>
 </div>
+
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

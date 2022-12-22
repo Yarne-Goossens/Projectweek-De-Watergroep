@@ -5,7 +5,7 @@
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Home"/>
 </jsp:include>
-<body class="bg-dark">
+<body class="bg-wglightblue">
 <div id="container">
     <jsp:include page="header.jsp">
         <jsp:param name="actual" value="Home"/>
@@ -19,7 +19,7 @@
                     <c:if test="${notAuthorized != null}">
                         <p class="font-weight-bold text-danger">${notAuthorized}</p>
                     </c:if>
-                    <h2>Beste bezoeker</h2>
+                    <h2 class="text-wggreen">Beste bezoeker</h2>
                     <p>
                         Wij zijn “De Watergroep”. Sinds 1913 staan wij in voor de watervoorziening in jouw buurt.
                         De infrastructuur bestaat uit een leidingennetwerk van meer dan 34.000 kilometer.
@@ -35,7 +35,7 @@
                     <p class="font-weight-bold">Want elke druppel telt!</p>
                     <p>Je kan een lek melden via onderstaande knop</p>
 
-                    <a class="btn btn-primary btn-xl text-uppercase" role="button" href="Controller?command=LeakSubmissionForm">Meld een water lek!</a>
+                    <a class="btn btn-wg btn-xl text-uppercase" role="button" href="Controller?command=LeakSubmissionForm">Meld een water lek!</a>
                 </div>
                 <p>Je kan ook een lek melden door te bellen naar : 02 238 96 99</p>
             </div>

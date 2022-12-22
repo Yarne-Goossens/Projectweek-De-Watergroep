@@ -5,7 +5,7 @@
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Lek melden"/>
 </jsp:include>
-<body class="bg-dark">
+<body class="bg-wglightblue">
 <div id="container" class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <jsp:include page="header.jsp">
         <jsp:param name="actual" value="SignalLeak"/>
@@ -14,7 +14,7 @@
     <main role="main" class="inner cover">
         <div class="row d-flex justify-content-center align-items-center h-100 container-fluid">
             <div class="card text-black mb-5 mt-5 w-70" style="border-radius: 25px; width: 80%;">
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Pas lek met id : ${editedLeak.id}</p>
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 text-wggreen" >Pas lek met id : ${editedLeak.id}</p>
                 <c:if test="${not empty errors}">
                     <div id="error" class="alert alert-danger">
                         <c:forEach items="${errors}" var="error">
@@ -82,7 +82,7 @@
                             </div>
                         </div>
                         <div class="d-flex flex-row align-items-center mb-4">
-                            <button type="submit" class="btn btn-primary btn-lg">Verander</button>
+                            <button type="submit" class="btn btn-wg btn-lg">Verander</button>
                         </div>
                     </form>
                 </div>
