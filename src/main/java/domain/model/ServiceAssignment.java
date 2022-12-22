@@ -16,6 +16,7 @@ public class ServiceAssignment {
     private String comment;
     private int serviceOpdrachtID;
     private Employee technician;
+    private AssignmentStatus status;
 
 
 
@@ -128,5 +129,13 @@ public class ServiceAssignment {
 
     public void setTechnician(Employee technician) {
         this.technician = technician;
+    }
+
+    public AssignmentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AssignmentStatus status) {
+        this.status = status;
     }
 }

@@ -7,6 +7,7 @@ public class LeakReport {
     private int id,postalCode, serviceAssignmentId;
 
     private String firstName,lastName,email,city,street,comment,houseNumber;
+    private LeakStatus status;
 
     public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street, int serviceAssignmentId) {
         this.id = id;
@@ -164,6 +165,13 @@ public class LeakReport {
     public int getServiceAssignmentId() {
         return serviceAssignmentId;
     }
-    //Setters with Request processing
+
+    public LeakStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(LeakStatus status) {
+        this.status = status;
+    }
 
 }
