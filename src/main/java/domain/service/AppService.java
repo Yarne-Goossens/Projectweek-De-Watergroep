@@ -103,4 +103,8 @@ public class AppService {
     public void addServiceAssignmentWithoutTechnician(ServiceAssignment newAssignment) {
         serviceAssignmentService.addServiceAssignmentWithoutTechnician(newAssignment);
     }
+
+    public void updateServiceAssignmentOfLeak(ServiceAssignment assignment){
+        leakReport.updateServiceAssignmentOfLeak(assignment);
+    }
 }
