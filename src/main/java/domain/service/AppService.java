@@ -3,6 +3,7 @@ package domain.service;
 import domain.model.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AppService {
     private LeakReportService leakReport = new LeakReportServiceDBSQL();
@@ -62,6 +63,10 @@ public class AppService {
        return leakReport.getLeakFromId(id);
     }
 
+    public List<LeakReport> getAllLeaksWithServiceAssignmentId(int id) {
+        return leakReport.getAllLeaksWithServiceAssignmentId(id) ;
+    }
+
     // ServiceAssignmentService
 
     private ServiceAssignmentService serviceAssignmentService = new ServiceAssignmentServiceDBSQL();
@@ -88,6 +93,8 @@ public class AppService {
     public int findIdFromAssignment(ServiceAssignment newAssignment) {
         return serviceAssignmentService.findIdFromAssignment(newAssignment);
     }
+
+
 }
 
 

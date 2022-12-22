@@ -38,6 +38,7 @@
                                                         <tr class="text-uppercase">
                                                             <th class="text-left" scope="col">Technieker/Opnemen</th>
                                                             <th class="text-left" scope="col">Locatie</th>
+                                                            <th class="text-left" scope="col">Sluit Service</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -54,10 +55,20 @@
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                                 <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}</td>
-                                                                <c:if test="${sessionScope.user.id eq service.technician.id && service.endDate == null}">
-                                                                    <td><a href="Controller?command=CloseAssignment&id=${service.id}"><button>Sluit Service</button></a></td>
-                                                                </c:if>
-
+                                                                <c:choose>
+                                                                    <c:when test="${(user.id == service.technician.id) && service.endDate == null}">
+                                                                        <td class="text-left"><button type="button" class="btn btn-primary" onclick="location.href='Controller?command=CloseAssignment&id=${service.id}'">Sluit Service</button></td>
+                                                                    </c:when>
+                                                                    <c:when test="${service.endDate != null}">
+                                                                        <td class="text-left">Afgesloten</td>
+                                                                    </c:when>
+                                                                    <c:when test="${service.technician == null}">
+                                                                        <td class="text-left">Open</td>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <td class="text-left">In behandeling</td>
+                                                                    </c:otherwise>
+                                                                </c:choose>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="12" class="p-0 text-left bg-secondary">

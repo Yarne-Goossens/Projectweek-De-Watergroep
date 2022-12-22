@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LeakReportServiceDBSQL implements LeakReportService {
     private Connection connection;
@@ -130,6 +131,40 @@ public class LeakReportServiceDBSQL implements LeakReportService {
             return null;
 
         }
+
+    @Override
+    public List<LeakReport> getAllLeaksWithServiceAssignmentId(int service_id) {
+        ArrayList<LeakReport> leakReports = new ArrayList<>();
+        String sql = String.format("SELECT * from %s.leak WHERE service_id = ?;", schema);
+        try {
+            PreparedStatement statement = getConnection().prepareStatement(sql);
+            statement.setInt(1, service_id);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+
+                int id = result.getInt("id");
+                String firstname = result.getString("first_name");
+                String lastname = result.getString("last_name");
+                String email = result.getString("email");
+                String comment = result.getString("comment");
+                String housenumber = result.getString("house_number");
+                String city = result.getString("city");
+                String street = result.getString("street");
+                int postal = result.getInt("postal");
+                int serviceAssignmentId = result.getInt("service_id");
+
+
+                LeakReport leakReport = new LeakReport(id, postal, housenumber, firstname, lastname, email, city, street, comment, serviceAssignmentId);
+                leakReports.add(leakReport);
+            }
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+
+        return leakReports;
+
+    }
+
 
     /**
      * Check the connection and reconnect when necessary
