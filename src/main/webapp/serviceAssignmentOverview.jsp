@@ -54,7 +54,7 @@
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                                 <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}</td>
-                                                                <c:if test="${sessionScope.user.name eq service.technician.name && service.endDate == null}">
+                                                                <c:if test="${sessionScope.user.id eq service.technician.id && service.endDate == null}">
                                                                     <td><a href="Controller?command=CloseAssignment&id=${service.id}"><button>Sluit Service</button></a></td>
                                                                 </c:if>
 
