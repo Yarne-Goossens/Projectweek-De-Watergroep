@@ -16,4 +16,6 @@ public interface ServiceAssignmentService {
     ArrayList<ServiceAssignment> getAllServiceAssignments();
 
     void updateServiceAssignment(ServiceAssignment serviceAssignment);
+
+    int findIdFromAssignment(ServiceAssignment newAssignment);
 }

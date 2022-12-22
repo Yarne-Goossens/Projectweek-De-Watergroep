@@ -185,6 +185,36 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
 
     }
 
+    @Override
+    public int findIdFromAssignment(ServiceAssignment newAssignment) {
+        String query = "select * from %s.service_assignment " +
+                "where city = ? and postal = ? and street = ? and house_number = ? and type = ? and start_date = ? " +
+                "order by id ";
+        query = String.format(query,schema);
+        int id = -1;
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
+            preparedStatement.setString(1,newAssignment.getCity());
+            preparedStatement.setString(2,String.valueOf(newAssignment.getPostalCode()));
+            preparedStatement.setString(3,newAssignment.getStreet());
+            preparedStatement.setString(4,newAssignment.getHouseNumber());
+            preparedStatement.setString(5,newAssignment.getType().toString().toUpperCase());
+            preparedStatement.setDate(6,Date.valueOf(newAssignment.getStartDate()));
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                id = resultSet.getInt("id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (id == -1) {
+            throw new DbException("findIdFromAssignment: id could not be found!");
+        }
+        return id;
+    }
+
     /**
      * Check the connection and reconnect when necessary
      * @return the connection with the db, if there is one

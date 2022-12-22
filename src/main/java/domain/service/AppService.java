@@ -85,6 +85,9 @@ public class AppService {
         serviceAssignmentService.closeAssignment(serviceAssignment);
     }
 
+    public int findIdFromAssignment(ServiceAssignment newAssignment) {
+        return serviceAssignmentService.findIdFromAssignment(newAssignment);
+    }
 }
 
 
