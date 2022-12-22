@@ -24,52 +24,47 @@
           </div>
         </c:if>
 
-
+        <form method="POST">
             <div class="d-flex flex-row align-items-center mb-4">
               <div class="form-outline flex-fill mb-0">
                 <label class="form-label" for="Plaats">Plaats: </label>
                 <input name="Plaats" type="text" id="Plaats" class="form-control"
-                       placeholder="Tielt-Winge" value="${cityPreviousValue}"/>
+                       placeholder="Tielt-Winge" value="${newAssignment.city}"/>
               </div>
             </div>
             <div class="d-flex flex-row align-items-center mb-4">
               <div class="form-outline flex-fill mb-0">
                 <label class="form-label" for="Postcode">Postcode: </label>
                 <input name="Postcode" type="text" id="Postcode" class="form-control"
-                       placeholder="3390" value="${postalPreviousValue}"/>
+                       placeholder="3390" value="${newAssignment.postalCode}"/>
               </div>
             </div>
             <div class="d-flex flex-row align-items-center mb-4">
               <div class="form-outline flex-fill mb-0">
                 <label class="form-label" for="Straat">Straat: </label>
                 <input name="Straat" type="text" id="Straat" class="form-control"
-                       placeholder="Dorpstraat" value="${streetPreviousValue}"/>
+                       placeholder="Dorpstraat" value="${newAssignment.street}"/>
               </div>
             </div>
             <div class="d-flex flex-row align-items-center mb-4">
               <div class="form-outline flex-fill mb-0">
                 <label class="form-label" for="HuisNummer">Huis nummer: </label>
                 <input name="HuisNummer" type="text" id="HuisNummer" class="form-control"
-                       placeholder="124" value="${houseNumberPreviousValue}"/>
+                       placeholder="124" value="${newAssignment.houseNumber}"/>
               </div>
             </div>
             <div class="d-flex flex-row align-items-center mb-4">
               <div class="form-outline flex-fill mb-0">
                 <label class="form-label" for="Commentaar">Opmerkingen:</label>
-                <textarea name="Commentaar" type="text" id="Commentaar" class="form-control" value="${commentaryPreviousValue}"></textarea>
+                <textarea name="Commentaar" type="text" id="Commentaar" class="form-control" value="${newAssignment.comment}"></textarea>
               </div>
             </div>
-          <div class="d-flex flex-row align-items-center mb-4">
-            <div class="form-outline flex-fill mb-0">
-              <label class="form-label" for="service_id">Service Opdracht Id:</label>
-              <textarea name="service_id" type="text" id="service_id" class="form-control"></textarea>
-            </div>
-          </div>
+
 
         <div class="d-flex flex-row align-items-center mb-4">
           <div class="form-outline flex-fill mb-0">
             <label class="form-label" for="startDate">Start datum: </label>
-            <textarea name="startDate" type="text" id="startDate" class="form-control" value="${startDatePreviousValue}"></textarea>
+            <input name="startDate" disabled id="startDate" class="form-control" value="${newAssignment.startDate}">
           </div>
         </div>
 
@@ -78,7 +73,7 @@
             <p class="form-group"><label for="type">Type</label>
               <select id="type" name="type">
                 <option value="Evaluatie Ter Plaatse">EVALUATIE</option>
-                <option value="Lek Herstel">LEKHERSTEL</option>
+                <option selected value="Lek Herstel">LEKHERSTEL</option>
 
               </select></p>
               </div>
