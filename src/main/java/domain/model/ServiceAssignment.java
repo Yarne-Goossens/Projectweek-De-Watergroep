@@ -13,7 +13,7 @@ public class ServiceAssignment {
     private LocalDate startDate;
     private LocalDate endDate;
     private String comment;
-
+    private int serviceOpdrachtID;
     private Employee technician;
 
     public ServiceAssignment(int id, String city, int postalCode, String street, String houseNumber, AssignmentType type, LocalDate startDate, LocalDate endDate, String comment, Employee technician) {
@@ -27,6 +27,14 @@ public class ServiceAssignment {
         setEndDate(endDate);
         setComment(comment);
         setTechnician(technician);
+    }
+
+    public int getServiceOpdrachtID() {
+        return serviceOpdrachtID;
+    }
+
+    public void setServiceOpdrachtID(int serviceOpdrachtID) {
+        this.serviceOpdrachtID = serviceOpdrachtID;
     }
 
     public ServiceAssignment(){

@@ -1,11 +1,13 @@
 package ui.controller;
 
 import domain.model.AssignmentType;
+import domain.model.Employee;
 import domain.model.LeakReport;
 import domain.model.ServiceAssignment;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,100 +17,90 @@ public class HandleNewAssignment extends RequestHandler {
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
         ArrayList<String> errors = new ArrayList<>();
         ServiceAssignment newAssignment = new ServiceAssignment();
-        String idString = request.getParameter("id");
-        setPlace(newAssignment, request, errors);
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        setCity(newAssignment, request, errors);
         setPostal(newAssignment, request, errors);
         setStreet(newAssignment, request, errors);
-        setHuisnr(newAssignment, request, errors);
+        setHouseNumber(newAssignment, request, errors);
         setAssignmentType(newAssignment, request, errors);
         setComment(newAssignment, request, errors);
-        setStartDate(newAssignment, request, errors);
+        newAssignment.setStartDate(LocalDate.now());
+        newAssignment.setServiceOpdrachtID(id);
+        Employee user = (Employee) request.getSession().getAttribute("user");
+        newAssignment.setTechnician(user);
         if (errors.size() == 0) {
             try {
                 service.addServiceAssignment(newAssignment);
-                int assignmentId = service.findIdFromAssignment(newAssignment);
-                LeakReport updateLeakreport = service.getLeakFromId(Integer.parseInt(idString));
-                updateLeakreport.setAssignmentId(assignmentId);
-                service.updateLeak(updateLeakreport);
                 return "Controller?command=OverviewServiceAssignments";
+
             } catch (Exception e) {
                 errors.add(e.getMessage());
+                request.setAttribute("errors", errors);
+                return "Controller?command=NewAssignment";
             }
+        }else {
+            request.setAttribute("errors", errors);
+            return "Controller?command=NewAssignment";
         }
-        request.setAttribute("errors", errors);
-        return "Controller?command=CreateServiceAssignmentForm&id=" + idString;
     }
 
 
-    public void setPlace(ServiceAssignment serviceAssignment, HttpServletRequest request, ArrayList<String> errors) {
-        String place = request.getParameter("plaats");
+    private void setCity(ServiceAssignment serviceAssignment, HttpServletRequest request, ArrayList<String> errors) {
+        String place = request.getParameter("city");
         try {
             serviceAssignment.setCity(place);
-            request.setAttribute("placePrevious", place);
         } catch (IllegalArgumentException e) {
             errors.add(e.getMessage());
         }
     }
 
-    public void setPostal(ServiceAssignment serviceAssignment, HttpServletRequest request, ArrayList<String> errors) {
-        String postalString = request.getParameter("Postcode");
+    private void setPostal(ServiceAssignment serviceAssignment, HttpServletRequest request, ArrayList<String> errors) {
         try {
-            int postal = Integer.parseInt(postalString);
-            serviceAssignment.setPostalCode(postal);
+            int p = Integer.parseInt(request.getParameter("postal"));
+            serviceAssignment.setPostalCode(p);
         } catch (Exception e) {
-            errors.add(e.getMessage());
+            errors.add("Geen geldig postcode");
         }
     }
 
-    public void setStreet(ServiceAssignment serviceAssignment, HttpServletRequest request, ArrayList<String> errors) {
-        String street = request.getParameter("straat");
+    private void setStreet(ServiceAssignment serviceAssignment, HttpServletRequest request, ArrayList<String> errors) {
+        String street = request.getParameter("street");
         try {
             serviceAssignment.setStreet(street);
-            request.setAttribute("streetPrevious", street);
         } catch (IllegalArgumentException e) {
             errors.add(e.getMessage());
         }
     }
 
-    public void setHuisnr(ServiceAssignment serviceAssignment, HttpServletRequest request, ArrayList<String> errors) {
-        String nr = request.getParameter("huisnr");
+    private void setHouseNumber(ServiceAssignment serviceAssignment, HttpServletRequest request, ArrayList<String> errors) {
+        String nr = request.getParameter("houseNumber");
         try {
             serviceAssignment.setHouseNumber(nr);
-            request.setAttribute("nrPrevious", nr);
         } catch (IllegalArgumentException e) {
             errors.add(e.getMessage());
         }
     }
 
-    public void setAssignmentType(ServiceAssignment serviceAssignment, HttpServletRequest request, ArrayList<String> errors) {
+    private void setAssignmentType(ServiceAssignment serviceAssignment, HttpServletRequest request, ArrayList<String> errors) {
         String typeString = request.getParameter("type");
         try {
             AssignmentType type = AssignmentType.valueOf(typeString);
             serviceAssignment.setType(type);
-            request.setAttribute("typePrevious", typeString);
         } catch (Exception e) {
             errors.add(e.getMessage());
         }
     }
 
-    public void setComment(ServiceAssignment serviceAssignment, HttpServletRequest request, ArrayList<String> errors) {
+    private void setComment(ServiceAssignment serviceAssignment, HttpServletRequest request, ArrayList<String> errors) {
         String comment = request.getParameter("comment");
         try {
             serviceAssignment.setComment(comment);
-            request.setAttribute("commentPrevious", comment);
         } catch (IllegalArgumentException e) {
             errors.add(e.getMessage());
         }
     }
 
-    public void setStartDate(ServiceAssignment serviceAssignment, HttpServletRequest request, ArrayList<String> errors) {
-        LocalDate startDate = LocalDate.now();
-        try {
-            serviceAssignment.setStartDate(startDate);
-        } catch (IllegalArgumentException e) {
-            errors.add(e.getMessage());
-        }
-    }
 
 
 }

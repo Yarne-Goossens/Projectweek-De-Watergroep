@@ -72,8 +72,8 @@
               <div class="form-outline flex-fill mb-0">
             <p class="form-group"><label for="type">Type</label>
               <select id="type" name="type">
-                <option value="Evaluatie Ter Plaatse">EVALUATIE</option>
-                <option selected value="Lek Herstel">LEKHERSTEL</option>
+                <option value="EVALUATIE">EVALUATIE</option>
+                <option selected value="LEKHERSTEL">LEKHERSTEL</option>
 
               </select></p>
               </div>
@@ -82,7 +82,7 @@
             <div class="d-flex flex-row align-items-center mb-4">
               <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
             </div>
-          <input type="hidden" value="${newAssignment.id}">
+          <input type="hidden" value="${newAssignment.id}" name="id">
           </form>
         </div>
       </div>

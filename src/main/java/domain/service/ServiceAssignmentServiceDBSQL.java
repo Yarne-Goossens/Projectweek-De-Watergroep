@@ -22,7 +22,7 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
 
     @Override
     public void addServiceAssignment(ServiceAssignment serviceAssignment) {
-        String query = String.format("insert into %s.service_assignment (city, postal, street, house_number, type, start_date, comment) values (?,?,?,?,?,?,?)", schema);
+        String query = String.format("insert into %s.service_assignment (city, postal, street, house_number, type, start_date, comment,service_opdracht_id ) values (?,?,?,?,?,?,?,?)", schema);
         try{
             PreparedStatement sql = getConnection().prepareStatement(query);
             sql.setString(1, serviceAssignment.getCity());
@@ -32,6 +32,11 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
             sql.setString(5, serviceAssignment.getType().toString());
             sql.setDate(6, Date.valueOf(serviceAssignment.getStartDate()));
             sql.setString(7, serviceAssignment.getComment());
+            if(serviceAssignment.getServiceOpdrachtID() == 0){
+                sql.setNull(8, Types.INTEGER);
+            }else {
+                sql.setInt(8, serviceAssignment.getServiceOpdrachtID());
+            }
             sql.execute();
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
