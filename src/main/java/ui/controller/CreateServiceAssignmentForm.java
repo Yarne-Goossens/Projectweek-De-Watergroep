@@ -20,6 +20,7 @@ public class CreateServiceAssignmentForm extends RequestHandler {
             request.setAttribute("straatPrevious",leak.getStreet());
             request.setAttribute("huisnrPrevious",leak.getHouseNumber());
             request.setAttribute("commentPrevious",leak.getComment());
+
         }
         request.setAttribute("serviceAssignments",service.getAllServiceAssignments());
         return "serviceAssignmentForm.jsp";
