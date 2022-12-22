@@ -38,6 +38,7 @@
                                                         <tr class="text-uppercase">
                                                             <th class="text-left" scope="col">Technieker/Opnemen</th>
                                                             <th class="text-left" scope="col">Locatie</th>
+                                                            <th class="text-left" colspan="2" scope="colgroup">Actie</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -57,7 +58,9 @@
                                                                 <c:if test="${sessionScope.user.id eq service.technician.id && service.endDate == null}">
                                                                     <td><a href="Controller?command=CloseAssignment&id=${service.id}"><button>Sluit Service</button></a></td>
                                                                 </c:if>
-
+                                                                <c:if test="${sessionScope.user.id eq service.technician.id && service.endDate == null}">
+                                                                    <td><a href="Controller?command=CancelAssignment&id=${service.id}"><button>Annuleer Service</button></a></td>
+                                                                </c:if>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="12" class="p-0 text-left bg-secondary">
@@ -68,8 +71,9 @@
                                                                             <c:if test="${service.endDate!=null}">
                                                                                 <li>Eind datum: ${service.endDate}</li>
                                                                             </c:if>
-                                                                            <li>Type: ${service.type}</li>
-                                                                            <c:if test="${service.comment!=null}">
+                                                                            <li>Type: ${service.type.stringValue}</li>
+                                                                            <li>Status: ${service.status.stringValue}</li>
+                                                                            <c:if test="${service.comment!=null && service.comment != ''}">
                                                                                 <li>Opmerkingen: ${service.comment}</li>
                                                                             </c:if>
                                                                         </ul>
