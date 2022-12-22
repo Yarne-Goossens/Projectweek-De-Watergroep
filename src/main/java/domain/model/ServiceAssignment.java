@@ -1,6 +1,7 @@
 package domain.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ServiceAssignment {
 
@@ -15,6 +16,8 @@ public class ServiceAssignment {
     private String comment;
 
     private Employee technician;
+
+
 
     public ServiceAssignment(int id, String city, int postalCode, String street, String houseNumber, AssignmentType type, LocalDate startDate, LocalDate endDate, String comment, Employee technician) {
         setId(id);

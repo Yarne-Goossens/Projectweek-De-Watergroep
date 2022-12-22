@@ -11,6 +11,7 @@ public class OverviewServiceAssignments extends RequestHandler{
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         Utility.checkRole(request, new EmployeeType[]{EmployeeType.KCC,EmployeeType.TECHNICIAN});
         request.setAttribute("serviceAssignments",service.getAllServiceAssignments());
+        request.setAttribute("leaks",service.getAllLeaks());
         return "serviceAssignmentOverview.jsp";
     }
 }

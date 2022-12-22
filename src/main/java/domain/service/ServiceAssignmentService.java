@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public interface ServiceAssignmentService {
 
     void addServiceAssignment(ServiceAssignment serviceAssignment);
+    ArrayList getLeakAssignedToSOFromId(int serviceId);
 
     ServiceAssignment findServiceAssignmentById(int id);
 
