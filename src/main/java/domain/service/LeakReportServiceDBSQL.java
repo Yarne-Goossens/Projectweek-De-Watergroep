@@ -2,12 +2,10 @@ package domain.service;
 
 
 import domain.model.LeakReport;
+import domain.model.ServiceAssignment;
 import util.DbConnectionService;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class LeakReportServiceDBSQL implements LeakReportService {
@@ -98,6 +96,20 @@ public class LeakReportServiceDBSQL implements LeakReportService {
                 throw new DbException(e.getMessage());
             }
         }
+
+    @Override
+    public void updateServiceAssignmentOfLeak(ServiceAssignment serviceAssignment) {
+        String querry = "UPDATE %s.leak SET service_id = ? WHERE service_id = ? ";
+        String query = String.format(querry,schema);
+        try{
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
+            preparedStatement.setInt(1, serviceAssignment.getId());
+            preparedStatement.setInt(2, serviceAssignment.getId());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+    }
 
 
     @Override

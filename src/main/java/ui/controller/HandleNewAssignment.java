@@ -31,6 +31,7 @@ public class HandleNewAssignment extends RequestHandler {
         if (errors.size() == 0) {
             try {
                 service.addServiceAssignmentWithoutTechnician(newAssignment);
+                service.updateServiceAssignment();
                 return "Controller?command=OverviewServiceAssignments";
 
             } catch (Exception e) {
