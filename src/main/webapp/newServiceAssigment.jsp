@@ -24,39 +24,39 @@
           </div>
         </c:if>
 
-        <form method="POST">
+        <form method="POST" action="Controller?command=HandleNewAssignment">
             <div class="d-flex flex-row align-items-center mb-4">
               <div class="form-outline flex-fill mb-0">
                 <label class="form-label" for="Plaats">Plaats: </label>
-                <input name="Plaats" type="text" id="Plaats" class="form-control"
+                <input name="city" type="text" id="Plaats" class="form-control"
                        placeholder="Tielt-Winge" value="${newAssignment.city}"/>
               </div>
             </div>
             <div class="d-flex flex-row align-items-center mb-4">
               <div class="form-outline flex-fill mb-0">
                 <label class="form-label" for="Postcode">Postcode: </label>
-                <input name="Postcode" type="text" id="Postcode" class="form-control"
+                <input name="postal" type="text" id="Postcode" class="form-control"
                        placeholder="3390" value="${newAssignment.postalCode}"/>
               </div>
             </div>
             <div class="d-flex flex-row align-items-center mb-4">
               <div class="form-outline flex-fill mb-0">
                 <label class="form-label" for="Straat">Straat: </label>
-                <input name="Straat" type="text" id="Straat" class="form-control"
+                <input name="street" type="text" id="Straat" class="form-control"
                        placeholder="Dorpstraat" value="${newAssignment.street}"/>
               </div>
             </div>
             <div class="d-flex flex-row align-items-center mb-4">
               <div class="form-outline flex-fill mb-0">
                 <label class="form-label" for="HuisNummer">Huis nummer: </label>
-                <input name="HuisNummer" type="text" id="HuisNummer" class="form-control"
+                <input name="houseNumber" type="text" id="HuisNummer" class="form-control"
                        placeholder="124" value="${newAssignment.houseNumber}"/>
               </div>
             </div>
             <div class="d-flex flex-row align-items-center mb-4">
               <div class="form-outline flex-fill mb-0">
                 <label class="form-label" for="Commentaar">Opmerkingen:</label>
-                <textarea name="Commentaar" type="text" id="Commentaar" class="form-control" value="${newAssignment.comment}"></textarea>
+                <textarea name="comment"  id="Commentaar" class="form-control" value="${newAssignment.comment}"></textarea>
               </div>
             </div>
 
@@ -82,6 +82,7 @@
             <div class="d-flex flex-row align-items-center mb-4">
               <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
             </div>
+          <input type="hidden" value="${newAssignment.id}">
           </form>
         </div>
       </div>
