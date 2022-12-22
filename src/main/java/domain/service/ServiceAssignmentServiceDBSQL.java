@@ -222,6 +222,30 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
         return id;
     }
 
+    @Override
+    public void addServiceAssignmentWithoutTechnician(ServiceAssignment serviceAssignment) {
+        String query = String.format("insert into %s.service_assignment (city, postal, street, house_number, type, start_date, comment, service_opdracht_id ) values (?,?,?,?,?,?,?,?)", schema);
+        try{
+            PreparedStatement sql = getConnection().prepareStatement(query);
+            sql.setString(1, serviceAssignment.getCity());
+            sql.setString(2, String.valueOf(serviceAssignment.getPostalCode()));
+            sql.setString(3, serviceAssignment.getStreet());
+            sql.setString(4, serviceAssignment.getHouseNumber());
+            sql.setString(5, serviceAssignment.getType().toString());
+            sql.setDate(6, Date.valueOf(serviceAssignment.getStartDate()));
+            sql.setString(7, serviceAssignment.getComment());
+
+            if(serviceAssignment.getServiceOpdrachtID() == 0){
+                sql.setNull(8, Types.INTEGER);
+            }else {
+                sql.setInt(8, serviceAssignment.getServiceOpdrachtID());
+            }
+            sql.execute();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+    }
+
     /**
      * Check the connection and reconnect when necessary
      * @return the connection with the db, if there is one

@@ -28,10 +28,9 @@ public class HandleNewAssignment extends RequestHandler {
         newAssignment.setStartDate(LocalDate.now());
         newAssignment.setServiceOpdrachtID(id);
         Employee user = (Employee) request.getSession().getAttribute("user");
-        newAssignment.setTechnician(user);
         if (errors.size() == 0) {
             try {
-                service.addServiceAssignment(newAssignment);
+                service.addServiceAssignmentWithoutTechnician(newAssignment);
                 return "Controller?command=OverviewServiceAssignments";
 
             } catch (Exception e) {
