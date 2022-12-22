@@ -7,36 +7,19 @@ import java.util.ArrayList;
 public class AppService {
     private LeakReportService leakReport = new LeakReportServiceDBSQL();
     private EmailService emailService = new MailService();
-    private AnimalService animals = new AnimalServiceDBSQL();
     private EmployeeService employees = new EmployeeServiceDBSQL();
 
     public void addLeakReport(LeakReport leak) {
         leakReport.addLeakReport(leak);
     }
 
-    public Animal findLeakWithReport(String naam) {
-        return animals.findAnimalWithName(naam);
-    }
-
     public ArrayList<LeakReport> getAllLeaks() {
         return leakReport.getAllLeakReports();
     }
 
-
-    public void addAnimal(Animal animal) {
-        animals.addAnimal(animal);
-    }
-
-
-    public Animal findAnimalWithName(String naam) {
-        return animals.findAnimalWithName(naam);
-    }
-
-
     public void sendEmail(Email email) {
         emailService.sendEmail(email);
     }
-
 
     // userService
     public void addEmployee(Employee employee) {
