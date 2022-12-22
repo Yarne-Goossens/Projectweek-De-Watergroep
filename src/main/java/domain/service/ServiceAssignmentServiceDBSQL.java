@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
 
-    private final Connection connection;
+    private Connection connection;
     private final String schema;
 
     public ServiceAssignmentServiceDBSQL() {
@@ -88,6 +88,21 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
     }
 
     @Override
+    public void closeAssignment(ServiceAssignment serviceAssignment) {
+        String querry = "UPDATE %s.service_assignment SET end_date = ?  WHERE id = ? ";
+        querry = String.format(querry,schema);
+        try{
+            PreparedStatement preparedStatement = getConnection().prepareStatement(querry);
+            preparedStatement.setDate(1, Date.valueOf(LocalDate.now()));
+            preparedStatement.setInt(2, serviceAssignment.getId());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+
+    }
+
+    @Override
     public ArrayList<ServiceAssignment> getAllServiceAssignments() {
         ArrayList<ServiceAssignment> serviceAssignments = new ArrayList<>();
         String querry = "select " +
@@ -116,6 +131,8 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
                     endDate = null;
                 }
                 String comment = resultSet.getString("comment");
+
+
                 String naamTechnician = resultSet.getString("name");
                 String emailTechnician = resultSet.getString("email");
                 String passwordTechnician = resultSet.getString("password");
@@ -128,6 +145,7 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
 
                 ServiceAssignment serviceAssignment = new ServiceAssignment(id, city, postal, street, houseNumber, type, startDate, endDate, comment, technician);
                 serviceAssignments.add(serviceAssignment);
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -172,6 +190,40 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
      * @return the connection with the db, if there is one
      */
     private Connection getConnection() {
+        checkConnection();
         return this.connection;
+    }
+
+    /**
+     * Check if the connection is still open
+     * When connection has been closed: reconnect
+     */
+    private void checkConnection() {
+        try {
+            if (this.connection == null || this.connection.isClosed()) {
+                System.out.println("Connection has been closed");
+                this.reConnect();
+            }
+        } catch (SQLException throwables) {
+            throw new ServiceException(throwables.getMessage());
+        }
+    }
+
+    /**
+     * Reconnects application to db
+     */
+    private void reConnect() {
+        if (this.connection != null) {
+            DbConnectionService.disconnect();   // close connection with db properly
+        }
+        DbConnectionService.reconnect();      // reconnect application to db server
+        this.connection = DbConnectionService.getDbConnection();    // assign connection to DBSQL
+    }
+    /**
+     * Prepare Statement
+     */
+    private PreparedStatement getPreparedStatement(String sql) throws SQLException {
+
+        return getConnection().prepareStatement(sql);
     }
 }

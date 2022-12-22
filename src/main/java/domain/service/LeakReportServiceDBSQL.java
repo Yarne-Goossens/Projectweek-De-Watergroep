@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LeakReportServiceDBSQL implements LeakReportService {
-    private final Connection connection;
+    private Connection connection;
     private final String schema;
 
     public LeakReportServiceDBSQL() {
@@ -128,8 +128,46 @@ public class LeakReportServiceDBSQL implements LeakReportService {
 
         }
 
+    /**
+     * Check the connection and reconnect when necessary
+     * @return the connection with the db, if there is one
+     */
     private Connection getConnection() {
+        checkConnection();
         return this.connection;
+    }
+
+    /**
+     * Check if the connection is still open
+     * When connection has been closed: reconnect
+     */
+    private void checkConnection() {
+        try {
+            if (this.connection == null || this.connection.isClosed()) {
+                System.out.println("Connection has been closed");
+                this.reConnect();
+            }
+        } catch (SQLException throwables) {
+            throw new ServiceException(throwables.getMessage());
+        }
+    }
+
+    /**
+     * Reconnects application to db
+     */
+    private void reConnect() {
+        if (this.connection != null) {
+            DbConnectionService.disconnect();   // close connection with db properly
+        }
+        DbConnectionService.reconnect();      // reconnect application to db server
+        this.connection = DbConnectionService.getDbConnection();    // assign connection to DBSQL
+    }
+    /**
+     * Prepare Statement
+     */
+    private PreparedStatement getPreparedStatement(String sql) throws SQLException {
+
+        return getConnection().prepareStatement(sql);
     }
 }
 

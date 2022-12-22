@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class EmployeeServiceDBSQL implements EmployeeService {
 
-    private final Connection connection;
+    private Connection connection;
     private final String schema;
 
     public EmployeeServiceDBSQL() {
@@ -23,7 +23,7 @@ public class EmployeeServiceDBSQL implements EmployeeService {
     public void addEmployee(Employee employee) {
         String query = String.format("insert into %s.employee (name,email,password,type) values (?,?,?,?)", schema);
         try{
-            PreparedStatement sql = getConnection().prepareStatement(query);
+            PreparedStatement sql = getPreparedStatement(query);
             sql.setString(1, employee.getName());
             sql.setString(2, employee.getEmail());
             sql.setString(3, employee.getPassword());
@@ -38,7 +38,7 @@ public class EmployeeServiceDBSQL implements EmployeeService {
     public Employee findEmployeeWithEmail(String email) {
         String query = String.format("select * from %s.employee where email=?", schema);
         try {
-            PreparedStatement statement = getConnection().prepareStatement(query);
+            PreparedStatement statement = getPreparedStatement(query);
             statement.setString(1, email);
             ResultSet result =  statement.executeQuery();
             while (result.next()){
@@ -60,11 +60,46 @@ public class EmployeeServiceDBSQL implements EmployeeService {
         return null;
     }
 
+    
     /**
      * Check the connection and reconnect when necessary
      * @return the connection with the db, if there is one
      */
     private Connection getConnection() {
+        checkConnection();
         return this.connection;
+    }
+
+    /**
+     * Check if the connection is still open
+     * When connection has been closed: reconnect
+     */
+    private void checkConnection() {
+        try {
+            if (this.connection == null || this.connection.isClosed()) {
+                System.out.println("Connection has been closed");
+                this.reConnect();
+            }
+        } catch (SQLException throwables) {
+            throw new ServiceException(throwables.getMessage());
+        }
+    }
+
+    /**
+     * Reconnects application to db
+     */
+    private void reConnect() {
+        if (this.connection != null) {
+            DbConnectionService.disconnect();   // close connection with db properly
+        }
+        DbConnectionService.reconnect();      // reconnect application to db server
+        this.connection = DbConnectionService.getDbConnection();    // assign connection to DBSQL
+    }
+    /**
+     * Prepare Statement
+     */
+    private PreparedStatement getPreparedStatement(String sql) throws SQLException {
+
+        return getConnection().prepareStatement(sql);
     }
 }
