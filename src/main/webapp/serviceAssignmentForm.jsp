@@ -4,7 +4,7 @@
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Assignment Service"/>
 </jsp:include>
-<body class="bg-dark">
+<body class="bg-wglightblue">
 <div id="container">
     <jsp:include page="header.jsp">
         <jsp:param name="actual" value="AssignmentService"/>
@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="card text-black mt-5 mb-5" style="border-radius: 25px;">
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Service Opdracht Aanmaken voor
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 text-wggreen">Service Opdracht Aanmaken voor
                     id: ${editedLeak.id}</p>
                 <c:if test="${not empty errors}">
                     <div id="error" class="alert alert-danger">
@@ -94,20 +94,83 @@
                         <input type="hidden" name="id" value="${editedLeak.id}">
                         <input type="hidden" name="command" value="CreateServiceAssignment">
                         <div class="form-outline flex-fill mb-4">
-                            <button type="submit" class="btn btn-primary btn-lg">Maak aan</button>
+                            <button type="submit" class="btn btn-wg btn-lg">Maak aan</button>
                         </div>
                     </form>
-<%--                    <form action="Controller" method="get">--%>
-<%--                        <input type="hidden" name="id" value="${editedLeak.id}">--%>
-<%--                        <div class="form-outline flex-fill mb-4">--%>
-<%--                            <button type="submit" class="btn btn-primary btn-lg">Wijs toe</button>--%>
-<%--                        </div>--%>
-<%--                    </form>--%>
+                            <p class="text-center h1 fw-bold mx-1 mx-md-4 mt-4">Lek met id ${editedLeak.id}
+                                toewijzen aan
+                                bestaande service opdracht</p>
+                            <div class="mx-1 mx-md-4">
+                                <div class="table-responsive table-scroll"
+                                     style="position: relative; height: 500px">
+                                    <c:choose>
+                                        <c:when test="${serviceAssignments.size()!=0}">
+                                            <table class="table table-dark mb-0">
+                                                <thead style="background-color: #393939;">
+                                                <tr class="text-uppercase">
+                                                    <th class="text-left" scope="col">Locatie</th>
+                                                    <th scope="col">Link aan SO</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <c:forEach var="service" items="${serviceAssignments}">
+                                                    <tr data-toggle="collapse" data-target="#collapse${service.id}"
+                                                        class="accordion-toggle">
+
+                                                        <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-primary"
+                                                                    onclick="location.href='Controller?command=LeakAddToServiceAssignment&serviceId=${service.id}&leakId=${editedLeak.id}'">
+                                                                Link aan SO
+                                                            </button>
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="12" class="p-0 text-left bg-secondary">
+                                                            <div id="collapse${service.id}"
+                                                                 class="accordian-body collapse">
+                                                                <ul>
+                                                                    <li>Service Opdracht Id: ${service.id}</li>
+                                                                    <li>Start datum: ${service.startDate}</li>
+                                                                    <c:if test="${service.endDate!=null}">
+                                                                        <li>Eind datum: ${service.endDate}</li>
+                                                                    </c:if>
+                                                                    <li>Type: ${service.type}</li>
+                                                                    <c:if test="${service.comment!=null}">
+                                                                        <li>Opmerkingen: ${service.comment}</li>
+                                                                    </c:if>
+
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p>Er zijn geen service opdrachten</p>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </div>
-
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>

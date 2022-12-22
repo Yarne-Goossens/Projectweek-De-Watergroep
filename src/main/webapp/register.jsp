@@ -3,7 +3,7 @@
 <jsp:include page="headbootstrap.jsp">
     <jsp:param name="title" value="Register employee"/>
 </jsp:include>
-<body class=" bg-dark ">
+<body class="bg-wglightblue">
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column ">
     <header class="masthead mb-auto text-center text-white">
         <div class="inner">
@@ -26,7 +26,7 @@
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 text-wggreen">Sign up</p>
 
                                 <form class="mx-1 mx-md-4">
 
@@ -77,7 +77,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                        <button type="button" class="btn btn-primary btn-lg">Register</button>
+                                        <button type="button" class="btn btn-wg btn-lg">Register</button>
                                     </div>
 
                                 </form>

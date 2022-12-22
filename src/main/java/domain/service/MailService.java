@@ -11,7 +11,7 @@ public class MailService implements EmailService {
     @Override
     public void sendEmail(Email email) {
         // Sender's email ID needs to be mentioned
-        String from = "projectweek2022groep14a@gmail.com";
+        String from = "projectweek2022groep2a@gmail.com";
 
         // Get system properties
         Properties properties = System.getProperties();
