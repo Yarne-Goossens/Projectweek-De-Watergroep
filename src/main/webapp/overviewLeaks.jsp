@@ -45,7 +45,7 @@
                                                                     Maak SO aan
                                                                 </button>
                                                                 <button type="button" class="btn btn-primary"
-                                                                        onclick="location.href='Controller?command=CancelLeak&id=${service.id}'">
+                                                                        onclick="location.href='Controller?command=CancelLeak&id=${leak.id}'">
                                                                     Annuleer Lek
                                                                 </button>
                                                             </td>
