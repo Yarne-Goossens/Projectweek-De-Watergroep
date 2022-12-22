@@ -44,10 +44,12 @@
                                                                         onclick="location.href='Controller?command=CreateServiceAssignmentForm&id=${leak.id}'">
                                                                     Maak SO aan
                                                                 </button>
-                                                                <button type="button" class="btn btn-primary"
-                                                                        onclick="location.href='Controller?command=CancelLeak&id=${leak.id}'">
-                                                                    Annuleer Lek
-                                                                </button>
+                                                                <c:if test="${leak.status != 'GEANNULEERD'}">
+                                                                    <button type="button" class="btn btn-primary"
+                                                                            onclick="location.href='Controller?command=CancelLeak&id=${leak.id}'">
+                                                                        Annuleer Lek
+                                                                    </button>
+                                                                </c:if>
                                                             </td>
                                                         </tr>
                                                         <tr>

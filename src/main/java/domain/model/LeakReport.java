@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class LeakReport {
     private int id,postalCode, serviceAssignmentId;
     private String firstName,lastName,email,city,street,comment,houseNumber;
-    private LekStatus status;
+    private LeakStatus status;
 
     public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street, int serviceAssignmentId) {
         this.id = id;
@@ -165,11 +165,11 @@ public class LeakReport {
         return serviceAssignmentId;
     }
 
-    public LekStatus getStatus() {
+    public LeakStatus getStatus() {
         return status;
     }
 
-    public void setStatus(LekStatus status) {
+    public void setStatus(LeakStatus status) {
         this.status = status;
     }
 

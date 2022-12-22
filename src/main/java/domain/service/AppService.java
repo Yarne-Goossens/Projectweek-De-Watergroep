@@ -62,6 +62,10 @@ public class AppService {
        return leakReport.getLeakFromId(id);
     }
 
+    public void updateLeakStatus(int id, LeakStatus status){
+        leakReport.updateLeakStatus(id, status);
+    }
+
     // ServiceAssignmentService
 
     private ServiceAssignmentService serviceAssignmentService = new ServiceAssignmentServiceDBSQL();
@@ -81,12 +85,16 @@ public class AppService {
         return serviceAssignmentService.getAllServiceAssignments();
     }
 
-    public  void closeAssignment(ServiceAssignment serviceAssignment){
+    public void closeAssignment(ServiceAssignment serviceAssignment){
         serviceAssignmentService.closeAssignment(serviceAssignment);
     }
 
     public int findIdFromAssignment(ServiceAssignment newAssignment) {
         return serviceAssignmentService.findIdFromAssignment(newAssignment);
+    }
+
+    public void updateAssignmentStatus(int id, AssignmentStatus status){
+        serviceAssignmentService.updateAssignmentStatus(id, status);
     }
 }
 

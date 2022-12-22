@@ -1,11 +1,11 @@
 package domain.model;
 
-public enum LekStatus {
+public enum LeakStatus {
      OPEN("Open"),VERWERKT("Verwerkt"), GEANNULEERD("Geannuleerd");
 
      private final String stringValue;
 
-     LekStatus(String stringValue){this.stringValue = stringValue;}
+     LeakStatus(String stringValue){this.stringValue = stringValue;}
 
     public String getStringValue(){return stringValue;}
 }
