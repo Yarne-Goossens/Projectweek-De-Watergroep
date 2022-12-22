@@ -37,6 +37,13 @@
                                     Kaart</a>
                             </li>
                         </c:if>
+
+                        <c:if test="${user.type =='TECHNICIAN'}">
+                            <li class="nav-item" ${param.actual eq 'Opdracht zonder lek'?"id = actual":""}>
+                                <a class="nav-link pt-5" style="font-size: 20px"
+                                   href="Controller?command=ServiceAssignmentWithoutLek">Opdracht zonder lek</a>
+                            </li>
+                        </c:if>
                         <c:choose>
                             <c:when test="${empty user}">
                                 <li class="nav-item" ${param.actual eq 'Login' ? "id = actual":""}>
