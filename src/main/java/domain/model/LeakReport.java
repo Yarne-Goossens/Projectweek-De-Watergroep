@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 public class LeakReport {
     private int id,postalCode, serviceAssignmentId;
+
     private String firstName,lastName,email,city,street,comment,houseNumber;
     private LeakStatus status;
 
