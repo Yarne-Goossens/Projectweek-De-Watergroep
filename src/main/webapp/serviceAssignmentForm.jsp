@@ -4,15 +4,17 @@
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Assignment Service"/>
 </jsp:include>
-<body class="bg-dark">
+<body class="bg-wglightblue">
 <div id="container">
     <jsp:include page="header.jsp">
-        <jsp:param name="actual" value="VoegToe"/>
+        <jsp:param name="actual" value="AssignmentService"/>
     </jsp:include>
-    <main role="main" class="inner cover">
-        <div class="row d-flex justify-content-center align-items-center h-100 container-fluid">
-            <div class="card text-black mb-5 mt-5 w-70" style="border-radius: 25px; width: 80%;">
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Lek melden</p>
+
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="card text-black mt-5 mb-5" style="border-radius: 25px;">
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 text-wggreen">Service Opdracht Aanmaken voor
+                    id: ${editedLeak.id}</p>
                 <c:if test="${not empty errors}">
                     <div id="error" class="alert alert-danger">
                         <c:forEach items="${errors}" var="error">
@@ -92,7 +94,7 @@
                         <input type="hidden" name="id" value="${editedLeak.id}">
                         <input type="hidden" name="command" value="CreateServiceAssignment">
                         <div class="form-outline flex-fill mb-4">
-                            <button type="submit" class="btn btn-primary btn-lg">Maak aan</button>
+                            <button type="submit" class="btn btn-wg btn-lg">Maak aan</button>
                         </div>
                     </form>
                             <p class="text-center h1 fw-bold mx-1 mx-md-4 mt-4">Lek met id ${editedLeak.id}

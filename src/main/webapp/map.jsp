@@ -18,7 +18,7 @@
             crossorigin=""></script>
 </head>
 
-<body class="bg-dark">
+<body class="bg-wglightblue">
 <jsp:include page="header.jsp">
     <jsp:param name="actual" value="Home"/>
 </jsp:include>

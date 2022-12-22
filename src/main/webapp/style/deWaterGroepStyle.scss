@@ -1,0 +1,55 @@
+:root {
+  --custom-wglightblue: #f3f7fb;
+  --custom-wggreen: #8FC01A;
+  --custom-wggreenextradark: #44c01a;
+  --custom-wgdarkblue: #2158a4;
+  --custom-wgdarkblueextradark: #2137a4;
+}
+.text-wglightblue {
+  color: var(--custom-wglightblue);
+}
+.bg-wglightblue {
+  background-color: var(--custom-wglightblue);
+}
+
+.text-wggreen {
+  color: var(--custom-wggreen);
+}
+.bg-wggreen {
+  background-color: var(--custom-wggreen);
+}
+.nav-wg {
+  color: var(--custom-wggreen);
+  display: block;
+  padding: 0.5rem 1rem .5rem;
+  text-decoration: none;
+}
+.nav-wg:hover {
+  color: var(--custom-wgdarkblue);
+  display: block;
+  padding: 0.5rem 1rem .5rem;
+  text-decoration: none;
+}
+
+.text-wgdarkblue {
+  color: var(--custom-wgdarkblue);
+}
+.bg-wgdarkblue {
+  background-color: var(--custom-wgdarkblue);
+}
+
+.btn-wg {
+  color: #fff;
+  background-color: var(--custom-wgdarkblue);
+  border-color: var(--custom-wgdarkblue);
+}
+.btn-wg:hover {
+  color: #fff;
+  background-color: var(--custom-wgdarkblueextradark);
+  border-color: var(--custom-wgdarkblueextradark);
+}
+.table-wg {
+  color: #000000;
+  background-color: var(--custom-wglightblue);
+}
+
