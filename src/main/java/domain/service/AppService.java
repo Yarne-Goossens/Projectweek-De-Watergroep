@@ -23,11 +23,9 @@ public class AppService {
     }
 
 
-
     public void addAnimal(Animal animal) {
         animals.addAnimal(animal);
     }
-
 
 
     public Animal findAnimalWithName(String naam) {
@@ -51,41 +49,46 @@ public class AppService {
 
     //Leak
     public void updateLeak(LeakReport leak) {
-       leakReport.updateLeak(leak);
+        leakReport.updateLeak(leak);
     }
 
     public ArrayList<Employee> getAllEmployees() {
         return employees.getAllEmployees();
     }
 
-    public LeakReport getLeakFromId(int id){
-       return leakReport.getLeakFromId(id);
+    public LeakReport getLeakFromId(int id) {
+        return leakReport.getLeakFromId(id);
+    }
+
+    public void updateLeakStatus(int id, LeakStatus status) {
+        leakReport.updateLeakStatus(id, status);
     }
 
     // ServiceAssignmentService
 
     private ServiceAssignmentService serviceAssignmentService = new ServiceAssignmentServiceDBSQL();
 
-    public void addServiceAssignment(ServiceAssignment serviceAssignment){
+    public void addServiceAssignment(ServiceAssignment serviceAssignment) {
         serviceAssignmentService.addServiceAssignment(serviceAssignment);
     }
 
-    public ArrayList getLeakAssignedToSOFromId(int serviceId){
+    public ArrayList getLeakAssignedToSOFromId(int serviceId) {
         return serviceAssignmentService.getLeakAssignedToSOFromId(serviceId);
     }
 
     public ServiceAssignment findServiceAssignmentWithId(int id) {
         return serviceAssignmentService.findServiceAssignmentById(id);
     }
+
     public void updateServiceAssignment(ServiceAssignment serviceAssignment) {
         serviceAssignmentService.updateServiceAssignment(serviceAssignment);
     }
 
-    public ArrayList<ServiceAssignment> getAllServiceAssignments(){
+    public ArrayList<ServiceAssignment> getAllServiceAssignments() {
         return serviceAssignmentService.getAllServiceAssignments();
     }
 
-    public  void closeAssignment(ServiceAssignment serviceAssignment){
+    public void closeAssignment(ServiceAssignment serviceAssignment) {
         serviceAssignmentService.closeAssignment(serviceAssignment);
     }
 
@@ -93,10 +96,11 @@ public class AppService {
         return serviceAssignmentService.findIdFromAssignment(newAssignment);
     }
 
+    public void updateAssignmentStatus(int id, AssignmentStatus status) {
+        serviceAssignmentService.updateAssignmentStatus(id, status);
+    }
+
     public void addServiceAssignmentWithoutTechnician(ServiceAssignment newAssignment) {
         serviceAssignmentService.addServiceAssignmentWithoutTechnician(newAssignment);
-
     }
 }
-
-

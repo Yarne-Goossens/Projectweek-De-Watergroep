@@ -30,15 +30,27 @@
                                                     <tr class="text-uppercase">
                                                         <th class="text-left" scope="col">ID</th>
                                                         <th class="text-left" scope="col">Locatie</th>
-                                                        <th class="text-center" scope="col">SO Aanmaken</th>
+                                                        <th class="text-center" colspan="2" scope="colgroup">Actie</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     <c:forEach var="leak" items="${leaks}">
-                                                        <tr data-toggle="collapse" data-target="#collapse${leak.id}" class="accordion-toggle">
+                                                        <tr data-toggle="collapse" data-target="#collapse${leak.id}"
+                                                            class="accordion-toggle">
                                                             <td class="text-left">${leak.id}</td>
                                                             <td class="text-left">${leak.street} ${leak.houseNumber}, ${leak.postalCode} ${leak.city}</td>
-
+                                                            <td>
+                                                                <button type="button" class="btn btn-primary"
+                                                                        onclick="location.href='Controller?command=CreateServiceAssignmentForm&id=${leak.id}'">
+                                                                    Maak SO aan
+                                                                </button>
+                                                                <c:if test="${leak.status != 'GEANNULEERD'}">
+                                                                    <button type="button" class="btn btn-primary"
+                                                                            onclick="location.href='Controller?command=CancelLeak&id=${leak.id}'">
+                                                                        Annuleer Lek
+                                                                    </button>
+                                                                </c:if>
+                                                            </td>
                                                             <c:choose>
                                                                 <c:when test="${leak.serviceAssignmentId==0}">
                                                                     <td><button type="button" class="btn btn-primary" onclick="location.href='Controller?command=CreateServiceAssignmentForm&id=${leak.id}'">Maak SO aan</button></td>
@@ -50,15 +62,18 @@
                                                         </tr>
                                                         <tr>
                                                             <td colspan="12" class="p-0 text-left bg-secondary">
-                                                                <div id="collapse${leak.id}" class="accordian-body collapse">
+                                                                <div id="collapse${leak.id}"
+                                                                     class="accordian-body collapse">
                                                                     <ul>
                                                                         <li>Naam Melder: ${leak.firstName}, ${leak.lastName}</li>
                                                                         <li>Email Melder: ${leak.email}</li>
                                                                         <c:if test="${leak.comment != null && leak.comment != ''}">
                                                                             <li>Comment: ${leak.comment}</li>
                                                                         </c:if>
+                                                                        <li>Status: ${leak.status.stringValue}</li>
                                                                         <c:if test="${leak.serviceAssignmentId != 0}">
-                                                                            <li>Gekoppeld Aan Service opdracht: ${leak.serviceAssignmentId}</li>
+                                                                            <li>Gekoppeld Aan Service
+                                                                                opdracht: ${leak.serviceAssignmentId}</li>
                                                                         </c:if>
                                                                     </ul>
                                                                 </div>
@@ -66,7 +81,6 @@
                                                         </tr>
                                                     </c:forEach>
                                                     </tbody>
-
                                                 </table>
                                             </c:when>
                                             <c:otherwise>
@@ -80,11 +94,9 @@
                     </div>
                 </div>
             </div>
-</section>
-</main>
+        </section>
+    </main>
 </div>
-
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

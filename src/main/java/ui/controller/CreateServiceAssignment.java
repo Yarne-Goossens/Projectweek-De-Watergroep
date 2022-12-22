@@ -3,6 +3,7 @@ package ui.controller;
 import com.beust.ah.A;
 import domain.model.AssignmentType;
 import domain.model.LeakReport;
+import domain.model.LeakStatus;
 import domain.model.ServiceAssignment;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +33,7 @@ public class CreateServiceAssignment extends RequestHandler{
                 LeakReport updateLeakreport = service.getLeakFromId(Integer.parseInt(idString));
                 updateLeakreport.setAssignmentId(assignmentId);
                 service.updateLeak(updateLeakreport);
+                service.updateLeakStatus(Integer.parseInt(idString), LeakStatus.VERWERKT);
                 return "Controller?command=OverviewServiceAssignments";
             } catch (Exception e) {
                 errors.add(e.getMessage());

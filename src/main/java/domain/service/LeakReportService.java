@@ -1,6 +1,7 @@
 package domain.service;
 
 import domain.model.LeakReport;
+import domain.model.LeakStatus;
 import domain.model.ServiceAssignment;
 
 import java.util.ArrayList;
@@ -17,4 +18,6 @@ public interface LeakReportService {
     LeakReport getLeakFromId(int id);
 
     void updateServiceAssignmentOfLeak(ServiceAssignment serviceAssignment);
+
+    void updateLeakStatus(int id, LeakStatus status);
 }
