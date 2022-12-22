@@ -17,12 +17,9 @@ public class AppService {
         return leakReport.getAllLeakReports();
     }
 
-
-
     public void sendEmail(Email email) {
         emailService.sendEmail(email);
     }
-
 
     // userService
     public void addEmployee(Employee employee) {
