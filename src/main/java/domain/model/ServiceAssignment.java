@@ -15,6 +15,7 @@ public class ServiceAssignment {
     private String comment;
 
     private Employee technician;
+    private AssignmentStatus status;
 
     public ServiceAssignment(int id, String city, int postalCode, String street, String houseNumber, AssignmentType type, LocalDate startDate, LocalDate endDate, String comment, Employee technician) {
         setId(id);
@@ -110,5 +111,13 @@ public class ServiceAssignment {
 
     public void setTechnician(Employee technician) {
         this.technician = technician;
+    }
+
+    public AssignmentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AssignmentStatus status) {
+        this.status = status;
     }
 }
