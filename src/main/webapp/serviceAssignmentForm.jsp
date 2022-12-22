@@ -123,6 +123,7 @@
                                             <tr class="text-uppercase">
                                                 <th class="text-left" scope="col">Technieker/Opnemen</th>
                                                 <th class="text-left" scope="col">Locatie</th>
+                                                <th  scope="col">Link aan SO</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -143,6 +144,7 @@
                                                     <c:if test="${sessionScope.employee.name eq service.technician && service.technician ne null}">
                                                         <td><a href="Controller?command=CloseAssignment&id=${service.id}"><button>Sluit Service</button></a></td>
                                                     </c:if>
+                                                    <td><button type="button" class="btn btn-primary" onclick="location.href='Controller?command=LeakAddToServiceAssignment&serviceId=${service.id}&leakId=${editedLeak.id}'">Maak SO aan</button></td>
 
                                                 </tr>
                                                 <tr>
@@ -158,6 +160,7 @@
                                                                 <c:if test="${service.comment!=null}">
                                                                     <li>Opmerkingen: ${service.comment}</li>
                                                                 </c:if>
+
                                                             </ul>
                                                         </div>
                                                     </td>

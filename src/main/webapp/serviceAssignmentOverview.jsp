@@ -72,6 +72,10 @@
                                                                             <c:if test="${service.comment!=null}">
                                                                                 <li>Opmerkingen: ${service.comment}</li>
                                                                             </c:if>
+                                                                            <c:if test="${service.comment!=null}">
+                                                                                <li>Opmerkingen: ${service.comment}</li>
+                                                                            </c:if>
+
                                                                         </ul>
                                                                     </div>
                                                                 </td>
