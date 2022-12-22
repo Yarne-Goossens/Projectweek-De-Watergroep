@@ -42,11 +42,17 @@
                                                         </thead>
                                                         <tbody>
                                                         <c:forEach var="service" items="${serviceAssignments}">
-                                                            <tr data-toggle="collapse" data-target="#collapse${service.id}" class="accordion-toggle">
+                                                            <tr data-toggle="collapse"
+                                                                data-target="#collapse${service.id}"
+                                                                class="accordion-toggle">
                                                                 <c:choose>
                                                                     <c:when test="${service.technician==null}">
                                                                         <td class="text-left">
-                                                                            <button type="button" class="btn btn-primary" onclick="location.href='Controller?command=ClaimServiceAssignment&claimId=${service.id}'" >SO Opnemen</button>
+                                                                            <button type="button"
+                                                                                    class="btn btn-primary"
+                                                                                    onclick="location.href='Controller?command=ClaimServiceAssignment&claimId=${service.id}'">
+                                                                                SO Opnemen
+                                                                            </button>
                                                                         </td>
                                                                     </c:when>
                                                                     <c:otherwise>
@@ -55,13 +61,17 @@
                                                                 </c:choose>
                                                                 <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}</td>
                                                                 <c:if test="${sessionScope.user.id eq service.technician.id && service.endDate == null}">
-                                                                    <td><a href="Controller?command=CloseAssignment&id=${service.id}"><button>Sluit Service</button></a></td>
+                                                                    <td>
+                                                                        <a href="Controller?command=CloseAssignment&id=${service.id}">
+                                                                            <button>Sluit Service</button>
+                                                                        </a></td>
                                                                 </c:if>
 
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="12" class="p-0 text-left bg-secondary">
-                                                                    <div id="collapse${service.id}" class="accordian-body collapse">
+                                                                    <div id="collapse${service.id}"
+                                                                         class="accordian-body collapse">
                                                                         <ul>
                                                                             <li>Service Opdracht Id: ${service.id}</li>
                                                                             <li>Start datum: ${service.startDate}</li>
@@ -69,9 +79,12 @@
                                                                                 <li>Eind datum: ${service.endDate}</li>
                                                                             </c:if>
                                                                             <li>Type: ${service.type}</li>
-                                                                            <c:if test="${service.comment!=null}">
-                                                                                <li>Opmerkingen: ${service.comment}</li>
-                                                                            </c:if>
+
+                                                                            <c:forEach var="leak" items="${leaks}">
+                                                                                <c:if test="${leak.serviceAssignmentId==service.id}">
+                                                                                    <li>Lek met id: ${leak.id}</li>
+                                                                                </c:if>
+                                                                            </c:forEach>
                                                                             <c:if test="${service.comment!=null}">
                                                                                 <li>Opmerkingen: ${service.comment}</li>
                                                                             </c:if>
@@ -96,8 +109,8 @@
                     </div>
                 </div>
             </div>
-</section>
-</main>
+        </section>
+    </main>
 </div>
 
 
