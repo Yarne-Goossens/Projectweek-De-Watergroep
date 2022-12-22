@@ -4,10 +4,8 @@ package domain.service;
 import domain.model.LeakReport;
 import util.DbConnectionService;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class LeakReportServiceDBSQL implements LeakReportService {
@@ -22,7 +20,7 @@ public class LeakReportServiceDBSQL implements LeakReportService {
     @Override
     public void addLeakReport(LeakReport leak) {
         String query = String.format("insert into %s.leak " + "(first_name,last_name,email,city,postal,street," +
-                "house_number,comment) values (?,?,?,?,?,?,?,?)", schema);
+                "house_number,comment,submission_date) values (?,?,?,?,?,?,?,?,?)", schema);
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(query);
             preparedStatement.setString(1, leak.getFirstName());
@@ -33,6 +31,7 @@ public class LeakReportServiceDBSQL implements LeakReportService {
             preparedStatement.setString(6, leak.getStreet());
             preparedStatement.setString(7, String.valueOf(leak.getHouseNumber()));
             preparedStatement.setString(8, leak.getComment());
+            preparedStatement.setDate(9, Date.valueOf(LocalDate.now()));
 
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -52,7 +51,7 @@ public class LeakReportServiceDBSQL implements LeakReportService {
     @Override
     public ArrayList<LeakReport> getAllLeakReports() {
         ArrayList<LeakReport> leakReports = new ArrayList<>();
-        String sql = String.format("SELECT * FROM %s.leak order by id", schema);
+        String sql = String.format("SELECT * FROM %s.leak order by submission_date desc,id desc", schema);
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();

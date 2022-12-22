@@ -127,7 +127,7 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
                 "s.type as service_type, start_date, end_date, comment, " +
                 "e.id as technician_id, name, email, password, e.type as employee_type " +
                 "from %s.service_assignment as s " +
-                "left outer join %s.employee as e on s.technician_id = e.id ";
+                "left outer join %s.employee as e on s.technician_id = e.id  order by start_date desc,id desc";
         querry = String.format(querry,schema,schema);
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(querry);
