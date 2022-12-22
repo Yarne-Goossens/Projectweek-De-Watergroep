@@ -70,6 +70,10 @@ public class AppService {
         serviceAssignmentService.addServiceAssignment(serviceAssignment);
     }
 
+    public ArrayList getLeakAssignedToSOFromId(int serviceId){
+        return serviceAssignmentService.getLeakAssignedToSOFromId(serviceId);
+    }
+
     public ServiceAssignment findServiceAssignmentWithId(int id) {
         return serviceAssignmentService.findServiceAssignmentById(id);
     }
@@ -85,6 +89,9 @@ public class AppService {
         serviceAssignmentService.closeAssignment(serviceAssignment);
     }
 
+    public int findIdFromAssignment(ServiceAssignment newAssignment) {
+        return serviceAssignmentService.findIdFromAssignment(newAssignment);
+    }
 }
 
 

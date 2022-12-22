@@ -35,10 +35,34 @@
                                                     </thead>
                                                     <tbody>
                                                     <c:forEach var="leak" items="${leaks}">
-                                                        <tr>
+                                                        <tr data-toggle="collapse" data-target="#collapse${leak.id}" class="accordion-toggle">
                                                             <td class="text-left">${leak.id}</td>
                                                             <td class="text-left">${leak.street} ${leak.houseNumber}, ${leak.postalCode} ${leak.city}</td>
-                                                            <td><button type="button" class="btn btn-primary" onclick="location.href='Controller?command=CreateServiceAssignmentForm&id=${leak.id}'">Maak SO aan</button></td>
+
+                                                            <c:choose>
+                                                                <c:when test="${leak.serviceAssignmentId==0}">
+                                                                    <td><button type="button" class="btn btn-primary" onclick="location.href='Controller?command=CreateServiceAssignmentForm&id=${leak.id}'">Maak SO aan</button></td>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <td><p>Dit lek heeft al een SO.</p></td>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="12" class="p-0 text-left bg-secondary">
+                                                                <div id="collapse${leak.id}" class="accordian-body collapse">
+                                                                    <ul>
+                                                                        <li>Naam Melder: ${leak.firstName}, ${leak.lastName}</li>
+                                                                        <li>Email Melder: ${leak.email}</li>
+                                                                        <c:if test="${leak.comment != null && leak.comment != ''}">
+                                                                            <li>Comment: ${leak.comment}</li>
+                                                                        </c:if>
+                                                                        <c:if test="${leak.serviceAssignmentId != 0}">
+                                                                            <li>Gekoppeld Aan Service opdracht: ${leak.serviceAssignmentId}</li>
+                                                                        </c:if>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
                                                         </tr>
                                                     </c:forEach>
                                                     </tbody>
@@ -56,7 +80,6 @@
                     </div>
                 </div>
             </div>
-</div>
 </section>
 </main>
 </div>

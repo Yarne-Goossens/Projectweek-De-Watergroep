@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public interface ServiceAssignmentService {
 
     void addServiceAssignment(ServiceAssignment serviceAssignment);
+    ArrayList getLeakAssignedToSOFromId(int serviceId);
 
     ServiceAssignment findServiceAssignmentById(int id);
 
@@ -16,4 +17,6 @@ public interface ServiceAssignmentService {
     ArrayList<ServiceAssignment> getAllServiceAssignments();
 
     void updateServiceAssignment(ServiceAssignment serviceAssignment);
+
+    int findIdFromAssignment(ServiceAssignment newAssignment);
 }

@@ -21,6 +21,23 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
     }
 
     @Override
+    public ArrayList getLeakAssignedToSOFromId(int serviceId){
+        ArrayList numbers=new ArrayList();
+        String query = String.format("select l.id from %s.service_assignment s inner join %s.leak l on (s.id=service_id)where service_id=?", schema);
+       try {
+           PreparedStatement preparedStatement = connection.prepareStatement(query);
+           preparedStatement.setInt(1,serviceId);
+           ResultSet resultSet = preparedStatement.executeQuery();
+           while (resultSet.next()) {
+               numbers.add(resultSet.getInt(1));
+           }
+       }catch (SQLException e){
+           throw new DbException(e.getMessage());
+       }
+       return numbers;
+    }
+
+    @Override
     public void addServiceAssignment(ServiceAssignment serviceAssignment) {
         String query = String.format("insert into %s.service_assignment (city, postal, street, house_number, type, start_date, comment) values (?,?,?,?,?,?,?)", schema);
         try{
@@ -183,6 +200,36 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
             throw new DbException(e.getMessage());
         }
 
+    }
+
+    @Override
+    public int findIdFromAssignment(ServiceAssignment newAssignment) {
+        String query = "select * from %s.service_assignment " +
+                "where city = ? and postal = ? and street = ? and house_number = ? and type = ? and start_date = ? " +
+                "order by id ";
+        query = String.format(query,schema);
+        int id = -1;
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
+            preparedStatement.setString(1,newAssignment.getCity());
+            preparedStatement.setString(2,String.valueOf(newAssignment.getPostalCode()));
+            preparedStatement.setString(3,newAssignment.getStreet());
+            preparedStatement.setString(4,newAssignment.getHouseNumber());
+            preparedStatement.setString(5,newAssignment.getType().toString().toUpperCase());
+            preparedStatement.setDate(6,Date.valueOf(newAssignment.getStartDate()));
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                id = resultSet.getInt("id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (id == -1) {
+            throw new DbException("findIdFromAssignment: id could not be found!");
+        }
+        return id;
     }
 
     /**

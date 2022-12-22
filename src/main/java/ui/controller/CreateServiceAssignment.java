@@ -2,6 +2,7 @@ package ui.controller;
 
 import com.beust.ah.A;
 import domain.model.AssignmentType;
+import domain.model.LeakReport;
 import domain.model.ServiceAssignment;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,10 @@ public class CreateServiceAssignment extends RequestHandler{
         if (errors.size() == 0) {
             try {
                 service.addServiceAssignment(newAssignment);
+                int assignmentId = service.findIdFromAssignment(newAssignment);
+                LeakReport updateLeakreport = service.getLeakFromId(Integer.parseInt(idString));
+                updateLeakreport.setAssignmentId(assignmentId);
+                service.updateLeak(updateLeakreport);
                 return "Controller?command=OverviewServiceAssignments";
             } catch (Exception e) {
                 errors.add(e.getMessage());
