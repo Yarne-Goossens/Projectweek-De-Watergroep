@@ -41,7 +41,7 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
     public ServiceAssignment findServiceAssignmentById(int findId) {
         String querry = "select " +
                 "s.id,city,postal,street,house_number,technician, " +
-                "s.type as service_type, start_date, end_date, comment, status" +
+                "s.type as service_type, start_date, end_date, comment, status, " +
                 "e.id as technician_id, name, email, password, e.type as employee_type  " +
                 "from %s.service_assignment as s " +
                 "left outer join %s.employee as e on s.technician_id = e.id " +
@@ -108,7 +108,7 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
         String querry = "select " +
                 "s.id,city,postal,street,house_number,technician, " +
                 "s.type as service_type, start_date, end_date, comment, " +
-                "e.id as technician_id, name, email, password, e.type as employee_type " +
+                "e.id as technician_id, name, email, password, e.type as employee_type, status " +
                 "from %s.service_assignment as s " +
                 "left outer join %s.employee as e on s.technician_id = e.id ";
         querry = String.format(querry,schema,schema);
@@ -220,6 +220,14 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
     @Override
     public void updateAssignmentStatus(int id, AssignmentStatus status) {
         String query = String.format("update %s.service set status=? where id=?", schema);
+        try {
+            PreparedStatement statement = getConnection().prepareStatement(query);
+            statement.setString(1, status.toString());
+            statement.setInt(2, id);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new DbException("yesn't");
+        }
     }
 
     /**
