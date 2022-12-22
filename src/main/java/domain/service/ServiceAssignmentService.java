@@ -19,4 +19,6 @@ public interface ServiceAssignmentService {
     void updateServiceAssignment(ServiceAssignment serviceAssignment);
 
     int findIdFromAssignment(ServiceAssignment newAssignment);
+
+    void addServiceAssignmentWithoutTechnician(ServiceAssignment newAssignment);
 }

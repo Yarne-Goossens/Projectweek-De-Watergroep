@@ -92,6 +92,11 @@ public class AppService {
     public int findIdFromAssignment(ServiceAssignment newAssignment) {
         return serviceAssignmentService.findIdFromAssignment(newAssignment);
     }
+
+    public void addServiceAssignmentWithoutTechnician(ServiceAssignment newAssignment) {
+        serviceAssignmentService.addServiceAssignmentWithoutTechnician(newAssignment);
+
+    }
 }
 
 
