@@ -1,7 +1,7 @@
 package domain.model;
 
 public enum AssignmentStatus {
-    NIETOPGENOMEN("Niet Opgenomen"), OPGENOMEN("Opgenomen"), WORDTHERSTELD("Wordt Hersteld"), AFGEROND("Is Afgerond") ,GEANNULEERD("Geannuleerd");
+    NIETOPGENOMEN("Niet Opgenomen"), OPGENOMEN("Opgenomen"), WORDTHERSTELD("Wordt Hersteld"), AFGEROND("Afgesloten") ,GEANNULEERD("Geannuleerd");
 
     private final String stringValue;
 

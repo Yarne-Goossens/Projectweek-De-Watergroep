@@ -219,14 +219,15 @@ public class ServiceAssignmentServiceDBSQL implements ServiceAssignmentService{
 
     @Override
     public void updateAssignmentStatus(int id, AssignmentStatus status) {
-        String query = String.format("update %s.service set status=? where id=?", schema);
+        String query = String.format("update %s.service_assignment set status=? where id=?", schema);
         try {
             PreparedStatement statement = getConnection().prepareStatement(query);
             statement.setString(1, status.toString());
             statement.setInt(2, id);
             statement.execute();
         } catch (SQLException e) {
-            throw new DbException("yesn't");
+            throw new DbException(e.getMessage());
+//            throw new DbException("yesn't");
         }
     }
 
