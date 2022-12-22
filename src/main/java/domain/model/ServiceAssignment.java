@@ -1,6 +1,7 @@
 package domain.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ServiceAssignment {
 
@@ -13,8 +14,11 @@ public class ServiceAssignment {
     private LocalDate startDate;
     private LocalDate endDate;
     private String comment;
-
+    private int serviceOpdrachtID;
     private Employee technician;
+    private AssignmentStatus status;
+
+
 
     public ServiceAssignment(int id, String city, int postalCode, String street, String houseNumber, AssignmentType type, LocalDate startDate, LocalDate endDate, String comment, Employee technician) {
         setId(id);
@@ -27,6 +31,14 @@ public class ServiceAssignment {
         setEndDate(endDate);
         setComment(comment);
         setTechnician(technician);
+    }
+
+    public int getServiceOpdrachtID() {
+        return serviceOpdrachtID;
+    }
+
+    public void setServiceOpdrachtID(int serviceOpdrachtID) {
+        this.serviceOpdrachtID = serviceOpdrachtID;
     }
 
     public ServiceAssignment(){
@@ -45,6 +57,7 @@ public class ServiceAssignment {
     }
 
     public void setCity(String city) {
+        if(city.isBlank()){throw new IllegalArgumentException("Plaats mag niet leeg zijn");}
         this.city = city;
     }
 
@@ -53,6 +66,7 @@ public class ServiceAssignment {
     }
 
     public void setPostalCode(int postalCode) {
+        if(postalCode < 1000 || postalCode > 9999) throw new IllegalArgumentException("Post code moet 4 cijfers zijn ");
         this.postalCode = postalCode;
     }
 
@@ -61,6 +75,7 @@ public class ServiceAssignment {
     }
 
     public void setStreet(String street) {
+        if(street.isBlank()){throw new IllegalArgumentException("Straat mag niet leeg zijn");}
         this.street = street;
     }
 
@@ -69,6 +84,7 @@ public class ServiceAssignment {
     }
 
     public void setHouseNumber(String houseNumber) {
+        if(houseNumber.isBlank()){throw new IllegalArgumentException("Huis nummer mag niet leeg zijn");}
         this.houseNumber = houseNumber;
     }
 
@@ -81,10 +97,12 @@ public class ServiceAssignment {
     }
 
     public LocalDate getStartDate() {
+
         return startDate;
     }
 
     public void setStartDate(LocalDate startDate) {
+        if(startDate == null){throw new IllegalArgumentException("Start datum mag niet leeg zijn");}
         this.startDate = startDate;
     }
 
@@ -101,6 +119,7 @@ public class ServiceAssignment {
     }
 
     public void setComment(String comment) {
+       
         this.comment = comment;
     }
 
@@ -110,5 +129,13 @@ public class ServiceAssignment {
 
     public void setTechnician(Employee technician) {
         this.technician = technician;
+    }
+
+    public AssignmentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AssignmentStatus status) {
+        this.status = status;
     }
 }

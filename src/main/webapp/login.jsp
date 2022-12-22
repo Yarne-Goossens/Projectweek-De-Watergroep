@@ -5,7 +5,7 @@
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Login User"/>
 </jsp:include>
-<body class="bg-dark">
+<body class="bg-wglightblue">
 <jsp:include page="header.jsp">
     <jsp:param name="actual" value="Login"/>
 </jsp:include>
@@ -43,7 +43,7 @@
                                     </div>--%>
                                     <input type="hidden" name="command" value="LogIn">
                                     <div class="form-outline flex-fill mb-0">
-                                        <button type="submit" class="btn btn-primary btn-lg">Log in</button>
+                                        <button type="submit" class="btn btn-wg btn-lg">Log in</button>
                                     </div>
                                 </form>
                             </div>
