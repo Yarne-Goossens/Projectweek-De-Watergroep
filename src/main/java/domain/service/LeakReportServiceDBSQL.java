@@ -2,6 +2,7 @@ package domain.service;
 
 
 import domain.model.LeakReport;
+import domain.model.LeakStatus;
 import util.DbConnectionService;
 
 import java.sql.*;
@@ -20,7 +21,10 @@ public class LeakReportServiceDBSQL implements LeakReportService {
     @Override
     public void addLeakReport(LeakReport leak) {
         String query = String.format("insert into %s.leak " + "(first_name,last_name,email,city,postal,street," +
-                "house_number,comment,submission_date) values (?,?,?,?,?,?,?,?,?)", schema);
+
+
+                "house_number,comment,status,submission_date) values (?,?,?,?,?,?,?,?,?,?)", schema);
+
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(query);
             preparedStatement.setString(1, leak.getFirstName());
@@ -31,7 +35,10 @@ public class LeakReportServiceDBSQL implements LeakReportService {
             preparedStatement.setString(6, leak.getStreet());
             preparedStatement.setString(7, String.valueOf(leak.getHouseNumber()));
             preparedStatement.setString(8, leak.getComment());
-            preparedStatement.setDate(9, Date.valueOf(LocalDate.now()));
+
+            preparedStatement.setString(9, LeakStatus.OPEN.toString());
+
+            preparedStatement.setDate(10, Date.valueOf(LocalDate.now()));
 
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -66,8 +73,10 @@ public class LeakReportServiceDBSQL implements LeakReportService {
                 String houseNr = resultSet.getString("house_number");
                 String comment = resultSet.getString("comment");
                 int serviceAssignmentId = resultSet.getInt("service_id");
+                String statusString = resultSet.getString("status");
                 LeakReport leakReport = new LeakReport(id, postal, houseNr, firstName, lastName, email, city, street, serviceAssignmentId);
                 leakReport.setComment(comment);
+                leakReport.setStatus(LeakStatus.valueOf(statusString));
                 leakReports.add(leakReport);
             }
             return leakReports;
@@ -118,9 +127,10 @@ public class LeakReportServiceDBSQL implements LeakReportService {
                 String street = result.getString("street");
                 int postal = result.getInt("postal");
                 int serviceAssignmentId = result.getInt("service_id");
-
-
-                return new LeakReport(id, postal, housenumber, firstname, lastname, email, city, street, comment, serviceAssignmentId);
+                String statusString = result.getString("status");
+                LeakReport report = new LeakReport(id, postal, housenumber, firstname, lastname, email, city, street, comment, serviceAssignmentId);
+                report.setStatus(LeakStatus.valueOf(statusString));
+                return report;
             }
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
@@ -129,6 +139,19 @@ public class LeakReportServiceDBSQL implements LeakReportService {
             return null;
 
         }
+
+    @Override
+    public void updateLeakStatus(int id, LeakStatus status) {
+        String sql = String.format("update %s.leak set status = ? where id = ?", schema);
+        try {
+            PreparedStatement statement = getPreparedStatement(sql);
+            statement.setString(1, status.toString());
+            statement.setInt(2, id);
+            statement.execute();
+        }catch (SQLException e){
+            throw new DbException(e.getMessage());
+        }
+    }
 
     /**
      * Check the connection and reconnect when necessary

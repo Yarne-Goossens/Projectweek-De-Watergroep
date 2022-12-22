@@ -38,6 +38,7 @@
                                                         <tr class="text-uppercase">
                                                             <th class="text-left" scope="col">Technieker/Opnemen</th>
                                                             <th class="text-left" scope="col">Locatie</th>
+                                                            <th class="text-left" colspan="3" scope="colgroup">Actie</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -60,13 +61,13 @@
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                                 <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}</td>
-                                                                <c:if test="${sessionScope.user.id eq service.technician.id && service.endDate == null}">
-                                                                    <td>
-                                                                        <a href="Controller?command=CloseAssignment&id=${service.id}">
-                                                                            <button>Sluit Service</button>
-                                                                        </a></td>
+                                                                <c:if test="${sessionScope.user.id eq service.technician.id && service.endDate == null && service.status != 'GEANNULEERD'}">
+                                                                    <td><a href="Controller?command=CloseAssignment&id=${service.id}"><button>Sluit Service</button></a></td>
+                                                                    <td><a href="Controller?command=NewAssignment&id=${service.id}"><button>Nieuwe Service</button></a></td>
                                                                 </c:if>
-
+                                                                <c:if test="${sessionScope.user.id eq service.technician.id && service.endDate == null && service.status != 'GEANNULEERD'}">
+                                                                    <td><a href="Controller?command=CancelAssignment&id=${service.id}"><button>Annuleer Service</button></a></td>
+                                                                </c:if>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="12" class="p-0 text-left bg-secondary">
@@ -78,17 +79,16 @@
                                                                             <c:if test="${service.endDate!=null}">
                                                                                 <li>Eind datum: ${service.endDate}</li>
                                                                             </c:if>
-                                                                            <li>Type: ${service.type}</li>
-
+                                                                            <li>Type: ${service.type.stringValue}</li>
+                                                                            <li>Status: ${service.status.stringValue}</li>
                                                                             <c:forEach var="leak" items="${leaks}">
                                                                                 <c:if test="${leak.serviceAssignmentId==service.id}">
                                                                                     <li>Gelinkt met lek: ${leak.id}</li>
                                                                                 </c:if>
                                                                             </c:forEach>
-                                                                            <c:if test="${service.comment!=null}">
+                                                                            <c:if test="${service.comment!=null && service.comment != ''}">
                                                                                 <li>Opmerkingen: ${service.comment}</li>
                                                                             </c:if>
-
                                                                         </ul>
                                                                     </div>
                                                                 </td>
@@ -112,8 +112,6 @@
         </section>
     </main>
 </div>
-
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
