@@ -97,12 +97,12 @@
                             <button type="submit" class="btn btn-primary btn-lg">Maak aan</button>
                         </div>
                     </form>
-                    <form action="Controller" method="get">
-                        <input type="hidden" name="id" value="${editedLeak.id}">
-                        <div class="form-outline flex-fill mb-4">
-                            <button type="submit" class="btn btn-primary btn-lg">Wijs toe</button>
-                        </div>
-                    </form>
+<%--                    <form action="Controller" method="get">--%>
+<%--                        <input type="hidden" name="id" value="${editedLeak.id}">--%>
+<%--                        <div class="form-outline flex-fill mb-4">--%>
+<%--                            <button type="submit" class="btn btn-primary btn-lg">Wijs toe</button>--%>
+<%--                        </div>--%>
+<%--                    </form>--%>
                 </div>
             </div>
         </div>
