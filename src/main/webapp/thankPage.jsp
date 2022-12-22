@@ -5,13 +5,13 @@
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Home"/>
 </jsp:include>
-<body class="bg-dark">
+<body class="bg-wglightblue">
 <div id="container">
     <main>
         <div class="row justify-content-center container-fluid">
             <div class="text-center col-8 card text-black mb-5 mt-5" style="border-radius: 25px; width: 80%;">
                 <div class="card-body p-md-5">
-                    <h2>Bedankt!</h2>
+                    <h2 class="text-wggreen">Bedankt!</h2>
                     <p>
                         Bedankt voor het melden van een lek.
                         Onze techniekers komen zo snel mogelijk ter plaatse om het lek te onderzoeken.
@@ -20,7 +20,7 @@
                     </p>
                     <p class="font-weight-bold">Want elke druppel telt!</p>
 
-                    <a class="btn btn-primary btn-xl text-uppercase" role="button" href="Controller?command=Home">Ga terug naar home</a>
+                    <a class="btn btn-wg btn-xl text-uppercase" role="button" href="Controller?command=Home">Ga terug naar home</a>
                 </div>
             </div>
         </div>

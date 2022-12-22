@@ -6,7 +6,7 @@
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Voeg een huisdier toe"/>
 </jsp:include>
-<body class="bg-dark">
+<body class="bg-wglightblue">
 <div id="container">
     <jsp:include page="header.jsp">
         <jsp:param name="actual" value="voegToe"/>

@@ -17,7 +17,7 @@
             integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
             crossorigin=""></script>
 </head>
-<body class="text-center bg-dark text-white">
+<body class="text-center bg-wglightblue text-white">
 <div class="cover-container d-flex h-100 mx-auto flex-column ">
     <jsp:include page="header.jsp">
         <jsp:param name="actual" value="Home"/>

@@ -8,7 +8,7 @@
     <jsp:param name="title" value="serviceAssignmentOverview"/>
 </jsp:include>
 
-<body class="bg-dark">
+<body class="bg-wglightblue">
 <jsp:include page="header.jsp">
     <jsp:param name="actual" value="serviceAssignmentOverview"/>
 </jsp:include>
@@ -33,8 +33,8 @@
                                             </c:if>
                                             <c:choose>
                                                 <c:when test="${serviceAssignments.size()!=0}">
-                                                    <table class="table table-dark mb-0">
-                                                        <thead style="background-color: #393939;">
+                                                    <table class="table table-wg mb-0">
+                                                        <thead>
                                                         <tr class="text-uppercase">
                                                             <th class="text-left" scope="col">Technieker/Opnemen</th>
                                                             <th class="text-left" scope="col">Locatie</th>
@@ -46,7 +46,7 @@
                                                                 <c:choose>
                                                                     <c:when test="${service.technician==null}">
                                                                         <td class="text-left">
-                                                                            <button type="button" class="btn btn-primary" onclick="location.href='Controller?command=ClaimServiceAssignment&claimId=${service.id}'" >SO Opnemen</button>
+                                                                            <button type="button" class="btn btn-wg" onclick="location.href='Controller?command=ClaimServiceAssignment&claimId=${service.id}'" >SO Opnemen</button>
                                                                         </td>
                                                                     </c:when>
                                                                     <c:otherwise>

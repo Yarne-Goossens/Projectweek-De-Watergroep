@@ -8,7 +8,7 @@
     <jsp:param name="title" value="Overview Leaks"/>
 </jsp:include>
 
-<body class="bg-dark">
+<body class="bg-wglightblue">
 <jsp:include page="header.jsp">
     <jsp:param name="actual" value="Home"/>
 </jsp:include>
@@ -25,8 +25,8 @@
                                          style="position: relative; height: 500px">
                                         <c:choose>
                                             <c:when test="${leaks.size()!=0}">
-                                                <table class="table table-dark mb-0">
-                                                    <thead style="background-color: #393939;">
+                                                <table class="table table-wg mb-0">
+                                                    <thead>
                                                     <tr class="text-uppercase">
                                                         <th class="text-left" scope="col">ID</th>
                                                         <th class="text-left" scope="col">Locatie</th>
@@ -38,7 +38,7 @@
                                                         <tr>
                                                             <td class="text-left">${leak.id}</td>
                                                             <td class="text-left">${leak.street} ${leak.houseNumber}, ${leak.postalCode} ${leak.city}</td>
-                                                            <td><button type="button" class="btn btn-primary" onclick="location.href='Controller?command=CreateServiceAssignmentForm&id=${leak.id}'">Maak SO aan</button></td>
+                                                            <td><button type="button" class="btn btn-wg" onclick="location.href='Controller?command=CreateServiceAssignmentForm&id=${leak.id}'">Maak SO aan</button></td>
                                                         </tr>
                                                     </c:forEach>
                                                     </tbody>
@@ -56,9 +56,8 @@
                     </div>
                 </div>
             </div>
-</div>
-</section>
-</main>
+        </section>
+    </main>
 </div>
 
 

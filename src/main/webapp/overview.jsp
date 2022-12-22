@@ -6,7 +6,7 @@
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Bekijk alle dieren"/>
 </jsp:include>
-<body class="bg-dark">
+<body class="bg-wglightblue">
 <div id="container">
     <jsp:include page="header.jsp">
         <jsp:param name="actual" value="Overzicht"/>
@@ -14,7 +14,7 @@
     <main>
         <c:choose>
             <c:when test="${not empty animals}">
-                <h2>Bekijk alle dieren</h2>
+                <h2 class="text-wggreen">Bekijk alle dieren</h2>
 
                 <table class="table table-hover">
                     <thead>

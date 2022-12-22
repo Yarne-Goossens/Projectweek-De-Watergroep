@@ -4,7 +4,7 @@
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Assignment Service"/>
 </jsp:include>
-<body class="bg-dark">
+<body class="bg-wglightblue">
 <div id="container">
     <jsp:include page="header.jsp">
         <jsp:param name="actual" value="AssignmentService"/>
@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="card text-black mt-5 mb-5" style="border-radius: 25px;">
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Service Opdracht Aanmaken voor
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 text-wggreen">Service Opdracht Aanmaken voor
                     id: ${editedLeak.id}</p>
                 <c:if test="${not empty errors}">
                     <div id="error" class="alert alert-danger">
@@ -94,13 +94,13 @@
                         <input type="hidden" name="id" value="${editedLeak.id}">
                         <input type="hidden" name="command" value="CreateServiceAssignment">
                         <div class="form-outline flex-fill mb-4">
-                            <button type="submit" class="btn btn-primary btn-lg">Maak aan</button>
+                            <button type="submit" class="btn btn-wg btn-lg">Maak aan</button>
                         </div>
                     </form>
 <%--                    <form action="Controller" method="get">--%>
 <%--                        <input type="hidden" name="id" value="${editedLeak.id}">--%>
 <%--                        <div class="form-outline flex-fill mb-4">--%>
-<%--                            <button type="submit" class="btn btn-primary btn-lg">Wijs toe</button>--%>
+<%--                            <button type="submit" class="btn btn-wg btn-lg">Wijs toe</button>--%>
 <%--                        </div>--%>
 <%--                    </form>--%>
                 </div>
