@@ -10,7 +10,12 @@ public interface ServiceAssignmentService {
 
     ServiceAssignment findServiceAssignmentById(int id);
 
+
+    void closeAssignment(ServiceAssignment serviceAssignment);
+
     ArrayList<ServiceAssignment> getAllServiceAssignments();
 
     void updateServiceAssignment(ServiceAssignment serviceAssignment);
+
+    int findIdFromAssignment(ServiceAssignment newAssignment);
 }

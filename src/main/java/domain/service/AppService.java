@@ -39,6 +39,7 @@ public class AppService {
         emailService.sendEmail(email);
     }
 
+
     // userService
     public void addEmployee(Employee employee) {
         employees.addEmployee(employee);
@@ -80,6 +81,13 @@ public class AppService {
         return serviceAssignmentService.getAllServiceAssignments();
     }
 
+    public  void closeAssignment(ServiceAssignment serviceAssignment){
+        serviceAssignmentService.closeAssignment(serviceAssignment);
+    }
+
+    public int findIdFromAssignment(ServiceAssignment newAssignment) {
+        return serviceAssignmentService.findIdFromAssignment(newAssignment);
+    }
 }
 
 

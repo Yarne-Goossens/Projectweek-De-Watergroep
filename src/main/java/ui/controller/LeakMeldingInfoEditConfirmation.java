@@ -1,14 +1,17 @@
 package ui.controller;
 
+import domain.model.EmployeeType;
 import domain.model.LeakReport;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class LeakMeldingInfoEditConfirmation extends RequestHandler{
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+        Utility.checkRole(request, new EmployeeType[]{EmployeeType.KCC});
         ArrayList<String> errors = new ArrayList<>();
         int id = Integer.parseInt(request.getParameter("id"));
         LeakReport leak = service.getLeakFromId(id);
@@ -24,16 +27,19 @@ public class LeakMeldingInfoEditConfirmation extends RequestHandler{
         if (errors.size() == 0) {
             try {
                 service.updateLeak(leak);
+                response.sendRedirect("Controller?command=OverviewLeaks");
                 return "Controller?command=OverviewLeaks";
             }
-            catch (IllegalArgumentException exc) {
+            catch (IllegalArgumentException | IOException exc) {
                 request.setAttribute("error", exc.getMessage());
-                return "Controller?command=LeakMeldingInfoEditConfirmation";
+                request.setAttribute("editedLeak", leak);
+                return "Controller?command=LeakMeldingInfoEditForm";
             }
         }
         else {
             request.setAttribute("errors", errors);
-            return "Controller?command=LeakMeldingInfoEditConfirmation";
+            request.setAttribute("editedLeak", leak);
+            return "Controller?command=LeakMeldingInfoEditForm";
         }
     }
 
@@ -41,7 +47,6 @@ public class LeakMeldingInfoEditConfirmation extends RequestHandler{
         String city = request.getParameter("city");
         try {
             leak.setCity(city);
-            request.setAttribute("cityPreviousValue", city);
         }
         catch (IllegalArgumentException exc) {
             errors.add(exc.getMessage());
@@ -52,7 +57,6 @@ public class LeakMeldingInfoEditConfirmation extends RequestHandler{
         String huisNummer = request.getParameter("houseNumber");
         try {
             leak.setHouseNumber(huisNummer);
-            request.setAttribute("houseNumberPreviousValue", huisNummer);
         }
         catch (IllegalArgumentException exc) {
             errors.add(exc.getMessage());
@@ -73,13 +77,14 @@ public class LeakMeldingInfoEditConfirmation extends RequestHandler{
 
     private void setPostalRequest(LeakReport leak, HttpServletRequest request, ArrayList<String> errors) {
 
-        String stringPostcode =request.getParameter("postalCode");
+        String stringPostcode = request.getParameter("postalCode");
         try {
             int postcode= Integer.parseInt(stringPostcode);
             leak.setPostalCode(postcode);
-            request.setAttribute("postalPreviousValue", postcode);
+        }catch(NumberFormatException exc)  {
+            errors.add("Post code is niet geldig");
         }
-        catch (IllegalArgumentException exc) {
+        catch (IllegalArgumentException  exc) {
             errors.add(exc.getMessage());
         }
     }
@@ -88,7 +93,6 @@ public class LeakMeldingInfoEditConfirmation extends RequestHandler{
         String street = request.getParameter("street");
         try {
             leak.setStreet(street);
-            request.setAttribute("streetPreviousValue", street);
         }
         catch (IllegalArgumentException exc) {
             errors.add(exc.getMessage());

@@ -1,6 +1,6 @@
 package domain.service;
 
-import domain.model.Animal;
+
 import domain.model.LeakReport;
 import util.DbConnectionService;
 
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LeakReportServiceDBSQL implements LeakReportService {
-    private final Connection connection;
+    private Connection connection;
     private final String schema;
 
     public LeakReportServiceDBSQL() {
@@ -40,6 +40,9 @@ public class LeakReportServiceDBSQL implements LeakReportService {
         }
     }
 
+
+
+
     @Override
     public LeakReport findLeakId(int id) {
         return null;
@@ -63,21 +66,22 @@ public class LeakReportServiceDBSQL implements LeakReportService {
                 String street = resultSet.getString("street");
                 String houseNr = resultSet.getString("house_number");
                 String comment = resultSet.getString("comment");
-                LeakReport leakReport = new LeakReport(id, postal, houseNr, firstName, lastName, email, city, street);
+                int serviceAssignmentId = resultSet.getInt("service_id");
+                LeakReport leakReport = new LeakReport(id, postal, houseNr, firstName, lastName, email, city, street, serviceAssignmentId);
                 leakReport.setComment(comment);
                 leakReports.add(leakReport);
             }
+            return leakReports;
+
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
-        return leakReports;
+        return null;
     }
-
-
     @Override
     public void updateLeak(LeakReport leak) {
         String query = String.format("UPDATE %s.leak SET city = ? , postal = ? , street = ? , house_number = ? , " +
-                "comment =? where id = ?", schema);
+                "comment = ?, service_id = ? where id = ?", schema);
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(query);
             preparedStatement.setString(1, leak.getCity());
@@ -85,14 +89,16 @@ public class LeakReportServiceDBSQL implements LeakReportService {
             preparedStatement.setString(3, leak.getStreet());
             preparedStatement.setString(4, leak.getHouseNumber());
             preparedStatement.setString(5, leak.getComment());
-            preparedStatement.setInt(6, leak.getId());
+            preparedStatement.setInt(6, leak.getServiceAssignmentId());
+            preparedStatement.setInt(7, leak.getId());
             preparedStatement.executeUpdate();
             System.out.println(leak);
 
-        } catch (SQLException e) {
-            throw new DbException(e.getMessage());
+            } catch (SQLException e) {
+                throw new DbException(e.getMessage());
+            }
         }
-    }
+
 
     @Override
     public LeakReport getLeakFromId(int idleak) {
@@ -112,21 +118,59 @@ public class LeakReportServiceDBSQL implements LeakReportService {
                 String city = result.getString("city");
                 String street = result.getString("street");
                 int postal = result.getInt("postal");
+                int serviceAssignmentId = result.getInt("service_id");
 
 
-                return new LeakReport(id, postal, housenumber, firstname, lastname, email, city, street, comment);
+                return new LeakReport(id, postal, housenumber, firstname, lastname, email, city, street, comment, serviceAssignmentId);
             }
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
 
-        return null;
+            return null;
 
+        }
+
+    /**
+     * Check the connection and reconnect when necessary
+     * @return the connection with the db, if there is one
+     */
+    private Connection getConnection() {
+        checkConnection();
+        return this.connection;
     }
 
+    /**
+     * Check if the connection is still open
+     * When connection has been closed: reconnect
+     */
+    private void checkConnection() {
+        try {
+            if (this.connection == null || this.connection.isClosed()) {
+                System.out.println("Connection has been closed");
+                this.reConnect();
+            }
+        } catch (SQLException throwables) {
+            throw new ServiceException(throwables.getMessage());
+        }
+    }
 
-    private Connection getConnection() {
-        return this.connection;
+    /**
+     * Reconnects application to db
+     */
+    private void reConnect() {
+        if (this.connection != null) {
+            DbConnectionService.disconnect();   // close connection with db properly
+        }
+        DbConnectionService.reconnect();      // reconnect application to db server
+        this.connection = DbConnectionService.getDbConnection();    // assign connection to DBSQL
+    }
+    /**
+     * Prepare Statement
+     */
+    private PreparedStatement getPreparedStatement(String sql) throws SQLException {
+
+        return getConnection().prepareStatement(sql);
     }
 }
 

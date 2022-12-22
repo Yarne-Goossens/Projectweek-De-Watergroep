@@ -10,7 +10,8 @@ create table "2Danhé".leak (
                                street character varying not null,
                                house_number character varying not null,
                                "comment" character varying not null,
-                               constraint id_key Primary key(id)
+                               constraint id_key Primary key(id),
+                               constraint service_id foreign key (service_id) references "2Danhé".service_assignment (id)
 );
 
 

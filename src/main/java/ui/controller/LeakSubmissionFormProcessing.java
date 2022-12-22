@@ -1,5 +1,6 @@
 package ui.controller;
 
+import domain.model.EmployeeType;
 import domain.model.LeakReport;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,9 +29,15 @@ public class LeakSubmissionFormProcessing extends RequestHandler {
                 service.addLeakReport(newLeak);
                 HttpSession session = request.getSession();
                 session.setAttribute("lastAddedLeak", newLeak);
+                if(Utility.hasRole(request, new EmployeeType[]{EmployeeType.KCC})){
+                    response.sendRedirect("Controller?command=OverviewLeaks");
+                    return "Controller?command=OverviewLeaks";
+                }else{
+                    response.sendRedirect("Controller?command=ThankPage");
+                    return "Controller?command=ThankPage";
+                }
 
-                response.sendRedirect("Controller?command=OverviewLeaks");
-                return "Controller?command=OverviewLeaks";
+
             }
             catch (IllegalArgumentException | IOException exc) {
                 request.setAttribute("error", exc.getMessage());

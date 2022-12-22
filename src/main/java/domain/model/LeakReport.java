@@ -4,10 +4,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LeakReport {
-    private int id,postalCode;
+    private int id,postalCode, serviceAssignmentId;
     private String firstName,lastName,email,city,street,comment,houseNumber;
 
-    public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street) {
+    public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street, int serviceAssignmentId) {
         this.id = id;
         this.postalCode = postalCode;
         this.houseNumber = houseNumber;
@@ -16,10 +16,11 @@ public class LeakReport {
         this.email = email;
         this.city = city;
         this.street = street;
+        this.serviceAssignmentId = serviceAssignmentId;
     }
 
-    public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street, String comment){
-        this(id,postalCode, houseNumber, firstName, lastName,email,city,street);
+    public LeakReport(int id, int postalCode, String houseNumber, String firstName, String lastName, String email, String city, String street, String comment, int serviceAssignmentId){
+        this(id,postalCode, houseNumber, firstName, lastName,email,city,street, serviceAssignmentId);
         this.comment = comment;
     }
     public LeakReport() {
@@ -99,6 +100,10 @@ public class LeakReport {
     }
 
     public void setFirstName(String firstName) {
+        if(this.firstName != null){
+            throw new IllegalArgumentException("Voornaam mag niet veranderd worden.");
+        }
+
         if(firstName.isEmpty()){
             throw new IllegalArgumentException("Vul een voornaam in.");
         }
@@ -106,6 +111,9 @@ public class LeakReport {
     }
 
     public void setLastName(String lastName) {
+        if(this.lastName != null){
+            throw new IllegalArgumentException("Achternaam mag niet veranderd worden.");
+        }
         if(lastName.isEmpty()){
             throw new IllegalArgumentException("Vul een achternaam in.");
         }
@@ -113,6 +121,9 @@ public class LeakReport {
     }
 
     public void setEmail(String email) {
+        if(this.email != null){
+            throw new IllegalArgumentException("Email mag niet veranderd worden.");
+        }
         if (email.isEmpty()) {
             throw new IllegalArgumentException("Vul een email in.");
         }
@@ -145,6 +156,13 @@ public class LeakReport {
         this.comment = comment;
     }
 
+    public void setAssignmentId(int assignmentId) {
+        this.serviceAssignmentId = assignmentId;
+    }
+
+    public int getServiceAssignmentId() {
+        return serviceAssignmentId;
+    }
     //Setters with Request processing
 
 }
