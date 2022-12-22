@@ -70,7 +70,7 @@
                                                                 </c:if>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="12" class="p-0 text-left bg-white">
+                                                                <td colspan="12" class="p-0 text-left bg-white" style="border-radius: 15px">
                                                                     <div id="collapse${service.id}"
                                                                          class="accordian-body collapse">
                                                                         <ul>
