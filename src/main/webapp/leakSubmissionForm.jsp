@@ -11,7 +11,7 @@
         <jsp:param name="actual" value="VoegToe"/>
     </jsp:include>
     <main role="main" class="inner cover">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100 container-fluid">
             <div class="card text-black mb-5 mt-5 w-70" style="border-radius: 25px; width: 80%;">
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Lek melden</p>
                 <c:if test="${not empty errors}">
@@ -28,7 +28,7 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                             <div class="form-outline flex-fill mb-0">
                                 <label class="form-label" for="naam">Voornaam:</label>
-                                <input name="naam" type="text" id="naam" class="form-control" placeholder="Joske"
+                                <input name="naam" type="text" id="naam" class="form-control"
                                        value="${firstNamePreviousValue}"/>
                             </div>
                         </div>
@@ -36,58 +36,57 @@
                             <div class="form-outline flex-fill mb-0">
                                 <label class="form-label" for="voornaam">Achternaam:</label>
                                 <input name="voornaam" type="text" id="voornaam" class="form-control"
-                                       placeholder="Vermeiren" value="${lastNamePreviousValue}"/>
+                                       value="${lastNamePreviousValue}"/>
                             </div>
                         </div>
                         <div class="d-flex flex-row align-items-center mb-4">
                             <div class="form-outline flex-fill mb-0">
                                 <label class="form-label" for="email">Email: </label>
                                 <input name="email" type="text" id="email" class="form-control"
-                                       placeholder="joske.vermeiren@skynet.be" value="${emailPreviousValue}"/>
+                                       value="${emailPreviousValue}"/>
                             </div>
                         </div>
                         <div class="d-flex flex-row align-items-center mb-4">
                             <div class="form-outline flex-fill mb-0">
                                 <label class="form-label" for="Plaats">Plaats: </label>
                                 <input name="Plaats" type="text" id="Plaats" class="form-control"
-                                       placeholder="Tielt-Winge" value="${cityPreviousValue}"/>
+                                       value="${cityPreviousValue}"/>
                             </div>
                         </div>
                         <div class="d-flex flex-row align-items-center mb-4">
                             <div class="form-outline flex-fill mb-0">
                                 <label class="form-label" for="Postcode">Postcode: </label>
                                 <input name="Postcode" type="text" id="Postcode" class="form-control"
-                                       placeholder="3390" value="${postalPreviousValue}"/>
+                                       value="${postalPreviousValue}"/>
                             </div>
                         </div>
                         <div class="d-flex flex-row align-items-center mb-4">
                             <div class="form-outline flex-fill mb-0">
                                 <label class="form-label" for="Straat">Straat: </label>
                                 <input name="Straat" type="text" id="Straat" class="form-control"
-                                       placeholder="Dorpstraat" value="${streetPreviousValue}"/>
+                                       value="${streetPreviousValue}"/>
                             </div>
                         </div>
                         <div class="d-flex flex-row align-items-center mb-4">
                             <div class="form-outline flex-fill mb-0">
                                 <label class="form-label" for="HuisNummer">Huis nummer: </label>
                                 <input name="HuisNummer" type="text" id="HuisNummer" class="form-control"
-                                       placeholder="124" value="${houseNumberPreviousValue}"/>
+                                       value="${houseNumberPreviousValue}"/>
                             </div>
                         </div>
                         <div class="d-flex flex-row align-items-center mb-4">
                             <div class="form-outline flex-fill mb-0">
                                 <label class="form-label" for="Commentaar">Commentaar:</label>
-                                <textarea name="Commentaar" type="text" id="Commentaar" class="form-control"
-                                          placeholder="" value="${commentaryPreviousValue}"></textarea>
+                                <textarea name="Commentaar" type="text" id="Commentaar" class="form-control" value="${commentaryPreviousValue}"></textarea>
                             </div>
                         </div>
+<%--                        <div class="d-flex flex-row align-items-center mb-4">--%>
+<%--                            <div class="form-outline flex-fill mb-0">--%>
+<%--                                <label class="form-label" for="img">Foto:</label>--%>
+<%--                                <input type="file" id="img" name="img" accept="image/*">--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                         <div class="d-flex flex-row align-items-center mb-4">
-                            <div class="form-outline flex-fill mb-0">
-                                <label class="form-label" for="img">Foto:</label>
-                                <input type="file" id="img" name="img" accept="image/*">
-                            </div>
-                        </div>
-                        <div class="form-outline flex-fill mb-0">
                             <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
                         </div>
                     </form>

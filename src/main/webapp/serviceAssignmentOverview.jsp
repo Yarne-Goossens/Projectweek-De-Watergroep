@@ -8,18 +8,17 @@
     <jsp:param name="title" value="serviceAssignmentOverview"/>
 </jsp:include>
 
-<body class="text-center bg-dark text-white">
-
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-    <jsp:include page="header.jsp">
-        <jsp:param name="actual" value="serviceAssignmentOverview"/>
-    </jsp:include>
+<body class="bg-dark">
+<jsp:include page="header.jsp">
+    <jsp:param name="actual" value="serviceAssignmentOverview"/>
+</jsp:include>
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center mb-0  text-white">
     <main role="main" class="inner cover">
         <section class="intro">
             <div class="bg-image h-100">
                 <div class="mask d-flex align-items-center h-100">
                     <div class="container">
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center mb-0">
                             <div class="col-8">
                                 <div>
                                     <div class="card-body p-0">
@@ -27,9 +26,9 @@
                                              style="position: relative; height: 500px">
                                             <c:if test="${errors.size()!=0}">
                                                 <ul>
-                                                <c:forEach var="error" items="${errors}">
-                                                    <li>${error}</li>
-                                                </c:forEach>
+                                                    <c:forEach var="error" items="${errors}">
+                                                        <li>${error}</li>
+                                                    </c:forEach>
                                                 </ul>
                                             </c:if>
                                             <c:choose>
@@ -43,32 +42,53 @@
                                                         </thead>
                                                         <tbody>
                                                         <c:forEach var="service" items="${serviceAssignments}">
-                                                            <tr data-toggle="collapse" data-target="#collapse${service.id}" class="accordion-toggle">
+                                                            <tr data-toggle="collapse"
+                                                                data-target="#collapse${service.id}"
+                                                                class="accordion-toggle">
                                                                 <c:choose>
                                                                     <c:when test="${service.technician==null}">
                                                                         <td class="text-left">
-                                                                            <button type="button" class="btn btn-primary" onclick="location.href='Controller?command=ClaimServiceAssignment&claimId=${service.id}'" >SO Opnemen</button>
+                                                                            <button type="button"
+                                                                                    class="btn btn-primary"
+                                                                                    onclick="location.href='Controller?command=ClaimServiceAssignment&claimId=${service.id}'">
+                                                                                SO Opnemen
+                                                                            </button>
                                                                         </td>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                        <td class="text-left">${service.technician}</td>
+                                                                        <td class="text-left">${service.technician.name}</td>
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                                 <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}</td>
+                                                                <c:if test="${sessionScope.user.id eq service.technician.id && service.endDate == null}">
+
+                                                                    <td><a href="Controller?command=CloseAssignment&id=${service.id}"><button>Sluit Service</button></a></td>
+                                                                    <td><a href="Controller?command=NewAssignment&id=${service.id}"><button>Nieuwe Service</button></a></td>
+
+                                                                </c:if>
+
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="12" class="p-0 text-left bg-secondary">
-                                                                    <div id="collapse${service.id}" class="accordian-body collapse">
+                                                                    <div id="collapse${service.id}"
+                                                                         class="accordian-body collapse">
                                                                         <ul>
-                                                                            <li>Id: ${service.id}</li>
+                                                                            <li>Service Opdracht Id: ${service.id}</li>
                                                                             <li>Start datum: ${service.startDate}</li>
                                                                             <c:if test="${service.endDate!=null}">
                                                                                 <li>Eind datum: ${service.endDate}</li>
                                                                             </c:if>
                                                                             <li>Type: ${service.type}</li>
+
+                                                                            <c:forEach var="leak" items="${leaks}">
+                                                                                <c:if test="${leak.serviceAssignmentId==service.id}">
+                                                                                    <li>Gelinkt met lek: ${leak.id}</li>
+                                                                                </c:if>
+                                                                            </c:forEach>
                                                                             <c:if test="${service.comment!=null}">
                                                                                 <li>Opmerkingen: ${service.comment}</li>
                                                                             </c:if>
+
                                                                         </ul>
                                                                     </div>
                                                                 </td>

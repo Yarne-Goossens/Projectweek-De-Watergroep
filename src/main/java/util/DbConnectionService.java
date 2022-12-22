@@ -27,6 +27,8 @@ public class DbConnectionService {
         dbConnection = connectionManager.getConnection();
     }
 
+    public static void reconnect() { connect(schema, path); }
+
     public static void disconnect() {
         try {
             dbConnection.close();
