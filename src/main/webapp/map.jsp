@@ -17,11 +17,12 @@
             integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
             crossorigin=""></script>
 </head>
-<body class="text-center bg-dark text-white">
-<div class="cover-container d-flex h-100 mx-auto flex-column ">
-    <jsp:include page="header.jsp">
-        <jsp:param name="actual" value="Home"/>
-    </jsp:include>
+
+<body class="bg-dark">
+<jsp:include page="header.jsp">
+    <jsp:param name="actual" value="Home"/>
+</jsp:include>
+<div class="cover-container d-flex h-100 mx-auto flex-column text-center">
 </div>
 <main role="main" class="inner cover">
     <section class="vh-100">
