@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="style/deWaterGroepStyle.scss">
 <header>
     <nav class="navbar navbar-light navbar-expand-md bg-white clean-navbar">
         <div class="container">
