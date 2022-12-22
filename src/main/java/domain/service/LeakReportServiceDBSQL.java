@@ -101,20 +101,6 @@ public class LeakReportServiceDBSQL implements LeakReportService {
             }
         }
 
-    @Override
-    public void updateServiceAssignmentOfLeak(ServiceAssignment serviceAssignment) {
-        String querry = "UPDATE %s.leak SET service_id = ? WHERE service_id = ? ";
-        String query = String.format(querry,schema);
-        try{
-            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
-            preparedStatement.setInt(1, serviceAssignment.getId());
-            preparedStatement.setInt(2, serviceAssignment.getId());
-            preparedStatement.execute();
-        } catch (SQLException e) {
-            throw new DbException(e.getMessage());
-        }
-    }
-
 
     @Override
     public LeakReport getLeakFromId(int idleak) {
@@ -147,6 +133,21 @@ public class LeakReportServiceDBSQL implements LeakReportService {
             return null;
 
         }
+
+    @Override
+    public void updateServiceAssignmentOfLeak(int oldServiceAssignmentId, ServiceAssignment newServiceAssignment) {
+            String querry = "UPDATE %s.leak SET service_id = ? WHERE service_id = ? ";
+            String query = String.format(querry,schema);
+            try{
+                PreparedStatement preparedStatement = getConnection().prepareStatement(query);
+                preparedStatement.setInt(1, newServiceAssignment.getId());
+                preparedStatement.setInt(2, oldServiceAssignmentId);
+                preparedStatement.execute();
+            } catch (SQLException e) {
+                throw new DbException(e.getMessage());
+            }
+
+    }
 
     @Override
     public void updateLeakStatus(int id, LeakStatus status) {

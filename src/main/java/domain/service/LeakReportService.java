@@ -17,7 +17,7 @@ public interface LeakReportService {
 
     LeakReport getLeakFromId(int id);
 
-    void updateServiceAssignmentOfLeak(ServiceAssignment serviceAssignment);
+    void updateServiceAssignmentOfLeak(int OldServiceAssignmentId, ServiceAssignment newServiceAssignment);
 
     void updateLeakStatus(int id, LeakStatus status);
 }

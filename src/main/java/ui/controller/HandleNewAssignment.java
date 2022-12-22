@@ -27,11 +27,10 @@ public class HandleNewAssignment extends RequestHandler {
         setComment(newAssignment, request, errors);
         newAssignment.setStartDate(LocalDate.now());
         newAssignment.setServiceOpdrachtID(id);
-        Employee user = (Employee) request.getSession().getAttribute("user");
         if (errors.size() == 0) {
             try {
                 service.addServiceAssignmentWithoutTechnician(newAssignment);
-                service.updateServiceAssignmentOfLeak(newAssignment);
+                service.updateServiceAssignmentOfLeak(id, newAssignment);
                 return "Controller?command=OverviewServiceAssignments";
 
             } catch (Exception e) {
