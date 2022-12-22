@@ -82,7 +82,7 @@
 
                                                                             <c:forEach var="leak" items="${leaks}">
                                                                                 <c:if test="${leak.serviceAssignmentId==service.id}">
-                                                                                    <li>Lek met id: ${leak.id}</li>
+                                                                                    <li>Gelinkt met lek: ${leak.id}</li>
                                                                                 </c:if>
                                                                             </c:forEach>
                                                                             <c:if test="${service.comment!=null}">
