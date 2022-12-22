@@ -66,7 +66,8 @@ public class LeakReportServiceDBSQL implements LeakReportService {
                 String street = resultSet.getString("street");
                 String houseNr = resultSet.getString("house_number");
                 String comment = resultSet.getString("comment");
-                LeakReport leakReport = new LeakReport(id, postal, houseNr, firstName, lastName, email, city, street);
+                int serviceAssignmentId = resultSet.getInt("service_id");
+                LeakReport leakReport = new LeakReport(id, postal, houseNr, firstName, lastName, email, city, street, serviceAssignmentId);
                 leakReport.setComment(comment);
                 leakReports.add(leakReport);
             }
@@ -80,7 +81,7 @@ public class LeakReportServiceDBSQL implements LeakReportService {
     @Override
     public void updateLeak(LeakReport leak) {
         String query = String.format("UPDATE %s.leak SET city = ? , postal = ? , street = ? , house_number = ? , " +
-                "comment =? where id = ?", schema);
+                "comment = ?, service_id = ? where id = ?", schema);
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(query);
             preparedStatement.setString(1, leak.getCity());
@@ -88,7 +89,8 @@ public class LeakReportServiceDBSQL implements LeakReportService {
             preparedStatement.setString(3, leak.getStreet());
             preparedStatement.setString(4, leak.getHouseNumber());
             preparedStatement.setString(5, leak.getComment());
-            preparedStatement.setInt(6, leak.getId());
+            preparedStatement.setInt(6, leak.getServiceAssignmentId());
+            preparedStatement.setInt(7, leak.getId());
             preparedStatement.executeUpdate();
             System.out.println(leak);
 
@@ -116,9 +118,10 @@ public class LeakReportServiceDBSQL implements LeakReportService {
                 String city = result.getString("city");
                 String street = result.getString("street");
                 int postal = result.getInt("postal");
+                int serviceAssignmentId = result.getInt("service_id");
 
 
-                return new LeakReport(id, postal, housenumber, firstname, lastname, email, city, street, comment);
+                return new LeakReport(id, postal, housenumber, firstname, lastname, email, city, street, comment, serviceAssignmentId);
             }
         } catch (SQLException e) {
             throw new DbException(e.getMessage());

@@ -12,7 +12,7 @@ public class MeldingInfoEdit {
 
     @Before
     public void setUp(){
-        this.leak = new LeakReport(1,3000,"4b","Abdullah","Alrawe","a14alrawe@gmail.com","Leuven","tiensestraat","Some comment");
+        this.leak = new LeakReport(1,3000,"4b","Abdullah","Alrawe","a14alrawe@gmail.com","Leuven","tiensestraat","Some comment",0);
 
     }
 
