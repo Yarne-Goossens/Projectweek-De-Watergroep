@@ -25,7 +25,7 @@
     <main role="main" class="inner cover">
         <div class="card">
             <select name="address-selector" id="address-selector" onchange="markerLoader()">
-                <option value="overviewSO">Overview SO</option>
+                <option value="overviewSO">Overview Service Opdrachten</option>
                 <option value="overviewLekken">Overview Lekken</option>
                 <c:forEach var="so" items="${services}">
                     <option value="${so.street}, ${so.postalCode} ${so.city}">"${so.street}, ${so.postalCode} ${so.city}"</option>
@@ -69,9 +69,13 @@
                 function markerLoader() {
                     var value = document.getElementById("address-selector").value;
                     markersLayer.clearLayers();
-                    if (value == "overviewSO") {
+                    if (value === "overviewSO") {
                         <c:forEach var="so" items="${services}">
                         loadMarkers("${so.street}, ${so.postalCode} ${so.city}");
+                        </c:forEach>
+                    } else if (value === "overviewLekken") {
+                        <c:forEach var="leak" items="${leaks}">
+                        loadMarkers("${leak.street}, ${leak.postalCode} ${leak.city}");
                         </c:forEach>
                     } else {
                         loadMarkers(value);

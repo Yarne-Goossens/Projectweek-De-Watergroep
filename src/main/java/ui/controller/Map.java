@@ -8,6 +8,7 @@ public class Map  extends RequestHandler {
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("services",service.getAllServiceAssignments());
+        request.setAttribute("leaks",service.getAllLeaks());
         return "map.jsp";
     }
 }
