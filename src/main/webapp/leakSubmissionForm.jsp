@@ -80,12 +80,12 @@
                                 <textarea name="Commentaar" type="text" id="Commentaar" class="form-control" value="${commentaryPreviousValue}"></textarea>
                             </div>
                         </div>
-                        <div class="d-flex flex-row align-items-center mb-4">
-                            <div class="form-outline flex-fill mb-0">
-                                <label class="form-label" for="img">Foto:</label>
-                                <input type="file" id="img" name="img" accept="image/*">
-                            </div>
-                        </div>
+<%--                        <div class="d-flex flex-row align-items-center mb-4">--%>
+<%--                            <div class="form-outline flex-fill mb-0">--%>
+<%--                                <label class="form-label" for="img">Foto:</label>--%>
+<%--                                <input type="file" id="img" name="img" accept="image/*">--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                         <div class="d-flex flex-row align-items-center mb-4">
                             <button type="submit" class="btn btn-primary btn-lg">Stuur in</button>
                         </div>
