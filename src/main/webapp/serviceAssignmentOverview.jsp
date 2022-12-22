@@ -60,7 +60,7 @@
 
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="12" class="p-0 text-left bg-secondary">
+                                                                <td colspan="12" class="p-0 text-left bg-white">
                                                                     <div id="collapse${service.id}" class="accordian-body collapse">
                                                                         <ul>
                                                                             <li>Service Opdracht Id: ${service.id}</li>
