@@ -59,8 +59,10 @@ public class HandleNewAssignment extends RequestHandler {
         try {
             int p = Integer.parseInt(request.getParameter("postal"));
             serviceAssignment.setPostalCode(p);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             errors.add("Geen geldig postcode");
+        }catch (IllegalArgumentException e ){
+            errors.add(e.getMessage());
         }
     }
 
