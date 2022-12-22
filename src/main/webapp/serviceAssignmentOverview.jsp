@@ -38,7 +38,7 @@
                                                         <tr class="text-uppercase">
                                                             <th class="text-left" scope="col">Technieker/Opnemen</th>
                                                             <th class="text-left" scope="col">Locatie</th>
-                                                            <th class="text-left" colspan="2" scope="colgroup">Actie</th>
+                                                            <th class="text-left" colspan="3" scope="colgroup">Actie</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
