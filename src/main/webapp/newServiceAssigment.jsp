@@ -13,7 +13,7 @@
   <main role="main" class="inner cover">
     <div class="row d-flex justify-content-center align-items-center h-100 container-fluid">
       <div class="card text-black mb-5 mt-5 w-70" style="border-radius: 25px; width: 80%;">
-        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">New OS Service</p>
+        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Nieuwe Opdracht Service</p>
         <c:if test="${not empty errors}">
           <div id="error" class="alert alert-danger">
             <c:forEach items="${errors}" var="error">
