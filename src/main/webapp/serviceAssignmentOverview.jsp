@@ -8,17 +8,17 @@
     <jsp:param name="title" value="serviceAssignmentOverview"/>
 </jsp:include>
 
-<body class="bg-dark text-white">
+<body class="bg-dark">
 <jsp:include page="header.jsp">
     <jsp:param name="actual" value="serviceAssignmentOverview"/>
 </jsp:include>
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center mb-0  text-white">
     <main role="main" class="inner cover">
         <section class="intro">
             <div class="bg-image h-100">
                 <div class="mask d-flex align-items-center h-100">
                     <div class="container">
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center mb-0">
                             <div class="col-8">
                                 <div>
                                     <div class="card-body p-0">
@@ -26,9 +26,9 @@
                                              style="position: relative; height: 500px">
                                             <c:if test="${errors.size()!=0}">
                                                 <ul>
-                                                <c:forEach var="error" items="${errors}">
-                                                    <li>${error}</li>
-                                                </c:forEach>
+                                                    <c:forEach var="error" items="${errors}">
+                                                        <li>${error}</li>
+                                                    </c:forEach>
                                                 </ul>
                                             </c:if>
                                             <c:choose>
@@ -56,7 +56,7 @@
                                                                 <td class="text-left">${service.street} ${service.houseNumber}, ${service.postalCode} ${service.city}</td>
 
                                                                 <c:if test="${sessionScope.employee.name eq service.technician && service.technician ne null}">
-                                                                      <td><a href="Controller?command=CloseAssignment&id=${service.id}"><button>Sluit Service</button></a></td>
+                                                                    <td><a href="Controller?command=CloseAssignment&id=${service.id}"><button>Sluit Service</button></a></td>
                                                                 </c:if>
 
                                                             </tr>
@@ -69,7 +69,7 @@
                                                                             <c:if test="${service.endDate!=null}">
                                                                                 <li>Eind datum: ${service.endDate}</li>
                                                                             </c:if>
-                                                                            <li>Type: ${service.type.stringValue}</li>
+                                                                            <li>Type: ${service.type}</li>
                                                                             <c:if test="${service.comment!=null}">
                                                                                 <li>Opmerkingen: ${service.comment}</li>
                                                                             </c:if>
@@ -93,8 +93,9 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+</div>
+</section>
+</main>
 </div>
 
 

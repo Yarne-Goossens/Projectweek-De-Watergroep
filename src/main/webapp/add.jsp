@@ -22,6 +22,7 @@
                 </ul>
             </div>
         </c:if>
+
         <h2>Voeg je huisdier toe</h2>
 
         <form method="POST" action="Controller?command=Add" novalidate>
